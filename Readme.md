@@ -1,8 +1,8 @@
-# Kubernetes Demos 
+# Kubernetes Labs & Project Demo ! 
 
-### Collection of my demos on kubernetes. 
+### kubernetes Lab Files. 
 
-All these demos were tested on `Docker Desktop for Windows`. And should work on other kubernetes environments as well. 
+All these Labs were tested on `Docker Desktop for MacOs & Cloud`. And should work on other kubernetes environments as well. 
 
 To Setup `Docker Desktop for Windows` on your system, make sure your system has following pre-requisites:
 
@@ -16,9 +16,9 @@ To install docker desktop [follow these steps](https://docs.docker.com/docker-fo
 
 Sr No | Description | Links
 ------|-------------|------
-1   | Basic POD (Single container) | [Walkthrough](./01-basic-pod/Readme.md)
-2   | Basic POD (Web + Test) | [Walkthrough](./02-basic-pod/Readme.md)
-3   | Basic POD (Web + DB + Test) | [Walkthrough](./03-basic-pod/Readme.md) 
+1   | Basic POD (Single container) | [Walkthrough](./Lab01-pod/Readme.md)
+2   | Basic POD (Web + Test) | [Walkthrough](./Lab02-pod/Readme.md)
+3   | Basic POD (Web + DB + Test) | [Walkthrough](./Lab03-pod/Readme.md) 
 4   | POD with Volume 1 | [Walkthrough](./04-volume-pod/Readme.md) 
 5   | POD with Volume 2 | [Walkthrough](./05-volume-pod/Readme.md) 
 6   | ConfigMap with pod | [Walkthrough](./06-configmap/Readme.md) 
