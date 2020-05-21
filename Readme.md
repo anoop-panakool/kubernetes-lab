@@ -1,6 +1,6 @@
 # Kubernetes Labs & Project Demo ! 
 
-### kubernetes Lab Files. 
+### kubernetes Lab & Project Files . 
 
 All these Labs were tested on `Docker Desktop for MacOs & Cloud`. And should work on other kubernetes environments as well. 
 
