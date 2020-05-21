@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+  labels:
+    app: webapp
+spec:
+  containers:
+  - name: webapp
+    image: shivamjha/k8s-fleetman-webapp-angular:release1
