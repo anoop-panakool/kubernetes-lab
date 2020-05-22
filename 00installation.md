@@ -165,13 +165,13 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
     calico-node-v85fh                                  2/2     Running   2          75m
     coredns-66bff467f8-4c9px                           1/1     Running   0          80m
     coredns-66bff467f8-th4bd                           1/1     Running   0          80m
-    etcd-shivam1c.mylabserver.com                      1/1     Running   0          81m
-    kube-apiserver-shivam1c.mylabserver.com            1/1     Running   0          81m
-    kube-controller-manager-shivam1c.mylabserver.com   1/1     Running   0          81m
+    etcd-master.labserver.com                          1/1     Running   0          81m
+    kube-apiserver-master.labserver.com                1/1     Running   0          81m
+    kube-controller-manager-master.labserver.com       1/1     Running   0          81m
     kube-proxy-c5dfq                                   1/1     Running   0          78m
     kube-proxy-tdzsb                                   1/1     Running   0          79m
     kube-proxy-tlgn8                                   1/1     Running   0          80m
-    kube-scheduler-shivam1c.mylabserver.com            1/1     Running   0          81m
+    kube-scheduler-master.labserver.com                1/1     Running   0          81m
 
 
 ## Step 10 On all the worker nodes do
