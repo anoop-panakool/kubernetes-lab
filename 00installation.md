@@ -5,14 +5,17 @@
 We will install and configure a Kubernetes cluster consisting of 1 master and 2 nodes. Once the installation and configuration are complete, we will have a 3-node Kubernetes cluster that uses Calico as the network overlay.
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
-
-
+ 
+                  Note: Complete the following section on both MASTER & Worker Node !
+                              
 Step#1 Add the iptables rule to sysctl.conf ,As a requirement for your Linux Node’s iptables to correctly see bridged traffic, you should ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
 
       cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
       net.bridge.bridge-nf-call-ip6tables = 1
       net.bridge.bridge-nf-call-iptables = 1
       EOF
+          
+      setenforce 0
 
 Step#2 Enable iptables immediately
       
@@ -61,47 +64,53 @@ Step#3 Install Docker runtime, To run containers in Pods, Kubernetes uses a cont
       systemctl daemon-reload
       systemctl restart docker
 
+Step#4 Installing kubeadm, kubelet and kubectl
+
+Install these packages on all of your machines:
+    kubeadm: the command to bootstrap the cluster.
+
+    kubelet: the component that runs on all of the machines in your cluster and does things like starting pods and containers.
+
+    kubectl: the command line util to talk to your cluster.
+
+      apt-get update && sudo apt-get install -y apt-transport-https curl
+
+      ## Get the Kubernetes gpg key
+      curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+      ## Add the Kubernetes repository
+      cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+      deb https://apt.kubernetes.io/ kubernetes-xenial main
+      EOF
+
+      ## downloads the package lists from the repositories and Update your packages & dependecies to the newest versions
+      apt-get update
+
+      ## Install Docker, kubelet, kubeadm, and kubectl
+      apt-get install -y kubelet kubeadm kubectl
+
+      ## Hold them at the current version
+      apt-mark hold kubelet kubeadm kubectl
 
 
-    cat <<EOF > /etc/yum.repos.d/kubernetes.repo
-    [kubernetes]
-    name=Kubernetes
-    baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-    enabled=1
-    gpgcheck=1
-    repo_gpgcheck=0
-    gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+                Note: Complete the following section on the MASTER Node ONLY!
 
-    EOF
+       sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=NumCPU
+       sudo kubeadm init --pod-network-cidr=192.168.0.0/16 #Do this only if proper CPU cores are available
 
-    cat <<EOF >  /etc/sysctl.d/k8s.conf
-    net.bridge.bridge-nf-call-ip6tables = 1
-    net.bridge.bridge-nf-call-iptables = 1
-    EOF
-    sysctl --system
-
-    setenforce 0
-
-### install kubelet, kubeadm and kubectl; start kubelet daemon
-### Do it on both master as welll as worker nodes
-
-    yum install -y kubelet kubeadm kubectl
-
-    systemctl enable kubelet && systemctl start kubelet
-
-### On master node  initialize the cluster
-
-    sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=NumCPU
-    #  sudo kubeadm init --pod-network-cidr=192.168.0.0/16 #Do this only if proper CPU cores are available
-    mkdir -p $HOME/.kube
-    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+       ## To start using your cluster, you need to run the following as a regular user
+       mkdir -p $HOME/.kube
+       sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+       sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 
-## On Worker nodes, Switch to the root mode
-Copy kubeadm join command from output of "kubeadm init on master node"
+                Note: Complete the following steps on the NODES ONLY!
+         
+        ## Copy kubeadm join command from output of "kubeadm init on master node" on each WORKER NODE
+        ## Example - kubeadm join 172.31.24.221:6443 --token pexa5a.4zk3o0xs7e0bq4ip \
+                       --discovery-token-ca-cert-hash sha256:d4d3276b15704711ad682c76a195ceca754304ffc16328c869de9448821fa59a
 
-    <kubeadm join command copies from master node>
+        <kubeadm join command copies from master node>
 
 ## On Master Node: Clone a repository to get YAML files for Calico networking
 
