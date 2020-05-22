@@ -114,8 +114,8 @@ Install these packages on all of your machines:
 
 ## On Master Node: Clone a repository to get YAML files for Calico networking
 
-    yum install git -y
-    git clone https://github.com/ashishrpandey/kubernetes-training
+    apt install git -y
+    git clone https://github.com/shivamjhalabfiles/kubernetes-lab/tree/master/calico
     cd kubernetes-training/15-calico/
 
 
