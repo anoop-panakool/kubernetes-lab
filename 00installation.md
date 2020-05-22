@@ -7,18 +7,18 @@ We will install and configure a Kubernetes cluster consisting of 1 master and 2 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
 
- Step#1 Add the iptables rule to sysctl.conf ,As a requirement for your Linux Node’s iptables to correctly see bridged traffic, you should ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
+      Step#1 Add the iptables rule to sysctl.conf ,As a requirement for your Linux Node’s iptables to correctly see bridged traffic, you should ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
 
-  cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
-  net.bridge.bridge-nf-call-ip6tables = 1
-  net.bridge.bridge-nf-call-iptables = 1
-  EOF
+      cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+      net.bridge.bridge-nf-call-ip6tables = 1
+      net.bridge.bridge-nf-call-iptables = 1
+      EOF
 
- Step#2 Enable iptables immediately
-       sysctl --system
-       sysctl -p
+      Step#2 Enable iptables immediately
+      sysctl --system
+      sysctl -p
 
- Step#3 Install Docker runtime, To run containers in Pods, Kubernetes uses a container runtime.
+      Step#3 Install Docker runtime, To run containers in Pods, Kubernetes uses a container runtime.
        
 # (Install Docker CE)
 ## Set up the repository:
