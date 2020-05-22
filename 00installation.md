@@ -118,7 +118,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 
                 Note: Complete the following steps on the WORKER NODES ONLY!
          
-## Step 7 Join the worker nodes to the cluster, Copy kubeadm join command from output of "kubeadm init on master node" on each WORKER NODE
+## Step#7 Join the worker nodes to the cluster, Copy kubeadm join command from output of "kubeadm init on master node" on each WORKER NODE
         
         ## Example - kubeadm join 172.31.24.221:6443 --token pexa5a.4zk3o0xs7e0bq4ip \
                        --discovery-token-ca-cert-hash sha256:d4d3276b15704711ad682c76a195ceca754304ffc16328c869de9448821fa59a
@@ -128,7 +128,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 
                 Note: Complete the following section on the MASTER Node ONLY!
 
-## Step8 Apply Calico CNI network overlay , On Master Node only
+## Step#8 Apply Calico CNI network overlay , On Master Node only
 
     apt install git -y
     git clone https://github.com/shivamjhalabfiles/kubernetes-lab/tree/master/calico
@@ -137,7 +137,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
     kubectl apply -f .
 
 
-## Step 9 Verify the worker nodes have joined the cluster successfully
+## Step#9 Verify the worker nodes have joined the cluster successfully
 
     kubectl get nodes
 
@@ -174,7 +174,7 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
     kube-scheduler-master.labserver.com                1/1     Running   0          81m
 
 
-## Step 10 On all the worker nodes do
+## Step#10 On all the worker nodes do
 
     mkdir -p $HOME/.kube
     export KUBECONFIG=/etc/kubernetes/kubelet.conf
