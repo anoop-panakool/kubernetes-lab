@@ -178,8 +178,32 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 
     mkdir -p $HOME/.kube
     export KUBECONFIG=/etc/kubernetes/kubelet.conf
+
+## Step#11 Enable Kubernetes Dashboard
+
+After the Pod networks is installled, We can install another add-on service which is Kubernetes Dashboard.
+
+Installing Dashboard:
+```
+kubectl apply -f https://gist.githubusercontent.com/initcron/32ff89394c881414ea7ef7f4d3a1d499/raw/3422fbffadecec8ccd2bc7aacd1ca1c575936649/kube-dashboard.yaml
+
+```
+This will create a pod for the Kubernetes Dashboard.
+
+
+Dashboard would be setup and available on port 31000. To access it go to the browser, and provide the  following URL
+
+`use any of your node's (VM/Server) IP here`
+
+```
+http://NODEIP:31000/#!/node?namespace=default
+```
+
+The Dashboard Looks like:
+
+![Kubernetes Dashboard.\label{fig:captioned_image}](images/Kubernetes-Dashboard.png)
     
-## Set up Visualiser
+## Step 12 Set up Visualiser
 
 Fork the repository and deploy the visualizer on kubernetes
 
