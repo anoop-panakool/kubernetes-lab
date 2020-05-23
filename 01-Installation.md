@@ -178,3 +178,27 @@ https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-ku
 
     mkdir -p $HOME/.kube
     export KUBECONFIG=/etc/kubernetes/kubelet.conf
+    
+## Set up Visualiser
+
+Fork the repository and deploy the visualizer on kubernetes
+
+
+```
+git clone https://github.com/shivamjhalabfiles/kubernetes-lab/tree/master/visualizer-deploy
+kubectl apply -f kubernetes-lab/visualizer-deploy .
+
+```
+
+Visualiser will run on  **32000** port. You could access it using a URL such as below and  add /#scale=2.0 or similar option where 2.0 = 200% the scale.
+
+`replace <NODE_IP> with actual IP of one of your nodes`
+
+```
+http://<NODE_IP>:32000/#scale=2.0
+```
+
+
+![kube-visualizer](images/kube-ops-view.png)
+
+Kubernetes visualiser is a third party application which provides a operational view of your kubernetes cluster. Its very useful tool for learning kubernetes as it demonstrates the state of the cluster as well as state of the pods as you make changes. You could read further about it [at this link](https://kubernetes-operational-view.readthedocs.io/en/latest/).  
