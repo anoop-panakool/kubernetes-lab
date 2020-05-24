@@ -195,8 +195,8 @@ kubeadm join 172.31.24.221:6443 --token pexa5a.4zk3o0xs7e0bq4ip --discovery-toke
 ### Apply Calico CNI network overlay , On Master Node only
 ```bash 
 apt install git -y
-git clone https://github.com/shivamjhalabfiles/kubernetes-lab/tree/master/calico
-cd kubernetes-lab/calico/
+git clone https://github.com/shivamjhalabfiles/kubernetes-lab.git
+cd kubernetes-lab/Labs/Calico/
     
 kubectl apply -f .
 ```
