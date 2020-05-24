@@ -166,44 +166,43 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
-                "Note: Complete the following section on the MASTER Node ONLY!,
+                Note: Complete the following section on the MASTER Node ONLY!
 
 ### Initialize the Kubernetes cluster.In the master node, run below command to initialize the cluster using kubeadm
-
-
-       sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=NumCPU
-       sudo kubeadm init --pod-network-cidr=192.168.0.0/16 #Do this only if proper CPU cores are available
-
+```bash
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=NumCPU
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 #Do this only if proper CPU cores are available
+```
 ### Set up local kubeconfig ,To start using your cluster, you need to run the following as a regular user
-       mkdir -p $HOME/.kube
-       sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-       sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
+```bash
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
 
                 Note: Complete the following steps on the WORKER NODES ONLY!
          
 ### Join the worker nodes to the cluster, Copy kubeadm join command from output of "kubeadm init on master node" on each WORKER NODE
-        
-        ## Example - kubeadm join 172.31.24.221:6443 --token pexa5a.4zk3o0xs7e0bq4ip \
-                       --discovery-token-ca-cert-hash sha256:d4d3276b15704711ad682c76a195ceca754304ffc16328c869de9448821fa59a
+```bash     
+Example - 
+kubeadm join 172.31.24.221:6443 --token pexa5a.4zk3o0xs7e0bq4ip --discovery-token-ca-cert-hash sha256:d4d3276b15704711ad682c76a195ceca754304ffc16328c869de9448821fa59a
 
-        <kubeadm join command copies from master node>
+<kubeadm join command copies from master node>
 
-
+```
                 Note: Complete the following section on the MASTER Node ONLY!
 
 ### Apply Calico CNI network overlay , On Master Node only
-
-    apt install git -y
-    git clone https://github.com/shivamjhalabfiles/kubernetes-lab/tree/master/calico
-    cd kubernetes-lab/calico/
+```bash 
+apt install git -y
+git clone https://github.com/shivamjhalabfiles/kubernetes-lab/tree/master/calico
+cd kubernetes-lab/calico/
     
-    kubectl apply -f .
-
-
+kubectl apply -f .
+```
 ### Validate the Setup
-
-    kubectl get nodes
+```bash 
+kubectl get nodes
 
     root@K8s-master:~# kubectl get nodes
     NAME                    STATUS   ROLES    AGE   VERSION
@@ -216,9 +215,9 @@ sudo apt-mark hold kubelet kubeadm kubectl
     master.labserver.com    Ready    master   76m   v1.18.3   172.31.24.221   <none>        Ubuntu 18.04.4 LTS   5.3.0-1017-aws   docker://19.3.8
     worker1.labserver.com   Ready    <none>   74m   v1.18.3   172.31.31.18    <none>        Ubuntu 18.04.4 LTS   5.3.0-1017-aws   docker://19.3.8
     worker2.labserver.com   Ready    <none>   73m   v1.18.3   172.31.16.84    <none>        Ubuntu 18.04.4 LTS   5.3.0-1017-aws   docker://19.3.8
- 
-
-    kubectl get pods -n kube-system
+```
+```bash 
+kubectl get pods -n kube-system
 
     root@K8s-master:~# kubectl get pods -n kube-system
     NAME                                               READY   STATUS    RESTARTS   AGE
@@ -236,9 +235,9 @@ sudo apt-mark hold kubelet kubeadm kubectl
     kube-proxy-tdzsb                                   1/1     Running   0          79m
     kube-proxy-tlgn8                                   1/1     Running   0          80m
     kube-scheduler-master.labserver.com                1/1     Running   0          81m
-
-### Additional Status Commands
-    
+```
+#### Additional Status Commands
+```bash     
     kubectl version
 
     kubectl cluster-info
@@ -246,12 +245,12 @@ sudo apt-mark hold kubelet kubeadm kubectl
     kubectl get pods -n kube-system
 
     kubectl get events
-
+```
 ### On all the worker nodes do
-
-    mkdir -p $HOME/.kube
-    export KUBECONFIG=/etc/kubernetes/kubelet.conf
-
+```bash 
+mkdir -p $HOME/.kube
+export KUBECONFIG=/etc/kubernetes/kubelet.conf
+```
 ### Enable Kubernetes Dashboard
 
 After the Pod networks is installled, We can install another add-on service which is Kubernetes Dashboard.
