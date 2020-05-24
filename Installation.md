@@ -29,7 +29,7 @@ The below steps are applicable for the below mentioned OS
  
                   Note: Complete the following section on both MASTER & Worker Node !
                               
-## Step#1 Add the iptables rule to sysctl.conf ,As a requirement for your Linux Node’s iptables to correctly see bridged traffic, you should ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
+### Add the iptables rule to sysctl.conf ,As a requirement for your Linux Node’s iptables to correctly see bridged traffic, you should ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
 
       cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
       net.bridge.bridge-nf-call-ip6tables = 1
@@ -38,12 +38,12 @@ The below steps are applicable for the below mentioned OS
           
       setenforce 0
 
-## Step#2 Enable iptables immediately
+### Enable iptables immediately
       
       sysctl --system
       sysctl -p
 
-## Step#3 Install Docker runtime, To run containers in Pods, Kubernetes uses a container runtime.
+### Install Docker runtime, To run containers in Pods, Kubernetes uses a container runtime.
        
       # (Install Docker CE)
       ## Set up the repository:
@@ -91,7 +91,7 @@ The below steps are applicable for the below mentioned OS
       systemctl daemon-reload
       systemctl restart docker
 
-## Step#4 Installing kubeadm, kubelet and kubectl
+### Installing kubeadm, kubelet and kubectl
 
     Install these packages on all of your machines:
 
@@ -125,13 +125,13 @@ The below steps are applicable for the below mentioned OS
 
                 Note: Complete the following section on the MASTER Node ONLY!
 
-## Step#5 Initialize the Kubernetes cluster.In the master node, run below command to initialize the cluster using kubeadm
+### Initialize the Kubernetes cluster.In the master node, run below command to initialize the cluster using kubeadm
 
 
        sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=NumCPU
        sudo kubeadm init --pod-network-cidr=192.168.0.0/16 #Do this only if proper CPU cores are available
 
-## Step#6 Set up local kubeconfig ,To start using your cluster, you need to run the following as a regular user
+### Set up local kubeconfig ,To start using your cluster, you need to run the following as a regular user
        mkdir -p $HOME/.kube
        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
        sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -139,7 +139,7 @@ The below steps are applicable for the below mentioned OS
 
                 Note: Complete the following steps on the WORKER NODES ONLY!
          
-## Step#7 Join the worker nodes to the cluster, Copy kubeadm join command from output of "kubeadm init on master node" on each WORKER NODE
+### Join the worker nodes to the cluster, Copy kubeadm join command from output of "kubeadm init on master node" on each WORKER NODE
         
         ## Example - kubeadm join 172.31.24.221:6443 --token pexa5a.4zk3o0xs7e0bq4ip \
                        --discovery-token-ca-cert-hash sha256:d4d3276b15704711ad682c76a195ceca754304ffc16328c869de9448821fa59a
@@ -149,7 +149,7 @@ The below steps are applicable for the below mentioned OS
 
                 Note: Complete the following section on the MASTER Node ONLY!
 
-## Step#8 Apply Calico CNI network overlay , On Master Node only
+### Apply Calico CNI network overlay , On Master Node only
 
     apt install git -y
     git clone https://github.com/shivamjhalabfiles/kubernetes-lab/tree/master/calico
@@ -158,7 +158,7 @@ The below steps are applicable for the below mentioned OS
     kubectl apply -f .
 
 
-## Step#9 Verify the worker nodes have joined the cluster successfully
+### Verify the worker nodes have joined the cluster successfully
 
     kubectl get nodes
 
@@ -195,12 +195,12 @@ The below steps are applicable for the below mentioned OS
     kube-scheduler-master.labserver.com                1/1     Running   0          81m
 
 
-## Step#10 On all the worker nodes do
+### On all the worker nodes do
 
     mkdir -p $HOME/.kube
     export KUBECONFIG=/etc/kubernetes/kubelet.conf
 
-## Step#11 Enable Kubernetes Dashboard
+### Enable Kubernetes Dashboard
 
 After the Pod networks is installled, We can install another add-on service which is Kubernetes Dashboard.
 
@@ -224,7 +224,7 @@ The Dashboard Looks like:
 
 ![Kubernetes Dashboard.\label{fig:captioned_image}](images/Kubernetes-Dashboard.png)
     
-## Step 12 Set up Visualiser
+### Set up Visualiser
 
 Fork the repository and deploy the visualizer on kubernetes
 
