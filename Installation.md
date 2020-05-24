@@ -44,32 +44,45 @@ The below steps are applicable for the below mentioned OS
       sysctl -p
 
 ### Install Docker runtime, To run containers in Pods, Kubernetes uses a container runtime.
-       
-      # (Install Docker CE)
-      ## Set up the repository:
-      ### Install packages to allow apt to use a repository over HTTPS
+## Docker
 
-      apt-get update && apt-get install -y \
-        apt-transport-https ca-certificates curl software-properties-common gnupg2
+On each of your machines, install Docker.
+Version 19.03.8 is recommended, but 1.13.1, 17.03, 17.06, 17.09, 18.06 and 18.09 are known to work as well.
+Keep track of the latest verified Docker version in the Kubernetes release notes.
 
-      # Add Docker’s official GPG key
+Use the following commands to install Docker on your system:
 
-      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-      
-      # Add the Docker apt repository
+{{< tabs name="tab-cri-docker-installation" >}}
+{{< tab name="Ubuntu 16.04+" >}}
 
-      add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-        $(lsb_release -cs) \
-        stable"
+```shell
+# (Install Docker CE)
+## Set up the repository:
+### Install packages to allow apt to use a repository over HTTPS
+apt-get update && apt-get install -y \
+  apt-transport-https ca-certificates curl software-properties-common gnupg2
+```
 
+```shell
+# Add Docker’s official GPG key:
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+```
 
-      # Install Docker CE
+```shell
+# Add the Docker apt repository:
+add-apt-repository \
+  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) \
+  stable"
+```
 
-      apt-get update && apt-get install -y \
-        containerd.io=1.2.13-1 \
-        docker-ce=5:19.03.8~3-0~ubuntu-$(lsb_release -cs) \
-        docker-ce-cli=5:19.03.8~3-0~ubuntu-$(lsb_release -cs)
+```shell
+# Install Docker CE
+apt-get update && apt-get install -y \
+  containerd.io=1.2.13-1 \
+  docker-ce=5:19.03.8~3-0~ubuntu-$(lsb_release -cs) \
+  docker-ce-cli=5:19.03.8~3-0~ubuntu-$(lsb_release -cs)
+```
 
 ```shell
 # Set up the Docker daemon
@@ -85,12 +98,72 @@ cat > /etc/docker/daemon.json <<EOF
 EOF
 ```
 
-      mkdir -p /etc/systemd/system/docker.service.d
+```shell
+mkdir -p /etc/systemd/system/docker.service.d
+```
 
-      # Restart Docker
+```shell
+# Restart Docker
+systemctl daemon-reload
+systemctl restart docker
+```
+{{< /tab >}}
+{{< tab name="CentOS/RHEL 7.4+" >}}
 
-      systemctl daemon-reload
-      systemctl restart docker
+```shell
+# (Install Docker CE)
+## Set up the repository
+### Install required packages
+yum install -y yum-utils device-mapper-persistent-data lvm2
+```
+
+```shell
+## Add the Docker repository
+yum-config-manager --add-repo \
+  https://download.docker.com/linux/centos/docker-ce.repo
+```
+
+```shell
+# Install Docker CE
+yum update -y && yum install -y \
+  containerd.io-1.2.13 \
+  docker-ce-19.03.8 \
+  docker-ce-cli-19.03.8
+```
+
+```shell
+## Create /etc/docker
+mkdir /etc/docker
+```
+
+```shell
+# Set up the Docker daemon
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2",
+  "storage-opts": [
+    "overlay2.override_kernel_check=true"
+  ]
+}
+EOF
+```
+
+```shell
+mkdir -p /etc/systemd/system/docker.service.d
+```
+
+```shell
+# Restart Docker
+systemctl daemon-reload
+systemctl restart docker
+```
+{{< /tab >}}
+{{< /tabs >}}
 
 ### Installing kubeadm, kubelet and kubectl
 
