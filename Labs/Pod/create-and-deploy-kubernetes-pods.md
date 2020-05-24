@@ -1,4 +1,4 @@
-# Lab K103: Launching Pods with Kubernetes
+# Lab: Launching Pods with Kubernetes
 
 In this lab, you would learn how to launch applications using  the basic deployment unit of kubernetes i.e. **pods**. This time, you are going to do it by writing declarative configs with *yaml* syntax.
 
@@ -374,6 +374,6 @@ kubectl get pods
 
 #### Reading List
 
-  * [PodSpec:](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.9/#pod-v1-core)
+  * [PodSpec:](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#pod-v1-core)
   * [Managing Volumes with Kubernetes](https://kubernetes.io/docs/concepts/storage/volumes)
   * [Node Selectors, Affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node)
