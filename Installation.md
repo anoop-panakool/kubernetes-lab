@@ -61,7 +61,7 @@ sudo sysctl -p
 | TCP      | Inbound   | 10250       | Kubelet API           | Self, Control plane     |
 | TCP      | Inbound   | 30000-32767 | NodePort Services†    | All                     |
 
-† Default port range for [NodePort Services](/docs/concepts/services-networking/service/).
+† Default port range for [NodePort Services](https://kubernetes.io/docs/concepts/services-networking/service/.
 
 Any port numbers marked with * are overridable, so you will need to ensure any
 custom ports you provide are also open.
