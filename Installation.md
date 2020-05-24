@@ -103,60 +103,6 @@ mkdir -p /etc/systemd/system/docker.service.d
 # Restart Docker
 systemctl daemon-reload
 systemctl restart docker
-```
-
-```shell
-# (Install Docker CE)
-## Set up the repository
-### Install required packages
-yum install -y yum-utils device-mapper-persistent-data lvm2
-```
-
-```shell
-## Add the Docker repository
-yum-config-manager --add-repo \
-  https://download.docker.com/linux/centos/docker-ce.repo
-```
-
-```shell
-# Install Docker CE
-yum update -y && yum install -y \
-  containerd.io-1.2.13 \
-  docker-ce-19.03.8 \
-  docker-ce-cli-19.03.8
-```
-
-```shell
-## Create /etc/docker
-mkdir /etc/docker
-```
-
-```shell
-# Set up the Docker daemon
-cat > /etc/docker/daemon.json <<EOF
-{
-  "exec-opts": ["native.cgroupdriver=systemd"],
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "100m"
-  },
-  "storage-driver": "overlay2",
-  "storage-opts": [
-    "overlay2.override_kernel_check=true"
-  ]
-}
-EOF
-```
-
-```shell
-mkdir -p /etc/systemd/system/docker.service.d
-```
-
-```shell
-# Restart Docker
-systemctl daemon-reload
-systemctl restart docker
-```
 
 ### Installing kubeadm, kubelet and kubectl
 
