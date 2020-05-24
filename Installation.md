@@ -73,11 +73,11 @@ The below steps are applicable for the below mentioned OS
 
       # Set up the Docker daemon
 
-      cat > /etc/docker/daemon.json <<EOF
+       cat > /etc/docker/daemon.json <<EOF
       {
-        "exec-opts": ["native.cgroupdriver=systemd"],
-        "log-driver": "json-file",
-        "log-opts": {
+         "exec-opts": ["native.cgroupdriver=systemd"],
+         "log-driver": "json-file",
+         "log-opts": {
         "max-size": "100m"
        },
        "storage-driver": "overlay2"
