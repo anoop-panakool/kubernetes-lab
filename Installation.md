@@ -71,18 +71,19 @@ The below steps are applicable for the below mentioned OS
         docker-ce=5:19.03.8~3-0~ubuntu-$(lsb_release -cs) \
         docker-ce-cli=5:19.03.8~3-0~ubuntu-$(lsb_release -cs)
 
-      # Set up the Docker daemon
-
-       cat > /etc/docker/daemon.json <<EOF
-      {
-         "exec-opts": ["native.cgroupdriver=systemd"],
-         "log-driver": "json-file",
-         "log-opts": {
-         "max-size": "100m"
-        },
-       "storage-driver": "overlay2"
-      }
-      EOF
+```shell
+# Set up the Docker daemon
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+```
 
       mkdir -p /etc/systemd/system/docker.service.d
 
