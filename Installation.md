@@ -29,27 +29,52 @@ The below steps are applicable for the below mentioned OS
  
                   Note: Complete the following section on both MASTER & Worker Node !
                               
-### Add the iptables rule to sysctl.conf ,As a requirement for your Linux Node’s iptables to correctly see bridged traffic, you should ensure net.bridge.bridge-nf-call-iptables is set to 1 in your sysctl config
+## Letting iptables see bridged traffic
 
-      cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
-      net.bridge.bridge-nf-call-ip6tables = 1
-      net.bridge.bridge-nf-call-iptables = 1
-      EOF
-          
-      setenforce 0
+As a requirement for your Linux Node's iptables to correctly see bridged traffic, you should ensure `net.bridge.bridge-nf-call-iptables` is set to 1 in your `sysctl` config, e.g.
 
-### Enable iptables immediately
-      
-      sysctl --system
-      sysctl -p
+```bash
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sudo sysctl --system
+sudo sysctl -p
+```
+
+## Check required ports
+
+### Control-plane node(s)
+
+| Protocol | Direction | Port Range | Purpose                 | Used By                   |
+|----------|-----------|------------|-------------------------|---------------------------|
+| TCP      | Inbound   | 6443*      | Kubernetes API server   | All                       |
+| TCP      | Inbound   | 2379-2380  | etcd server client API  | kube-apiserver, etcd      |
+| TCP      | Inbound   | 10250      | Kubelet API             | Self, Control plane       |
+| TCP      | Inbound   | 10251      | kube-scheduler          | Self                      |
+| TCP      | Inbound   | 10252      | kube-controller-manager | Self                      |
+
+### Worker node(s)
+
+| Protocol | Direction | Port Range  | Purpose               | Used By                 |
+|----------|-----------|-------------|-----------------------|-------------------------|
+| TCP      | Inbound   | 10250       | Kubelet API           | Self, Control plane     |
+| TCP      | Inbound   | 30000-32767 | NodePort Services†    | All                     |
+
+† Default port range for [NodePort Services](/docs/concepts/services-networking/service/).
+
+Any port numbers marked with * are overridable, so you will need to ensure any
+custom ports you provide are also open.
+
+Although etcd ports are included in control-plane nodes, you can also host your own
+etcd cluster externally or on custom ports.
+
 
 ### Install Docker runtime, To run containers in Pods, Kubernetes uses a container runtime.
 ## Docker
 
-On each of your machines, install Docker.
-Version 19.03.8 is recommended, but 1.13.1, 17.03, 17.06, 17.09, 18.06 and 18.09 are known to work as well.
+On each of your machines, install Docker. Version 19.03.8 is recommended, but 1.13.1, 17.03, 17.06, 17.09, 18.06 and 18.09 are known to work as well.
 Keep track of the latest verified Docker version in the Kubernetes release notes.
-
 Use the following commands to install Docker on your system:
 
 ```shell
@@ -105,17 +130,30 @@ systemctl daemon-reload
 systemctl restart docker
 ```
 
-### Installing kubeadm, kubelet and kubectl
+## Installing kubeadm, kubelet and kubectl
 
-    Install these packages on all of your machines:
+You will install these packages on all of your machines:
 
-    kubeadm: the command to bootstrap the cluster.
-    kubelet: the component that runs on all of the machines in your cluster and does things like starting pods and containers.
-    kubectl: the command line util to talk to your cluster.
+* `kubeadm`: the command to bootstrap the cluster.
 
-      apt-get update && sudo apt-get install -y apt-transport-https curl
+* `kubelet`: the component that runs on all of the machines in your cluster
+    and does things like starting pods and containers.
 
-      ## Get the Kubernetes gpg key
+* `kubectl`: the command line util to talk to your cluster.
+
+### Get the Kubernetes gpg key
+```bash
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+```
+
+
 
       curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
