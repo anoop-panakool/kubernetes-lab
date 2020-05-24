@@ -141,7 +141,7 @@ You will install these packages on all of your machines:
 
 * `kubectl`: the command line util to talk to your cluster.
 
-### Get the Kubernetes gpg key
+#### Get the Kubernetes gpg key
 ```bash
 sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
