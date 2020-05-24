@@ -24,6 +24,8 @@ The below steps are applicable for the below mentioned OS
  Download MobaXterm SSH terminal for Windows https://mobaxterm.mobatek.net/download-home-edition.html
  Visual Studio Code a code editor https://code.visualstudio.com/download
  ```
+ **On all nodes which would be part of this cluster, you need to do the base setup as described in the following steps. To simplify this, you could also**
+[download and run this script](https://gist.github.com/initcron/40b71211cb693f541ce35fe3fb1adb11)
  
                   Note: Complete the following section on both MASTER & Worker Node !
                               
