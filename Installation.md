@@ -144,36 +144,25 @@ You will install these packages on all of your machines:
 #### Get the Kubernetes gpg key
 ```bash
 sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+```
+#### Add the Kubernetes repository
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
+
+#### downloads the package lists from the repositories and Update your packages & dependecies to the newest versions
+```bash
 sudo apt-get update
+```
+#### Install Docker, kubelet, kubeadm, and kubectl
+```bash
 sudo apt-get install -y kubelet kubeadm kubectl
+```
+#### Hold them at the current version
+```bash
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-
-
-
-      curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-
-      ## Add the Kubernetes repository
-
-      cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-      deb https://apt.kubernetes.io/ kubernetes-xenial main
-      EOF
-
-      ## downloads the package lists from the repositories and Update your packages & dependecies to the newest versions
-
-      apt-get update
-
-      ## Install Docker, kubelet, kubeadm, and kubectl
-
-      apt-get install -y kubelet kubeadm kubectl
-
-      ## Hold them at the current version
-      apt-mark hold kubelet kubeadm kubectl
-
 
                 Note: Complete the following section on the MASTER Node ONLY!
 
