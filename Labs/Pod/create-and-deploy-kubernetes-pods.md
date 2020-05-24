@@ -4,7 +4,10 @@ In this lab, you would learn how to launch applications using  the basic deploym
 
 ## Launching pods without YAML  
 
-You could use [generators](https://kubernetes.io/docs/reference/kubectl/conventions/#generators) to launch a pod by specifying just the image.  
+You could use below generators links to launch a pod by specifying just the image. 
+[generators](https://kubernetes.io/docs/reference/kubectl/conventions/#generators)
+[generators]https://v1-16.docs.kubernetes.io/docs/reference/kubectl/conventions/ 
+
 
 For example, if you would like to launch a pod for redis, with image redis:alpine, the following command would work,
 
