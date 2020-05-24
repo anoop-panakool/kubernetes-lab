@@ -4,7 +4,7 @@ In this lab, you would learn how to launch applications using  the basic deploym
 
 ## Launching pods without YAML  
 
-    You could use [generators](https://kubernetes.io/docs/reference/kubectl/conventions/#generators) 
+You could use [generators](https://kubernetes.io/docs/reference/kubectl/conventions/#generators) 
               [conventions](https://v1-16.docs.kubernetes.io/docs/reference/kubectl/conventions/) to launch a pod by specifying just the image. 
 
 
