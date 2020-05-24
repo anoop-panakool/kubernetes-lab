@@ -16,18 +16,19 @@ The below steps are applicable for the below mentioned OS
 
 ## Base Setup
 `Download Oracle VirtualBox:  https://www.virtualbox.org/wiki/Downloads`
+
 `Download VM images: http://osboxes.org/`
+
 `Download MobaXterm SSH terminal for Windows https://mobaxterm.mobatek.net/download-home-edition.html`
+
 `Visual Studio Code a code editor https://code.visualstudio.com/download`
 
-**Skip this step and scroll to Initializing Master if you have setup nodes with vagrant**
 
+**On all nodes which would be part of this cluster, you need to do the base setup as described in the following steps. To simplify this, you could also**
 
-On all nodes which would be part of this cluster, you need to do the base setup as described in the following steps. To simplify this, you could also   [download and run this script](https://gist.github.com/initcron/40b71211cb693f541ce35fe3fb1adb11)
+ [download and run this script](https://gist.github.com/initcron/40b71211cb693f541ce35fe3fb1adb11)
 
 ### Create Kubernetes Repository
-`Skip this step if using a pre configured lab environment`
-
 
 We need to create a repository to download Kubernetes.
 
