@@ -16,6 +16,14 @@ The below steps are applicable for the below mentioned OS
 | OS | Version | Codename |  
 | --- | --- | -- |  
 | **Ubuntu** | **16.04 / 18.04** | **Xenial** | 
+
+## Base Setup
+ ```
+ Download Oracle VirtualBox:  https://www.virtualbox.org/wiki/Downloads
+ Download VM images: http://osboxes.org/
+ Download MobaXterm SSH terminal for Windows https://mobaxterm.mobatek.net/download-home-edition.html
+ Visual Studio Code a code editor https://code.visualstudio.com/download
+ ```
  
                   Note: Complete the following section on both MASTER & Worker Node !
                               
