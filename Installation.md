@@ -52,9 +52,6 @@ Keep track of the latest verified Docker version in the Kubernetes release notes
 
 Use the following commands to install Docker on your system:
 
-{{< tabs name="tab-cri-docker-installation" >}}
-{{< tab name="Ubuntu 16.04+" >}}
-
 ```shell
 # (Install Docker CE)
 ## Set up the repository:
@@ -107,8 +104,6 @@ mkdir -p /etc/systemd/system/docker.service.d
 systemctl daemon-reload
 systemctl restart docker
 ```
-{{< /tab >}}
-{{< tab name="CentOS/RHEL 7.4+" >}}
 
 ```shell
 # (Install Docker CE)
@@ -162,8 +157,6 @@ mkdir -p /etc/systemd/system/docker.service.d
 systemctl daemon-reload
 systemctl restart docker
 ```
-{{< /tab >}}
-{{< /tabs >}}
 
 ### Installing kubeadm, kubelet and kubectl
 
