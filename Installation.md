@@ -103,6 +103,7 @@ mkdir -p /etc/systemd/system/docker.service.d
 # Restart Docker
 systemctl daemon-reload
 systemctl restart docker
+```
 
 ### Installing kubeadm, kubelet and kubectl
 
