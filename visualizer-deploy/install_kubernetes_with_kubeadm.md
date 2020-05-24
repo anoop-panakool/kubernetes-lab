@@ -16,7 +16,7 @@ The below steps are applicable for the below mentioned OS
 
 ## Base Setup
  ```
- Download Oracle VirtualBox:  https://www.virtualbox.org/wiki/Downloads
+ [Download Oracle VirtualBox]  https://www.virtualbox.org/wiki/Downloads
  Download VM images: http://osboxes.org/
  Download MobaXterm SSH terminal for Windows https://mobaxterm.mobatek.net/download-home-edition.html
  Visual Studio Code a code editor https://code.visualstudio.com/download
