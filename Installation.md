@@ -158,7 +158,7 @@ The below steps are applicable for the below mentioned OS
     kubectl apply -f .
 
 
-### Verify the worker nodes have joined the cluster successfully
+### Validate the Setup
 
     kubectl get nodes
 
@@ -194,6 +194,15 @@ The below steps are applicable for the below mentioned OS
     kube-proxy-tlgn8                                   1/1     Running   0          80m
     kube-scheduler-master.labserver.com                1/1     Running   0          81m
 
+### Additional Status Commands
+    
+    kubectl version
+
+    kubectl cluster-info
+
+    kubectl get pods -n kube-system
+
+    kubectl get events
 
 ### On all the worker nodes do
 
