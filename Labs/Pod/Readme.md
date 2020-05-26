@@ -10,7 +10,7 @@ In this lab we will create a Pod with Mongo on Kubernetes cluster.
 
 1. Creating a Pod with Mongo
 `
-   Just as we can execute docker run to create containers, kubectl allows us to create Pods with a single command. For example, if we’d like to create a Pod with a Mongo database, the command is as follows.
+kubectl allows us to create Pods with a single command. For example, if we would like to create a Pod with a Mongo database, the command is as follows.
 `
 ```bash
 kubectl run db --image mongo \
