@@ -613,4 +613,26 @@ pod "db" deleted
 
 - A volume (think of it as a directory with shareable data) defined in a Pod can be accessed by all the containers thus allowing them all to share the same data.
 
-### let’s take a look at the go-demo-2.yml specification.
+### Example- go-demo-2.yml specification.
+```
+cat go-demo-2.yml
+```
+The output is as follows.
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-demo-2
+  labels:
+    type: stack
+spec:
+  containers:
+  - name: db
+    image: mongo:3.3
+  - name: api
+    image: vfarcic/go-demo-2
+    env:
+    - name: DB
+      value: localhost
+```
+ > click [here](/Labs/Pod/Lab06-pod/go-demo-2.yml)
