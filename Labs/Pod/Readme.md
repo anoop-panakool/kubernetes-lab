@@ -253,80 +253,7 @@ root@shivam1c:~/k8s-specs# kubectl get pods db -o json
                 ]
             }
         ],
-        "dnsPolicy": "ClusterFirst",
-        "enableServiceLinks": true,
-        "nodeName": "shivam2c.mylabserver.com",
-        "priority": 0,
-        "restartPolicy": "Always",
-        "schedulerName": "default-scheduler",
-        "securityContext": {},
-        "serviceAccount": "default",
-        "serviceAccountName": "default",
-        "terminationGracePeriodSeconds": 30,
-        "tolerations": [
-            {
-                "effect": "NoExecute",
-                "key": "node.kubernetes.io/not-ready",
-                "operator": "Exists",
-                "tolerationSeconds": 300
-            },
-            {
-                "effect": "NoExecute",
-                "key": "node.kubernetes.io/unreachable",
-                "operator": "Exists",
-                "tolerationSeconds": 300
-            }
-        ],
-        "volumes": [
-            {
-                "name": "default-token-mvzfj",
-                "secret": {
-                    "defaultMode": 420,
-                    "secretName": "default-token-mvzfj"
-                }
-            }
-        ]
-    },
-    "status": {
-        "conditions": [
-            {
-                "lastProbeTime": null,
-                "lastTransitionTime": "2020-05-26T11:23:09Z",
-                "status": "True",
-                "type": "Initialized"
-            },
-            {
-                "lastProbeTime": null,
-                "lastTransitionTime": "2020-05-26T11:23:21Z",
-                "status": "True",
-                "type": "Ready"
-            },
-            {
-                "lastProbeTime": null,
-                "lastTransitionTime": "2020-05-26T11:23:21Z",
-                "status": "True",
-                "type": "ContainersReady"
-            },
-            {
-                "lastProbeTime": null,
-                "lastTransitionTime": "2020-05-26T11:23:09Z",
-                "status": "True",
-                "type": "PodScheduled"
-            }
-        ],
-        "containerStatuses": [
-            {
-                "containerID": "docker://4f5b9dea758efdb126bac288ffd0fa4ae6038c69f7d6c4940394666c96ce5dcb",
-                "image": "mongo:latest",
-                "imageID": "docker-pullable://mongo@sha256:c880f6b56f443bb4d01baa759883228cd84fa8d78fa1a36001d1c0a0712b5a07",
-                "lastState": {},
-                "name": "db",
-                "ready": true,
-                "restartCount": 0,
-                "started": true,
-                "state": {
-                    "running": {
-                        "startedAt": "2020-05-26T11:23:21Z"
+---------The output is too big and not that important currentl lab. One of the last line is as follows--------
                     }
                 }
             }
@@ -623,8 +550,23 @@ MongoDB server version: 4.2.6
 }
 bye
 ```
-`We used mongo client to execute db.stats() for the database test running on localhost:27017'
+`We used mongo client to execute db.stats() for the database test running on localhost:27017`````s
 ### Exit out of the container
 ```
-exit
+# exit
+```
+
+# Getting Logs
+Usually, Logs should be shipped from containers to a central location but here we will exlore the logs of a container in a Pod.
+
+### The command that outputs logs of the only container in the db Pod is as follows:
+```
+kubectl logs db
+```
+The output is too big and not that important currentl lab. One of the last line is as follows
+```
+2020-05-26T15:31:33.921+0000 I  SHARDING [LogicalSessionCacheReap] Marking collection config.transactions as collection version: <unsharded>
+2020-05-26T15:37:34.187+0000 I  NETWORK  [listener] connection accepted from 127.0.0.1:54052 #1 (1 connection now open)
+2020-05-26T15:37:34.337+0000 I  NETWORK  [conn1] received client metadata from 127.0.0.1:54052 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.2.6" }, os: { type: "Linux", name: "Ubuntu", architecture: "x86_64", version: "18.04" } }
+2020-05-26T15:37:34.363+0000 I  NETWORK  [conn1] end connection 127.0.0.1:54052 (0 connections now open)
 ```
