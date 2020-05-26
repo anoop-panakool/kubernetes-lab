@@ -828,7 +828,7 @@ spec:
   - Another method is to use TCP sockets, which returns a failed status if the TCP connection cannot be established.
   - The final, most flexible, way is to define a custom command, whose exit code determines whether the check is successful.
 
-### Example- **Liveness probes** `go-demo-2-health.yml` specification
+### Example- **Liveness probes** go-demo-2-health.yml specification
 ```
 cat go-demo-2.yml
 ```
