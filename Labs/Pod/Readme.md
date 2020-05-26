@@ -93,7 +93,7 @@ spec:
 ```
  > click [here](/Labs/Pod/Lab06-pod/db.yml)
 Let’s analyze the various sections in the output definition of a Pod.
-
+```
 Line 1-2: We’re using v1 of Kubernetes Pods API. Both apiVersion and kind are mandatory. That way, Kubernetes knows what we want to do (create a Pod) and which API version to use.
 
 Line 3-7: The next section is metadata. It provides information that does not influence how the Pod behaves. We used metadata to define the name of the Pod (db) and a few labels. Later on, when we move into Controllers, labels will have a practical purpose. For now, they are purely informational.
@@ -103,8 +103,8 @@ Line 8: The last section is the spec in which we defined a single container. As 
 Line 12: In our case, the container is defined with the name (db), the image (mongo), the command that should be executed when the container starts (mongod)
 
 Line 13: Finally, the set of arguments. The arguments are defined as an array with, in this case, two elements (--rest and --httpinterface).
-
-1. Let’s create the Pod defined in the db.yml file.
+```
+1. Let’s create the `Pod` defined in the `db.yml` file.
 ```
 kubectl create -f db.yml
 ```
@@ -122,7 +122,7 @@ db   1/1   Running 0        11s
 ```
 Pod named db is up and running!
 
-2. Retrieve more information about the POD by specifying wide output
+2. Retrieve more information about the `POD` by specifying wide output
 ```
 kubectl get pods -o wide
 ```
@@ -133,7 +133,7 @@ db   1/1   Running 0        1m  192.168.221.134 shivam2c.labserver.com   <none> 
 ```
 we got two additional columns; the IP and the NODE.
 
-3. If you’d like to parse the output, using json format.
+3. If you’d like to parse the output, using `json` format.
 ```
 kubectl get pods -o json
 ```
@@ -345,7 +345,7 @@ root@shivam1c:~/k8s-specs# kubectl get pods db -o json
 }
 ```
 
-4. If you’d like to parse the output, using YAML format.
+4. If you’d like to parse the output, using `YAML` format.
 ```
 kubectl get pods -o yaml
 ```
@@ -565,7 +565,7 @@ Kubelet runs on each node. Its primary function is to make sure that assigned po
 
 The sequence of events take place when we run kubectl create -f db.yml command is as below:
 ```
-1. Kubernetes client (kubectl) sent a request to the API server requesting creation of a Pod defined in the pod/db.yml file.
+1. Kubernetes client (kubectl) sent a request to the API server requesting creation of a Pod defined in the db.yml file.
 
 2. Since the scheduler is watching the API server for new events, it detected that there is an unassigned Pod.
 
