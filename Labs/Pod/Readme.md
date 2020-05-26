@@ -564,8 +564,8 @@ Kubelet runs on each node. Its primary function is to make sure that assigned po
 ## Sequential Breakdown of Events
 
 The sequence of events take place when we run `kubectl create -f db.yml` command is as below:
-```
-1. Kubernetes client (kubectl) sent a request to the API server requesting creation of a Pod defined in the db.yml file.
+
+##### 1. Kubernetes client (kubectl) sent a request to the API server requesting creation of a Pod defined in the db.yml file.
 
 2. Since the scheduler is watching the API server for new events, it detected that there is an unassigned Pod.
 
