@@ -653,3 +653,19 @@ spec:
    -  api
 - The service inside the vfarcic/go-demo-2 image uses environment variable DB to know where the database is.
 - The value is localhost since all the containers in the same Pod are reachable through it
+
+> Create a new Pod defined in the go-demo-2.yml file and retrieve its information from Kubernetes Cluster. 
+```
+kubectl create -f pod/go-demo-2.yml
+
+kubectl get -f pod/go-demo-2.yml
+```
+> The output of the command is as follows.
+```
+root@shivam1c:~/k8s-specs/pod# kubectl create -f go-demo-2.yml
+pod/go-demo-2 created
+
+root@shivam1c:~/k8s-specs/pod# kubectl get -f go-demo-2.yml
+NAME        READY   STATUS    RESTARTS   AGE
+go-demo-2   2/2     Running   0          17s
+```
