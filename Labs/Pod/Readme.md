@@ -1,4 +1,4 @@
-# A Quick and Dirty Way to Run Pods
+# A Lazy and Dirty Way to Run Pods
 
 In this lab we will create a Pod with Mongo on Kubernetes cluster.
 
@@ -53,6 +53,11 @@ db     1/1     Running   0         6
 
 We can see that, this time, the Pod is ready and we can start using the Mongo database.
 ```
-3. 
-
-![kubernetes-lab](images/kube-ops-view.png)
+3. That was not the best way to run Pods so we’ll delete it.
+```
+kubectl delete pod d
+```
+The output is as follows.
+```
+pod "db" deleted
+```
