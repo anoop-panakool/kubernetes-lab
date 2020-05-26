@@ -508,11 +508,11 @@ The sequence of events take place when we run `kubectl create -f db.yml` command
 ##### 6. Finally, Kubelet sent a request to the API server notifying it that the Pod was created successfully.
 
 # Deep Dive in Running Pod & Running Single Container in a Single Pod
-```
+
 
 ![Image of Single Container POD](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/single-container-pod.png)
 
-```
+
 
 ### Describing the Resources
 ```
