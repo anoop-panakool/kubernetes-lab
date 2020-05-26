@@ -592,7 +592,7 @@ The output is too big and not that important currentl lab. One of the last line 
 kubectl exec -it db pkill mongod
 kubectl get pods -w | grep db
 ```
-The output is as follows.
+> The **output** is as follows.
 ```
 # kubectl get pods -w | grep db
 db                   0/1     Completed          4          7h34m
@@ -628,7 +628,7 @@ pod "db" deleted
 ```
 cat go-demo-2.yml
 ```
-The output is as follows.
+> The **output** is as follows.
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -695,7 +695,7 @@ db api
 ```
 ## Executing Commands Inside the Pod
 
-#### How would we execute a command inside the Pod?
+#### **How would we execute a command inside the Pod?**
 
 > Display the processes inside the db container. Namely, the mongod process
 ```
@@ -718,7 +718,7 @@ PID   USER     TIME   COMMAND
     1 root       0:00 go-demo
    13 root       0:00 ps aux
 ```
-#### How to see logs from a container?
+#### **How to see logs from a container?**
 > **Can we excute the command** like this *kubectl logs go-demo-2* to check logs inside both the **Containers** 
 
 - **NO** Since the Pod hosts multiple containers
@@ -730,7 +730,7 @@ kubectl logs go-demo-2 -c db
 ```
 > The **output** is as follow
 ```diff
-root@master:~# + kubectl logs go-demo-2 -c db
+root@master:~#  kubectl logs go-demo-2 -c db
 2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] MongoDB starting : pid=1 port=27017 dbpath=/data/db 64-bit host=go-demo-2
 2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] db version v3.3.15
 2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] git version: 520f5571d039b57cf9c319b49654909828971073
@@ -745,3 +745,34 @@ root@master:~# + kubectl logs go-demo-2 -c db
 2020-05-26T20:40:21.592+0000 I STORAGE  [initandlisten] 
 2020-05-26T20:40:21.592+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
 ```
+#### **How to scale the service so that there are two containers of the API and one container for the database??**
+
+#### TRY NOW & See the result 
+```
+cat go-demo-2-scaled.yml
+```
+> The **output** is as follow
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-demo-2
+  labels:
+    type: stack
+spec:
+  containers:
+  - name: db
+    image: mongo:3.3
+  - name: api-1
+    image: vfarcic/go-demo-2
+    env:
+    - name: DB
+      value: localhost
+  - name: api-2
+    image: vfarcic/go-demo-2
+    env:
+    - name: DB
+      value: localhos
+```
+> We defined two containers for the API and named them api-1 and api-2.
