@@ -674,4 +674,5 @@ go-demo-2   2/2     Running   0          17s
 ## Explore the Output
 
 > We want to retrieve the names of the containers in a Pod.
+
 > The first thing have to do is get familiar with Kubernetes API. We can do that by going to [Pod v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#Pod-v1-core) documentation. 
