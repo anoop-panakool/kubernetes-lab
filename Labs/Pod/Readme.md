@@ -729,8 +729,8 @@ PID   USER     TIME   COMMAND
 kubectl logs go-demo-2 -c db
 ```
 > The **output** is as follow
-```t
-root@master:~# kubectl logs go-demo-2 -c db
+```diff
+root@master:~# + kubectl logs go-demo-2 -c db
 2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] MongoDB starting : pid=1 port=27017 dbpath=/data/db 64-bit host=go-demo-2
 2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] db version v3.3.15
 2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] git version: 520f5571d039b57cf9c319b49654909828971073
