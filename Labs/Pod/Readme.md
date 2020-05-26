@@ -70,7 +70,7 @@ We cannot tell Kubernetes to run a container. Instead, we ask it to create a Pod
 
 Looking into a Pod’s Definition #
 `
-Let’s take a look at a simple Pod definition by accessing the db.yml click [here](kubernetes-lab/Labs/Lab06-pod/db.yml)
+Let’s take a look at a simple Pod definition by accessing the db.yml
 `
 ```
 cat db.yml
@@ -91,7 +91,7 @@ spec:
     command: ["mongod"]
     args: ["--rest", "--httpinterface"]
 ```
-
+ > click [here](./db.yml)
 Let’s analyze the various sections in the output definition of a Pod.
 
 Line 1-2: We’re using v1 of Kubernetes Pods API. Both apiVersion and kind are mandatory. That way, Kubernetes knows what we want to do (create a Pod) and which API version to use.
