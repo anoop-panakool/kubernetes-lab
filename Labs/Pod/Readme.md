@@ -546,3 +546,12 @@ Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
                  node.kubernetes.io/unreachable:NoExecute for 300s
 Events:          <none>
 ```
+# Components Involved in a Pod’s Scheduling
+
+## Three major components were involved in the process:
+
+### 1. API Server 
+
+### 2. Scheduler
+
+### 3. Kubelet 
