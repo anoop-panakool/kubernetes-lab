@@ -16,7 +16,32 @@ In this lab we will create a Pod with Mongo on Kubernetes cluster.
 kubectl run db --image mongo \
     --generator "run-pod/v1"
 ```
-2. Open the Azure Cloud Shell and choose Bash Shell (do not choose Powershell)
+You’ll notice that the output says that pod/db was created. We created Pod. We can confirm that by listing all the Pods in the cluster.
+
+2. Verification
+`
+We have created a Pod. We can confirm that by listing all the Pods in the cluster.
+`
+```bash
+kubectl get pod
+```
+The output is as follows.
+```bash
+NAME   READY   STATUS              RESTARTS  AGE
+db     0/1     ContainerCreating   0         1
+```
+```bash
+In the output, we can see:
+
+The name of the Pod
+Its readiness
+The status
+The number of times it restarted
+For how long it has existed (its age)
+If you were fast enough, or your network is slow, none of the pods might be ready. We expect to have one Pod, but there’s zero running at the moment.
+
+Since the mongo image is relatively big, it might take a while until it is pulled from Docker Hub. After a while, we can retrieve the Pods one more time to confirm that the Pod with the Mongo database is running.
+```
 
    ![Azure Cloud Shell](img-cloud-shell.png "Azure Cloud Shell")
 
