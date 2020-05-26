@@ -593,6 +593,8 @@ db                   1/1     Running            5          7h35m
 ### Deleting the Pod
 we can delete a Pod if we don’t need it anymore.
 ```
-kubectl delete -f db.yml
-kubectl get pods
+# kubectl delete -f db.yml
+pod "db" deleted
+
+# kubectl get pods
 ```
