@@ -576,3 +576,33 @@ The sequence of events take place when we run `kubectl create -f db.yml` command
 ##### 5. Kubelet sent a request to Docker requesting the creation of the containers that form the Pod. In our case, the Pod defines a single container based on the mongo image.
 
 ##### 6. Finally, Kubelet sent a request to the API server notifying it that the Pod was created successfully.
+
+# Deep Dive in Running Pod
+
+## Describing the Resources
+```
+kubectl describe -f db.ym
+```
+## Executing a New Process
+```
+kubectl exec db ps au
+```
+The output will be similar as follows.
+```
+USER PID %CPU %MEM    VSZ   RSS TTY STAT START TIME COMMAND
+root   1  0.5  2.9 967452 59692 ?   Ssl  21:47 0:03 mongod --rest --httpinterface
+root  31  0.0  0.0  17504  1980 ?   Rs   21:58 0:00 ps aux
+```
+## Executing the Process in detached mode, make the execution interactive with `-i (stdin)` and `-t (terminal)` arguments and run `shell` inside a container
+```
+kubectl exec -it db sh
+```
+##  Execute db.stats() to confirm that the database is running
+```
+echo 'db.stats()' | mongo localhost:27017/test
+```
+`We used mongo client to execute db.stats() for the database test running on localhost:27017'
+## Exit out of the container
+```
+exit
+```
