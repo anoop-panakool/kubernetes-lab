@@ -67,4 +67,40 @@ pod "db" deleted
 Even though a Pod can contain any number of containers, the most common use case is to use the single-container-in-a-Pod model.
 In such a case, a Pod is a wrapper around one container. From Kubernetes’ perspective, a Pod is the smallest unit.
 We cannot tell Kubernetes to run a container. Instead, we ask it to create a Pod that wraps around a container
+
+Looking into a Pod’s Definition #
 `
+Let’s take a look at a simple Pod definition by accessing the db.yml
+`
+```
+cat db.yml
+````
+The Ouptput is as follows.
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db
+  labels:
+    type: db
+    vendor: MongoLabs
+spec:
+  containers:
+  - name: db
+    image: mongo:3.3
+    command: ["mongod"]
+    args: ["--rest", "--httpinterface"]
+```
+```
+Let’s analyze the various sections in the output definition of a Pod.
+
+Line 1-2: We’re using v1 of Kubernetes Pods API. Both apiVersion and kind are mandatory. That way, Kubernetes knows what we want to do (create a Pod) and which API version to use.
+
+Line 3-7: The next section is metadata. It provides information that does not influence how the Pod behaves. We used metadata to define the name of the Pod (db) and a few labels. Later on, when we move into Controllers, labels will have a practical purpose. For now, they are purely informational.
+
+Line 8: The last section is the spec in which we defined a single container. As you might have guessed, we can have multiple containers defined as a Pod. Otherwise, the section would be written in singular (container without s). We’ll explore multi-container Pods later.
+
+Line 12: In our case, the container is defined with the name (db), the image (mongo), the command that should be executed when the container starts (mongod)
+
+Line 13: Finally, the set of arguments. The arguments are defined as an array with, in this case, two elements (--rest and --httpinterface).
+```
