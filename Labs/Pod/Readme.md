@@ -551,10 +551,14 @@ Events:          <none>
 ## Three major components were involved in the process:
 
 #### 1. API Server 
-The API server is the central component of a Kubernetes cluster and it runs on the master node. Since we are using Minikube, both master and worker nodes are baked into the same virtual machine. However, a more serious Kubernetes cluster should have the two separated on different hosts.
+The API server is the central component of a Kubernetes cluster and it runs on the master node.
 
 All other components interact with API server and keep watch for changes. Most of the coordination in Kubernetes consists of a component writing to the API Server resource that another component is watching. The second component will then react to changes almost immediately.
 
 #### 2. Scheduler
+The scheduler is also running on the master node. Its job is to watch for unassigned pods and assign them to a node which has available resources (CPU and memory) matching Pod requirements.
 
-#### 3. Kubelet 
+#### 3. Kubelet
+Kubelet runs on each node. Its primary function is to make sure that assigned pods are running on the node. It watches for any new Pod assignments for the node. If a Pod is assigned to the node Kubelet is running on, it will pull the Pod definition and use it to create containers through Docker or any other supported container engine.
+
+Sequential Breakdown of Events #
