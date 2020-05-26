@@ -648,6 +648,7 @@ spec:
 ```
  > click [here](/Labs/Pod/Lab06-pod/go-demo-2.yml) to see the `go-demo-2.yml` file
  
-- The YAML file defines a Pod with two containers named db and api.
+- The YAML file defines a Pod with two containers named 
+   *db* and *api*
 - The service inside the vfarcic/go-demo-2 image uses environment variable DB to know where the database is.
 - The value is localhost since all the containers in the same Pod are reachable through it
