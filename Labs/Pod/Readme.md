@@ -551,6 +551,9 @@ Events:          <none>
 ## Three major components were involved in the process:
 
 #### 1. API Server 
+The API server is the central component of a Kubernetes cluster and it runs on the master node. Since we are using Minikube, both master and worker nodes are baked into the same virtual machine. However, a more serious Kubernetes cluster should have the two separated on different hosts.
+
+All other components interact with API server and keep watch for changes. Most of the coordination in Kubernetes consists of a component writing to the API Server resource that another component is watching. The second component will then react to changes almost immediately.
 
 #### 2. Scheduler
 
