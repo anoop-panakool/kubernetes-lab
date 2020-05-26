@@ -253,7 +253,9 @@ root@shivam1c:~/k8s-specs# kubectl get pods db -o json
                 ]
             }
         ],
----------The output is too big and not that important currentl lab. One of the last line is as follows--------
+        ---------
+        ---------
+        ---------
                     }
                 }
             }
@@ -271,6 +273,7 @@ root@shivam1c:~/k8s-specs# kubectl get pods db -o json
     }
 }
 ```
+`The output is too big and not that important currentl lab. One of the last line is as follows`
 
 4. If you’d like to parse the output, using `YAML` format.
 ```
