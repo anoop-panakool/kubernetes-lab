@@ -582,6 +582,7 @@ The output is too big and not that important currentl lab. One of the last line 
 
 ### What happens when a container inside a Pod dies?
 
+![Image of POD Killed](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/Pod-with-a-failed-container.png)
 #### Let's Kill the container
 
 ```
@@ -605,6 +606,8 @@ pod "db" deleted
 ```
 
 # Running Multiple Containers in a Single Pod
+
+![Image of Multi-Container-Pod]()
 
 ### Anatomy of a Pod
 
