@@ -55,5 +55,4 @@ We can see that, this time, the Pod is ready and we can start using the Mongo da
 ```
 3. 
 
-![single-container-pod](images/single-container-pod.png)
 ![kubernetes-lab](images/kube-ops-view.png)
