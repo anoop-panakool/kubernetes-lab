@@ -590,3 +590,4 @@ db                   0/1     Completed          4          7h34m
 db                   0/1     CrashLoopBackOff   4          7h34m
 db                   1/1     Running            5          7h35m
 ```
+### Deleting the Pod 
