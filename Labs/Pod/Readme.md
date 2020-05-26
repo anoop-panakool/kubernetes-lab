@@ -561,4 +561,4 @@ The scheduler is also running on the master node. Its job is to watch for unassi
 #### 3. Kubelet
 Kubelet runs on each node. Its primary function is to make sure that assigned pods are running on the node. It watches for any new Pod assignments for the node. If a Pod is assigned to the node Kubelet is running on, it will pull the Pod definition and use it to create containers through Docker or any other supported container engine.
 
-Sequential Breakdown of Events #
+## Sequential Breakdown of Events
