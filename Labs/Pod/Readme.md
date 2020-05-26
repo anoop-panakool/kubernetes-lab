@@ -586,7 +586,7 @@ kubectl get pods -w | grep db
 The output is as follows.
 ```
 # kubectl get pods -w | grep db
-db                                     0/1     Completed   4          7h34m
-db                                     0/1     CrashLoopBackOff   4          7h34m
-db                                     1/1     Running            5          7h35m
+db                   0/1     Completed          4          7h34m
+db                   0/1     CrashLoopBackOff   4          7h34m
+db                   1/1     Running            5          7h35m
 ```
