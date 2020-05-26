@@ -91,7 +91,7 @@ spec:
     command: ["mongod"]
     args: ["--rest", "--httpinterface"]
 ```
-```
+
 Let’s analyze the various sections in the output definition of a Pod.
 
 Line 1-2: We’re using v1 of Kubernetes Pods API. Both apiVersion and kind are mandatory. That way, Kubernetes knows what we want to do (create a Pod) and which API version to use.
@@ -103,4 +103,3 @@ Line 8: The last section is the spec in which we defined a single container. As 
 Line 12: In our case, the container is defined with the name (db), the image (mongo), the command that should be executed when the container starts (mongod)
 
 Line 13: Finally, the set of arguments. The arguments are defined as an array with, in this case, two elements (--rest and --httpinterface).
-```
