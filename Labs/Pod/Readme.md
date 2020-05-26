@@ -91,7 +91,7 @@ spec:
     command: ["mongod"]
     args: ["--rest", "--httpinterface"]
 ```
- > click [here](./db.yml)
+ > click [here](kubernetes-lab/Labs/Lab06-pod/db.yml)
 Let’s analyze the various sections in the output definition of a Pod.
 
 Line 1-2: We’re using v1 of Kubernetes Pods API. Both apiVersion and kind are mandatory. That way, Kubernetes knows what we want to do (create a Pod) and which API version to use.
