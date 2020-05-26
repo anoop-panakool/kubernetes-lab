@@ -662,10 +662,10 @@ kubectl get -f pod/go-demo-2.yml
 ```
 > The output of the command is as follows.
 ```
-root@shivam1c:~/k8s-specs/pod# kubectl create -f go-demo-2.yml
+root@master:~/k8s-specs/pod# kubectl create -f go-demo-2.yml
 pod/go-demo-2 created
 
-root@shivam1c:~/k8s-specs/pod# kubectl get -f go-demo-2.yml
+root@master:~/k8s-specs/pod# kubectl get -f go-demo-2.yml
 NAME        READY   STATUS    RESTARTS   AGE
 go-demo-2   2/2     Running   0          17s
 ```
