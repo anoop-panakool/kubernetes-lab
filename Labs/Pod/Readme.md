@@ -550,8 +550,8 @@ Events:          <none>
 
 ## Three major components were involved in the process:
 
-### 1. API Server 
+#### 1. API Server 
 
-### 2. Scheduler
+#### 2. Scheduler
 
-### 3. Kubelet 
+#### 3. Kubelet 
