@@ -579,7 +579,7 @@ The output is too big and not that important currentl lab. One of the last line 
 
 #### Let's Kill the container
 
-`
+```
 kubectl exec -it db pkill mongod
 kubectl get pods
-`
+```
