@@ -66,6 +66,5 @@ pod "db" deleted
 `
 Even though a Pod can contain any number of containers, the most common use case is to use the single-container-in-a-Pod model.
 In such a case, a Pod is a wrapper around one container. From Kubernetes’ perspective, a Pod is the smallest unit.
-
 We cannot tell Kubernetes to run a container. Instead, we ask it to create a Pod that wraps around a container
 `
