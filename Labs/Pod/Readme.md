@@ -70,7 +70,7 @@ We cannot tell Kubernetes to run a container. Instead, we ask it to create a Pod
 
 Looking into a Pod’s Definition #
 `
-Let’s take a look at a simple Pod definition by accessing the db.yml click [here](./kubernetes-lab/Labs/Lab06-pod/db.yml)
+Let’s take a look at a simple Pod definition by accessing the db.yml click [here](kubernetes-lab/Labs/Lab06-pod/db.yml)
 `
 ```
 cat db.yml
