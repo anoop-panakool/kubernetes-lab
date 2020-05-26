@@ -656,16 +656,16 @@ spec:
 
 > Create a new Pod defined in the go-demo-2.yml file and retrieve its information from Kubernetes Cluster. 
 ```
-kubectl create -f pod/go-demo-2.yml
+kubectl create -f go-demo-2.yml
 
-kubectl get -f pod/go-demo-2.yml
+kubectl get -f go-demo-2.yml
 ```
 > The output of the command is as follows.
 ```
-root@master:~/k8s-specs/pod# kubectl create -f go-demo-2.yml
+root@master:~/# kubectl create -f go-demo-2.yml
 pod/go-demo-2 created
 
-root@master:~/k8s-specs/pod# kubectl get -f go-demo-2.yml
+root@master:~/# kubectl get -f go-demo-2.yml
 NAME        READY   STATUS    RESTARTS   AGE
 go-demo-2   2/2     Running   0          17s
 ```
@@ -673,5 +673,75 @@ go-demo-2   2/2     Running   0          17s
 
 ## Explore the Output
 
-> We want to retrieve the names of the containers in a Pod.
+#### We want to retrieve the names of the containers in a Pod.
+
 > The first thing have to do is get familiar with Kubernetes API. We can do that by going to [Pod v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#Pod-v1-core) documentation. 
+
+#### Inspect the Output of do-demo-e.yml in either YAML or json format
+
+> The output is too big to be presented here, so captured only important part.
+
+> We need to retrieve the names of the containers in the Pod. Therefore, the part of the output we’re looking for is in attached picture.
+
+![Image of Output of multi-POD ](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/go-demo-2-container-output.png)
+
+```
+kubectl get -f pod/go-demo-2.yml \
+    -o jsonpath="{.spec.containers[*].name}"
+```
+> The **output** is as follow
+```
+db api
+```
+## Executing Commands Inside the Pod
+
+#### How would we execute a command inside the Pod?
+
+> Display the processes inside the db container. Namely, the mongod process
+```
+kubectl exec -it -c db go-demo-2 ps aux
+```
+```
+root@master:~/# kubectl exec -it -c db go-demo-2 ps aux
+
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+mongodb      1  0.4  2.9 270696 59172 ?        Ssl  20:40   0:17 mongod
+root        31  0.0  0.1  17496  2036 pts/0    Rs+  21:50   0:00 ps aux
+```
+```
+```
+kubectl exec -it -c api go-demo-2 ps aux
+```
+root@master:~/# kubectl exec -it -c api go-demo-2 ps aux
+
+PID   USER     TIME   COMMAND
+    1 root       0:00 go-demo
+   13 root       0:00 ps aux
+```
+#### How to see logs from a container?
+> **Can we excute the command** like this *kubectl logs go-demo-2* to check logs inside both the **Containers** 
+
+- **NO** Since the Pod hosts multiple containers
+- We need to be specific and name the container from which we want to see the logs.
+
+##### Example as below
+```
+kubectl logs go-demo-2 -c db
+```
+> The **output** is as follow
+```text
+root@shivam1c:~/k8s-specs/pod# kubectl logs go-demo-2 -c db
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] MongoDB starting : pid=1 port=27017 dbpath=/data/db 64-bit host=go-demo-2
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] db version v3.3.15
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] git version: 520f5571d039b57cf9c319b49654909828971073
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.1t  3 May 2016
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] allocator: tcmalloc
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] modules: none
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] build environment:
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten]     distmod: debian81
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten]     distarch: x86_64
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten]     target_arch: x86_64
+2020-05-26T20:40:21.588+0000 I CONTROL  [initandlisten] options: {}
+2020-05-26T20:40:21.592+0000 I STORAGE  [initandlisten] 
+2020-05-26T20:40:21.592+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+```
