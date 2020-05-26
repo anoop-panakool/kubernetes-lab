@@ -564,15 +564,15 @@ Kubelet runs on each node. Its primary function is to make sure that assigned po
 ## Sequential Breakdown of Events
 
 The sequence of events take place when we run kubectl create -f db.yml command is as below:
-
+```
 1. Kubernetes client (kubectl) sent a request to the API server requesting creation of a Pod defined in the pod/db.yml file.
 
 2. Since the scheduler is watching the API server for new events, it detected that there is an unassigned Pod.
 
 3. The scheduler decided which node to assign the Pod to and sent that information to the API server.
-
 4. Kubelet is also watching the API server. It detected that the Pod was assigned to the node it is running on.
 
 5. Kubelet sent a request to Docker requesting the creation of the containers that form the Pod. In our case, the Pod defines a single container based on the mongo image.
 
 6. Finally, Kubelet sent a request to the API server notifying it that the Pod was created successfully.
+```
