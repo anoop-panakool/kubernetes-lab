@@ -635,4 +635,4 @@ spec:
     - name: DB
       value: localhost
 ```
- > click [here](/Labs/Pod/Lab06-pod/go-demo-2.yml)
+ > click [here](/Labs/Pod/Lab06-pod/go-demo-2.yml) `go-demo-2.yml` to see the file
