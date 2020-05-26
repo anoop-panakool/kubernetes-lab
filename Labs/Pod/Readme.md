@@ -55,7 +55,7 @@ We can see that, this time, the Pod is ready and we can start using the Mongo da
 ```
 3. That was not the best way to run Pods so we’ll delete it.
 ```
-kubectl delete pod d
+kubectl delete pod db
 ```
 The output is as follows.
 ```
