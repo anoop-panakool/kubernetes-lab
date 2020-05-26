@@ -842,7 +842,8 @@ cat go-demo-2.yml
   - Two container are specified .
 
 - Line 16-19: 
-  - Definition is of the livenessProbe. We defined that the action should be httpGet followed with the path and the port of the service. Since /this/path/does/not/exist is true to itself, the probe will fail, thus showing us what happens when a container is unhealthy. The host is not specified since it defaults to the Pod IP.
+  - Definition is of the livenessProbe. We defined that the action should be httpGet followed with the path and the port of the service. 
+  - Since /this/path/does/not/exist is true to itself, the probe will fail, thus showing us what happens when a container is unhealthy. The host is not specified since it defaults to the Pod IP.
 
 - Line 20-23:
   - We declared that the first execution of the probe should be delayed by five seconds (initialDelaySeconds)
