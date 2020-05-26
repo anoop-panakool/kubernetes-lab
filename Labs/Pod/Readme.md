@@ -581,5 +581,12 @@ The output is too big and not that important currentl lab. One of the last line 
 
 ```
 kubectl exec -it db pkill mongod
-kubectl get pods
+kubectl get pods -w | grep db
+```
+The output is as follows.
+```
+# kubectl get pods -w | grep db
+db                                     0/1     Completed   4          7h34m
+db                                     0/1     CrashLoopBackOff   4          7h34m
+db                                     1/1     Running            5          7h35m
 ```
