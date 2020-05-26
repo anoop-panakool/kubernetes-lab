@@ -42,9 +42,23 @@ If you were fast enough, or your network is slow, none of the pods might be read
 
 Since the mongo image is relatively big, it might take a while until it is pulled from Docker Hub. After a while, we can retrieve the Pods one more time to confirm that the Pod with the Mongo database is running.
 ```
+```
+If you were fast enough, or your network is slow, none of the pods might be ready. We expect to have one Pod, but there’s zero running at the moment.
 
-   ![Azure Cloud Shell](img-cloud-shell.png "Azure Cloud Shell")
+Since the mongo image is relatively big, it might take a while until it is pulled from Docker Hub. After a while, we can retrieve the Pods one more time to confirm that the Pod with the Mongo database is running.
+```
+```bash
+kubectl get pod
+```
+`
+The output is as follows.
+`
+```bash
+NAME   READY   STATUS    RESTARTS  AGE
+db     1/1     Running   0         6
 
+We can see that, this time, the Pod is ready and we can start using the Mongo database.
+```
 3. The first time Cloud Shell is started will require you to create a storage account.
 
 4. Once your cloud shell is started, clone the workshop repo into the cloud shell environment
