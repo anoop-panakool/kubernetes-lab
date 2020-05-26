@@ -787,7 +787,7 @@ spec:
 
 - For example, we scale the Pod to three, we have three APIs and three DBs. Instead, we should have defined two Pods, one for each container (db and api).
 
-> **NOTE** 📝 A Pod is a collection of containers. However, that does not mean that multi-container Pods are common. They are rare. Most Pods you’ll create will be single container units.
+> 📝 A Pod is a collection of containers. However, that does not mean that multi-container Pods are common. They are rare. Most Pods you’ll create will be single container units.
 
 #### ***Does that mean that multi-container Pods are useless?***
 
@@ -837,3 +837,15 @@ cat go-demo-2.yml
 ![Liveness-Probe](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/livenessProbe01.png)
 
 > click [here](/Labs/Pod/Lab06-pod/go-demo-2-health.yml) to see the `go-demo-2-health.yml` file
+
+- Line 8-12: 
+  - Two container are specified .
+
+- Line 16-19: 
+  - Definition is of the livenessProbe. We defined that the action should be httpGet followed with the path and the port of the service. Since /this/path/does/not/exist is true to itself, the probe will fail, thus showing us what happens when a container is unhealthy. The host is not specified since it defaults to the Pod IP.
+
+- Line 20-23:
+  - We declared that the first execution of the probe should be delayed by five seconds (initialDelaySeconds)
+  - That requests should timeout after two seconds (timeoutSeconds),
+  - That the process should be repeated every five seconds (periodSeconds), and
+  - failureThreshold define how many attempts it must try before giving up .
