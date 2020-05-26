@@ -32,9 +32,6 @@ db     0/1     ContainerCreating   0         1
 ```
 In the output
 `
-We have created a Pod. We can confirm that by listing all the Pods in the cluster.
-`
-`
 we can see:
 
 The name of the Pod
