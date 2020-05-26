@@ -585,7 +585,7 @@ kubectl describe -f db.ym
 ```
 ### Executing a New Process
 ```
-kubectl exec db ps au
+kubectl exec db ps aux
 ```
 The output will be similar as follows.
 ```
@@ -597,12 +597,34 @@ root  31  0.0  0.0  17504  1980 ?   Rs   21:58 0:00 ps aux
 ```
 kubectl exec -it db sh
 ```
-##  Execute db.stats() to confirm that the database is running
-```
-echo 'db.stats()' | mongo localhost:27017/test
+###  Execute db.stats() to confirm that the database is running
+```json
+# echo 'db.stats()' | mongo localhost:27017/test
+MongoDB shell version v4.2.6
+connecting to: mongodb://localhost:27017/test?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("6976a5a3-1b54-451b-99c2-02c00cae8894") }
+MongoDB server version: 4.2.6
+{
+        "db" : "test",
+        "collections" : 0,
+        "views" : 0,
+        "objects" : 0,
+        "avgObjSize" : 0,
+        "dataSize" : 0,
+        "storageSize" : 0,
+        "numExtents" : 0,
+        "indexes" : 0,
+        "indexSize" : 0,
+        "scaleFactor" : 1,
+        "fileSize" : 0,
+        "fsUsedSize" : 0,
+        "fsTotalSize" : 0,
+        "ok" : 1
+}
+bye
 ```
 `We used mongo client to execute db.stats() for the database test running on localhost:27017'
-## Exit out of the container
+### Exit out of the container
 ```
 exit
 ```
