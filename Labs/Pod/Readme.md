@@ -30,8 +30,9 @@ The output is as follows.
 NAME   READY   STATUS              RESTARTS  AGE
 db     0/1     ContainerCreating   0         1
 ```
+In the output
 `
-In the output, we can see:
+we can see:
 
 The name of the Pod
 Its readiness
