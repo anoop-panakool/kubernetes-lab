@@ -579,11 +579,11 @@ The sequence of events take place when we run `kubectl create -f db.yml` command
 
 # Deep Dive in Running Pod
 
-## Describing the Resources
+### Describing the Resources
 ```
 kubectl describe -f db.ym
 ```
-## Executing a New Process
+### Executing a New Process
 ```
 kubectl exec db ps au
 ```
@@ -593,7 +593,7 @@ USER PID %CPU %MEM    VSZ   RSS TTY STAT START TIME COMMAND
 root   1  0.5  2.9 967452 59692 ?   Ssl  21:47 0:03 mongod --rest --httpinterface
 root  31  0.0  0.0  17504  1980 ?   Rs   21:58 0:00 ps aux
 ```
-## Executing the Process in detached mode, make the execution interactive with `-i (stdin)` and `-t (terminal)` arguments and run `shell` inside a container
+### Executing the Process in detached mode, make the execution interactive with `-i` `(stdin)` and `-t` `(terminal)` arguments and run `shell` inside a container
 ```
 kubectl exec -it db sh
 ```
