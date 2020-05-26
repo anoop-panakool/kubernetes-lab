@@ -624,7 +624,7 @@ pod "db" deleted
 
 - A volume (think of it as a directory with shareable data) defined in a Pod can be accessed by all the containers thus allowing them all to share the same data.
 
-### Example- go-demo-2.yml specification
+### Example- `go-demo-2.yml` specification
 ```
 cat go-demo-2.yml
 ```
@@ -776,3 +776,64 @@ spec:
       value: localhos
 ```
 > We defined two containers for the API and named them api-1 and api-2.
+
+# Single vs. Multi-Container Pods
+
+#### **Why we need Single-container Pods**
+
+- A Pod is a collection of containers that share the same resources.
+
+- When we scale Pods with multi-container it will also scale all the container inside it .
+
+- For example, we scale the Pod to three, we have three APIs and three DBs. Instead, we should have defined two Pods, one for each container (db and api).
+
+> **NOTE** 📝 A Pod is a collection of containers. However, that does not mean that multi-container Pods are common. They are rare. Most Pods you’ll create will be single container units.
+
+#### ***Does that mean that multi-container Pods are useless?***
+
+- **NO,They’re not.**
+
+- There are scenarios when having multiple containers in a Pod is a good idea.
+
+- There are cases, where one container acts as the main service and the rest serving as side-cars(helper)
+
+- Few use case is multi-container Pods used for:
+  - Continuous integration (CI)
+  - Continious Delivery (CD)
+  - Continuous Deployment processes (CDP)
+
+# Monitor the Health of the PODS
+
+#### ***Why to Monitor Health?***
+
+##### Example, a back-end API can be up and running but, due to a memory leak, serves requests much slower than expected. Such a situation might benefit from a health check that would verify whether the service responds within, for example, two seconds.
+
+##### Many containers, especially web services, won't have an exit code that accurately tells Kubernetes whether the container was successful. Most web servers won't terminate at all! How do you tell Kubernetes about your container's health? 
+
+##### You define container probes.
+
+#### Container probes are small processes that run periodically. The result of this process determines Kubernetes' view of the container's state—the result of the probe is one of Success, Failed, or Unknown.
+
+- We use container probes through Liveness and Readiness probes.
+  - Liveness probes 
+    - Liveness probes are responsible for determining if a container is running or when it needs to be restarted.
+    - livenessProbe can be used to confirm whether a container should be running. If the probe fails, Kubernetes will kill the container and apply restart policy which defaults to Always.
+
+  - Readiness probes
+    - Readiness probes indicate that a container is ready to accept traffic.
+    - Once all of its containers indicate they are ready to accept traffic, the pod containing them can accept requests.
+
+- There are three ways to implement these probes.
+  - One way is to use HTTP requests, which look for a successful status code in response to making a request to a defined endpoint.
+  - Another method is to use TCP sockets, which returns a failed status if the TCP connection cannot be established.
+  - The final, most flexible, way is to define a custom command, whose exit code determines whether the check is successful.
+
+### Example- **Liveness probes** `go-demo-2-health.yml` specification
+```
+cat go-demo-2.yml
+```
+> The **output** is as follows.
+
+![Liveness-Probe](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/livenessProbe01.png)
+
+> click [here](/Labs/Pod/Lab06-pod/go-demo-2-health.yml) to see the `go-demo-2-health.yml` file
