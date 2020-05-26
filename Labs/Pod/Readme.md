@@ -273,7 +273,7 @@ root@shivam1c:~/k8s-specs# kubectl get pods db -o json
     }
 }
 ```
-`The output is too big and not that important currentl lab. One of the last line is as follows`
+`The output is too big and not that important in currentl lab. One of the last line is as follows`
 
 4. If you’d like to parse the output, using `YAML` format.
 ```
@@ -573,3 +573,13 @@ The output is too big and not that important currentl lab. One of the last line 
 2020-05-26T15:37:34.337+0000 I  NETWORK  [conn1] received client metadata from 127.0.0.1:54052 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.2.6" }, os: { type: "Linux", name: "Ubuntu", architecture: "x86_64", version: "18.04" } }
 2020-05-26T15:37:34.363+0000 I  NETWORK  [conn1] end connection 127.0.0.1:54052 (0 connections now open)
 ```
+# Troubleshoot the Failure of POD
+
+### What happens when a container inside a Pod dies?
+
+#### Let's Kill the container
+
+`
+kubectl exec -it db pkill mongod
+kubectl get pods
+`
