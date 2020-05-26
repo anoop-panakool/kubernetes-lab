@@ -609,6 +609,6 @@ pod "db" deleted
 
 - All the containers that form a Pod are running on the same machine. A Pod cannot be split across multiple nodes.
 
-- All the processes (containers) inside a Pod share the same set of resources, and they can communicate with each other through localhost. One of those shared resources is storage.
+- All the processes `(containers)` inside a Pod share the same set of resources, and they can communicate with each other through `localhost`. One of those shared resources is storage.
 
 - A volume (think of it as a directory with shareable data) defined in a Pod can be accessed by all the containers thus allowing them all to share the same data.
