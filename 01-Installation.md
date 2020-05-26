@@ -295,6 +295,6 @@ http://<NODE_IP>:32000/#scale=2.0
 ```
 
 
-![kubernetes-lab](images/kube-ops-view.png)
+![single-container-pod](images/kube-ops-view.png)
 
 Kubernetes visualiser is a third party application which provides a operational view of your kubernetes cluster. Its very useful tool for learning kubernetes as it demonstrates the state of the cluster as well as state of the pods as you make changes. You could read further about it [at this link](https://kubernetes-operational-view.readthedocs.io/en/latest/).  
