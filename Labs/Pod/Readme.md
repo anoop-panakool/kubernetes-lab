@@ -610,7 +610,7 @@ pod "db" deleted
 
 # Running Multiple Containers in a Single Pod
 
-![Image of Multi-Container-Pod]()
+![Image of multi-POD-container](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/Multi-Container-POD.png)
 
 ### Anatomy of a Pod
 
