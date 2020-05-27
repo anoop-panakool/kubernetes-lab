@@ -27,12 +27,15 @@ Sr No | Username | Password  | Project Name
 7   | *Student07* | *June@2020* | *LFS458-Student07*
 8   | *Student08* | *June@2020* | *LFS458-Student08*
 
+
 > This LAB setup uses `kubeadm` to install and configure kubernetes cluster.
 
 ![K8s-cluster](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/K8s-cluster.png)
 
 > Cluster is setup on `GCP Virtual Machines` `Ubuntu-1804-bionic` 1 master and 2 worker-nodes.
 ![GCP-VM-Instances](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/GCP-VM-Instances.png)
+
+> Login to the Kubernetes Master node `*ssh -i path-to-private-key username@external-ip*`
 
 ### Important links:
 1. Kuberenetes [Storage](https://docs.microsoft.com/en-us/azure/aks/concepts-storage) from Azure Docs 
