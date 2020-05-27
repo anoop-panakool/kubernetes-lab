@@ -241,30 +241,9 @@ spec:
 status:
   conditions:
   - lastProbeTime: null
-    lastTransitionTime: "2020-05-26T11:23:09Z"
-    status: "True"
-    type: Initialized
-  - lastProbeTime: null
-    lastTransitionTime: "2020-05-26T11:23:21Z"
-    status: "True"
-    type: Ready
-  - lastProbeTime: null
-    lastTransitionTime: "2020-05-26T11:23:21Z"
-    status: "True"
-    type: ContainersReady
-  - lastProbeTime: null
-    lastTransitionTime: "2020-05-26T11:23:09Z"
-    status: "True"
-    type: PodScheduled
-  containerStatuses:
-  - containerID: docker://4f5b9dea758efdb126bac288ffd0fa4ae6038c69f7d6c4940394666c96ce5dcb
-    image: mongo:latest
-    imageID: docker-pullable://mongo@sha256:c880f6b56f443bb4d01baa759883228cd84fa8d78fa1a36001d1c0a0712b5a07
-    lastState: {}
-    name: db
-    ready: true
-    restartCount: 0
-    started: true
+        .........................
+        .........................
+        .........................
     state:
       running:
         startedAt: "2020-05-26T11:23:21Z"
