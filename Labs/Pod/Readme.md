@@ -865,7 +865,7 @@ cat go-demo-2.yml
   ```
   kubectl apply -f liveness-readiness.yaml
   ```
-  ![liveness-rediness-probe.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/liveness-rediness-probe.png)
+  ![liveness-rediness-probe](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/liveness-rediness-probe.png)
 
   ```
   kubectl describe pod liveness-readiness-pod
