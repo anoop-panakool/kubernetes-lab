@@ -2,7 +2,7 @@
 
 ### kubernetes Lab & Project Files . 
 
-All these Labs were tested on `On-Premises` & `Cloud(GCP, Amazon)`. And should work on other kubernetes environments as well. 
+All these Labs were tested on `On-Premises` & `Cloud(GCP,Amazon)`. And should work on other kubernetes environments as well. 
 
 To Setup `Docker Desktop for Windows` on your system, make sure your system has following pre-requisites:
 
