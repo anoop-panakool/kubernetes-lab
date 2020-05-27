@@ -850,3 +850,24 @@ cat go-demo-2.yml
   - That requests should timeout after two seconds (timeoutSeconds),
   - That the process should be repeated every five seconds (periodSeconds), and
   - failureThreshold define how many attempts it must try before giving up .
+
+##### Run this liveness Probe example
+  ```
+  kubectl create \
+    -f pod/go-demo-2-health.yml
+  ```
+  ```
+  kubectl describe \
+    -f pod/go-demo-2-health.yml
+  ```
+
+  ##### Run this liveness & readiness Probe example
+  ```
+  kubectl apply -f liveness-readiness.yaml
+  ```
+  ![liveness-rediness-probe.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/liveness-rediness-probe.png)
+
+  ```
+  kubectl describe pod liveness-readiness-pod
+  ```
+  ![liveness-rediness-probe-result](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/liveness-rediness-probe-result.png)
