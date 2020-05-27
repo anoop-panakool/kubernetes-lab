@@ -76,21 +76,9 @@ Let’s take a look at a simple Pod definition by accessing the db.yml
 cat db.yml
 ````
 The Ouptput is as follows.
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: db
-  labels:
-    type: db
-    vendor: MongoLabs
-spec:
-  containers:
-  - name: db
-    image: mongo:3.3
-    command: ["mongod"]
-    args: ["--rest", "--httpinterface"]
-```
+
+  ![db-yaml-file](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/db-yaml.png)
+
  > click [here](/Labs/Pod/Lab06-pod/db.yml)
 Let’s analyze the various sections in the output definition of a Pod.
 ```
