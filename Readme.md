@@ -17,6 +17,7 @@ To install docker desktop [follow these steps](https://docs.docker.com/docker-fo
 **Student LAB details**
 
 > This LAB setup uses `kubeadm` to install and configure kubernetes cluster.
+
 > Cluster is setup on `Ubuntu-1804-bionic` 1 master and 2 nodes.
 
 Sr No | Username | Password  | Project Name
