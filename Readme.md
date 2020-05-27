@@ -15,6 +15,10 @@ To Setup `Docker Desktop for Windows` on your system, make sure your system has 
 To install docker desktop [follow these steps](https://docs.docker.com/docker-for-windows/install/)
 
 **Student LAB details**
+
+> This LAB setup uses `kubeadm` to install and configure kubernetes cluster.
+> Cluster is setup on `Ubuntu-1804-bionic` 1 master and 2 nodes.
+
 Sr No | Username | Password  | Project Name
 ------|-------------|--------| --------------- 
 1   | Student01 | June@2020 | LFS458-Student01
