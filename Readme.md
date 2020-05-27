@@ -22,14 +22,14 @@ To install docker desktop [follow these steps](https://docs.docker.com/docker-fo
 
 Sr No | Username | Password  | Project Name
 ------|-------------|--------| --------------- 
-1   | *Student01* | June@2020 | LFS458-Student01
-2   | Student02 | June@2020 | LFS458-Student02
-3   | Student03 | June@2020 | LFS458-Student03
-4   | Student04 | June@2020 | LFS458-Student04
-5   | Student05 | June@2020 | LFS458-Student05
-6   | Student06 | June@2020 | LFS458-Student06
-7   | Student07 | June@2020 | LFS458-Student07
-8   | Student08 | June@2020 | LFS458-Student08
+1   | *Student01* | *June@2020* | *LFS458-Student01*
+2   | *Student02* | *June@2020* | *LFS458-Student02*
+3   | *Student03* | *June@2020* | *LFS458-Student03*
+4   | *Student04* | *June@2020* | *LFS458-Student04*
+5   | *Student05* | *June@2020* | *LFS458-Student05*
+6   | *Student06* | *June@2020* | *LFS458-Student06*
+7   | *Student07* | *June@2020* | *LFS458-Student07*
+8   | *Student08* | *June@2020* | *LFS458-Student08*
 
 
 ### Important links:
