@@ -697,3 +697,82 @@ cat go-demo-2.yml
   kubectl describe pod liveness-readiness-pod
   ```
   ![liveness-rediness-probe-result](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/liveness-rediness-probe-result.png)
+
+
+# Quick Quiz
+
+> **This quiz is on the Pods.**
+```
+1. Which of the following is the smallest unit running inside a Kubernetes Cluster?
+
+A)
+Pod
+B)
+Image
+C)
+Node
+D)
+Container
+```
+```
+2. Which of the following is a better approach to run Pods?
+
+A)
+Imperative
+B)
+Declarative
+C)
+Both are equally fine
+```
+```
+3. Which file types we normally use to create Pods in a declarative way?
+
+A)
+.json
+B)
+.yml
+C)
+.git
+```
+```
+4. When multiple container are running inside a Pod, which argument we can use to specify a container?
+
+A)
+-c
+B)
+--container
+C)
+Both A and B
+```
+```
+5. Which Kubernetes component makes sure that all the assigned Pods are running?
+
+A)
+API server
+B)
+Scheduler
+C)
+Kubelet
+```
+```
+6. The frequent use case(s) for multi-container Pods is:
+
+A)
+Continuous integration (CI)
+B)
+Continious Delivery (CD)
+C)
+Continuous Deployment processes (CDP)
+D)
+All of the above
+```
+```
+7. Kubernetes Probes are used for?
+
+A)
+Monitoring the usage of resources
+B)
+Monitoring the health of the services
+C)
+Monitoring the number of containers running
+```
