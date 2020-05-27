@@ -135,91 +135,10 @@ root@shivam1c:~/k8s-specs# kubectl get pods db -o json
         "labels": {
             "run": "db"
         },
-        "managedFields": [
-            {
-                "apiVersion": "v1",
-                "fieldsType": "FieldsV1",
-                "fieldsV1": {
-                    "f:metadata": {
-                        "f:labels": {
-                            ".": {},
-                            "f:run": {}
-                        }
-                    },
-                    "f:spec": {
-                        "f:containers": {
-                            "k:{\"name\":\"db\"}": {
-                                ".": {},
-                                "f:image": {},
-                                "f:imagePullPolicy": {},
-                                "f:name": {},
-                                "f:resources": {},
-                                "f:terminationMessagePath": {},
-                                "f:terminationMessagePolicy": {}
-                            }
-                        },
-                        "f:dnsPolicy": {},
-                        "f:enableServiceLinks": {},
-                        "f:restartPolicy": {},
-                        "f:schedulerName": {},
-                        "f:securityContext": {},
-                        "f:terminationGracePeriodSeconds": {}
-                    }
-                },
-                "manager": "kubectl",
-                "operation": "Update",
-                "time": "2020-05-26T11:23:09Z"
-            },
-            {
-                "apiVersion": "v1",
-                "fieldsType": "FieldsV1",
-                "fieldsV1": {
-                    "f:status": {
-                        "f:conditions": {
-                            "k:{\"type\":\"ContainersReady\"}": {
-                                ".": {},
-                                "f:lastProbeTime": {},
-                                "f:lastTransitionTime": {},
-                                "f:status": {},
-                                "f:type": {}
-                            },
-                            "k:{\"type\":\"Initialized\"}": {
-                                ".": {},
-                                "f:lastProbeTime": {},
-                                "f:lastTransitionTime": {},
-                                "f:status": {},
-                                "f:type": {}
-                            },
-                            "k:{\"type\":\"Ready\"}": {
-                                ".": {},
-                                "f:lastProbeTime": {},
-                                "f:lastTransitionTime": {},
-                                "f:status": {},
-                                "f:type": {}
-                            }
-                        },
-                        "f:containerStatuses": {},
-                        "f:hostIP": {},
-                        "f:phase": {},
-                        "f:podIP": {},
-                        "f:podIPs": {
-                            ".": {},
-                            "k:{\"ip\":\"192.168.221.134\"}": {`s
-                                ".": {},
-                                "f:ip": {}
-                            }
-                        },
-                        "f:startTime": {}
-                    }
-                },
-                "manager": "kubelet",
-                "operation": "Update",
-                "time": "2020-05-26T11:23:21Z"
-            }
-        ],
-        "name": "db",
-        "namespace": "default",
-        "resourceVersion": "8657",
+        .........................
+        .........................
+        .........................
+
         "selfLink": "/api/v1/namespaces/default/pods/db",
         "uid": "a257f112-c2dc-43ad-bdb7-46c6d95fabd9"
     },
@@ -241,9 +160,9 @@ root@shivam1c:~/k8s-specs# kubectl get pods db -o json
                 ]
             }
         ],
-        ---------
-        ---------
-        ---------
+        .........................
+        .........................
+        .........................
                     }
                 }
             }
@@ -278,69 +197,9 @@ metadata:
   managedFields:
   - apiVersion: v1
     fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:labels:
-          .: {}
-          f:run: {}
-      f:spec:
-        f:containers:
-          k:{"name":"db"}:
-            .: {}
-            f:image: {}
-            f:imagePullPolicy: {}
-            f:name: {}
-            f:resources: {}
-            f:terminationMessagePath: {}
-            f:terminationMessagePolicy: {}
-        f:dnsPolicy: {}
-        f:enableServiceLinks: {}
-        f:restartPolicy: {}
-        f:schedulerName: {}
-        f:securityContext: {}
-        f:terminationGracePeriodSeconds: {}
-    manager: kubectl
-    operation: Update
-    time: "2020-05-26T11:23:09Z"
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:status:
-        f:conditions:
-          k:{"type":"ContainersReady"}:
-            .: {}
-            f:lastProbeTime: {}
-            f:lastTransitionTime: {}
-            f:status: {}
-            f:type: {}
-          k:{"type":"Initialized"}:
-            .: {}
-            f:lastProbeTime: {}
-            f:lastTransitionTime: {}
-            f:status: {}
-            f:type: {}
-          k:{"type":"Ready"}:
-            .: {}
-            f:lastProbeTime: {}
-            f:lastTransitionTime: {}
-            f:status: {}
-            f:type: {}
-        f:containerStatuses: {}
-        f:hostIP: {}
-        f:phase: {}
-        f:podIP: {}
-        f:podIPs:
-          .: {}
-          k:{"ip":"192.168.221.134"}:
-            .: {}
-            f:ip: {}
-        f:startTime: {}
-    manager: kubelet
-    operation: Update
-    time: "2020-05-26T11:23:21Z"
-  name: db
-  namespace: default
-  resourceVersion: "8657"
+        .........................
+        .........................
+        .........................
   selfLink: /api/v1/namespaces/default/pods/db
   uid: a257f112-c2dc-43ad-bdb7-46c6d95fabd9
 spec:
