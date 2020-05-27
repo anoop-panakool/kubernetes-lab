@@ -1,6 +1,6 @@
 # ReplicaSets - applications should be scalable and all must be fault tolerant
 
-> Most applications should be scalable and all must be fault tolerant. Pods do not provide those features, ReplicaSets do.
+#### Most applications should be scalable and all must be fault tolerant. Pods do not provide those features, ReplicaSets do.
 
 ## Prerequisites
 
