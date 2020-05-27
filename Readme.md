@@ -35,7 +35,7 @@ Sr No | Username | Password  | Project Name
 > Cluster is setup on `GCP Virtual Machines` `Ubuntu-1804-bionic` 1 master and 2 worker-nodes.
 ![GCP-VM-Instances](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/GCP-VM-Instances.png)
 
-> Login to the Kubernetes Master node `*ssh -i path-to-private-key username@external-ip*`
+> Login to the Kubernetes Master node *`ssh -i path-to-private-key username@external-ip`*
 
 ### Important links:
 1. Kuberenetes [Storage](https://docs.microsoft.com/en-us/azure/aks/concepts-storage) from Azure Docs 
