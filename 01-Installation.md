@@ -165,9 +165,9 @@ sudo apt-get install -y kubelet kubeadm kubectl
 ```bash
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-```bash
+
 #####            Note: Complete the following section on the `MASTER` Node ONLY!
-```
+
 ### Initialize the Kubernetes cluster.In the master node, run below command to initialize the cluster using kubeadm
 
 > #### *This is for `flannel` networking*
