@@ -1,10 +1,8 @@
 
-#           Kubernetes Cluster Setup with Kubeadm on Ubuntu
+#        `Kubernetes Cluster Setup with Kubeadm on Ubuntu`
                                
-
 > ### This page describes how to setup kubernetes from scratch on your own nodes, without using a managed service.This setup uses kubeadm to install and configure kubernetes cluster. We will install and configure a Kubernetes cluster consisting of 1 master and 2 nodes. Once the installation and configuration are complete, we will have a 3-node Kubernetes cluster that uses Calico/Flannel as the network overlay.
 
-https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 > click [here](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/) to see How to `install kubeadm` file
 ## Compatibility
 
@@ -27,20 +25,6 @@ The below steps are applicable for the below mentioned OS
  **On all nodes which would be part of this cluster, you need to do the base setup as described in the following steps. To simplify this, you could also**
 [download and run this script](https://gist.github.com/initcron/40b71211cb693f541ce35fe3fb1adb11)
  
-                  Note: Complete the following section on both MASTER & Worker Node !
-                              
-## Letting iptables see bridged traffic
-
-As a requirement for your Linux Node's iptables to correctly see bridged traffic, you should ensure `net.bridge.bridge-nf-call-iptables` is set to 1 in your `sysctl` config, e.g.
-
-```bash
-cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
-net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1
-EOF
-sudo sysctl --system
-sudo sysctl -p
-```
 
 ## Check required ports
 
@@ -69,6 +53,20 @@ custom ports you provide are also open.
 Although etcd ports are included in control-plane nodes, you can also host your own
 etcd cluster externally or on custom ports.
 
+#####            Note: Complete the following section on the `MASTER` & `Worker Node` ONLY!
+                              
+## Letting iptables see bridged traffic
+
+As a requirement for your Linux Node's iptables to correctly see bridged traffic, you should ensure `net.bridge.bridge-nf-call-iptables` is set to 1 in your `sysctl` config, e.g.
+
+```bash
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sudo sysctl --system
+sudo sysctl -p
+```
 
 ### Install Docker runtime, To run containers in Pods, Kubernetes uses a container runtime.
 ## Docker
@@ -186,7 +184,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-                Note: Complete the following steps on the WORKER NODES ONLY!
+#####            Note: Complete the following section on the `Worker Nodes` ONLY!
          
 ### Join the worker nodes to the cluster, Copy kubeadm join command from output of "kubeadm init on master node" on each WORKER NODE
 ```bash     
@@ -196,7 +194,7 @@ kubeadm join 172.31.24.221:6443 --token pexa5a.4zk3o0xs7e0bq4ip --discovery-toke
 <kubeadm join command copies from master node>
 
 ```
-                Note: Complete the following section on the MASTER Node ONLY!
+#####            Note: Complete the following section on the `MASTER` Node ONLY!
 
 ### Apply Calico CNI network overlay , On Master Node only
 ```bash 
