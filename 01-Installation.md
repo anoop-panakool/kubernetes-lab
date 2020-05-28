@@ -17,10 +17,10 @@ The below steps are applicable for the below mentioned OS
 
 ## Base Setup
  ```
- Download Oracle VirtualBox:  https://www.virtualbox.org/wiki/Downloads
- Download VM images: http://osboxes.org/
- Download MobaXterm SSH terminal for Windows https://mobaxterm.mobatek.net/download-home-edition.html
- Visual Studio Code a code editor https://code.visualstudio.com/download
+ Download Oracle VirtualBox: Click [here](https://www.virtualbox.org/wiki/Downloads)
+ Download VM images: Click [here](http://osboxes.org/)
+ Download MobaXterm SSH terminal for Windows :Click [here](https://mobaxterm.mobatek.net/download-home-edition.html)
+ Visual Studio Code a code editor: Click [here](https://code.visualstudio.com/download)
  ```
  **On all nodes which would be part of this cluster, you need to do the base setup as described in the following steps. To simplify this, you could also**
 [download and run this script](https://gist.github.com/initcron/40b71211cb693f541ce35fe3fb1adb11)
