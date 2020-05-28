@@ -6,7 +6,7 @@
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
-## Compatibility
+### Compatibility
 
 Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications.
 
