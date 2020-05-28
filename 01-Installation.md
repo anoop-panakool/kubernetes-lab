@@ -165,15 +165,16 @@ sudo apt-get install -y kubelet kubeadm kubectl
 ```bash
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
-
-                Note: Complete the following section on the MASTER Node ONLY!
+```bash
+#####            Note: Complete the following section on the `MASTER` Node ONLY!
+```
 ### Initialize the Kubernetes cluster.In the master node, run below command to initialize the cluster using kubeadm
 
-> #### *This if for `flannel` networking*
+> #### *This is for `flannel` networking*
 ```bash
 kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
-> #### *This if for `Calico`  networking*
+> #### *This is for `Calico`  networking*
 ```bash
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=NumCPU
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 #Do this only if proper CPU cores are available
