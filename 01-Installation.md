@@ -21,7 +21,7 @@ The below steps are applicable for the below mentioned OS
 
  > Download VM images: Click [here](http://osboxes.org/)
 
- > Download MobaXterm SSH terminal for Windows :Click[here](https://mobaxterm.mobatek.net/download-home-edition.html)
+ > Download MobaXterm SSH terminal for Windows :Click [here](https://mobaxterm.mobatek.net/download-home-edition.html)
 
  > Visual Studio Code a code editor: Click [here](https://code.visualstudio.com/download)
 
