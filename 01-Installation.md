@@ -2,11 +2,12 @@
 #           Kubernetes Cluster Setup with Kubeadm on Ubuntu
                                
 
-> ## This documents describes how to setup kubernetes from scratch on your own nodes, without using a managed service. This setup uses kubeadm to install and configure kubernetes cluster. We will install and configure a Kubernetes cluster consisting of 1 master and 2 nodes. Once the installation and configuration are complete, we will have a 3-node Kubernetes cluster that uses Calico & Flannel as the network overlay.
+> ### This page describes how to setup kubernetes from scratch on your own nodes, without using a managed service.
+> ### This setup uses kubeadm to install and configure kubernetes cluster. We will install and configure a Kubernetes cluster consisting of 1 master and 2 nodes. Once the installation and configuration are complete, we will have a 3-node Kubernetes cluster that uses Calico & Flannel as the network overlay.
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
-### Compatibility
+## Compatibility
 
 Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications.
 
