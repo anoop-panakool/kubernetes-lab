@@ -56,7 +56,7 @@ custom ports you provide are also open.
 Although etcd ports are included in control-plane nodes, you can also host your own
 etcd cluster externally or on custom ports.
 
-#####            Note: Complete the following section on the `MASTER` & `Worker Node` ONLY!
+####          Note: Complete the following section on the `MASTER` & `Worker Node` ONLY!
                               
 ## Letting iptables see bridged traffic
 
@@ -167,7 +167,7 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
-#####            Note: Complete the following section on the `MASTER` Node ONLY!
+####          Note: Complete the following section on the `MASTER` Node ONLY!
 
 ### Initialize the Kubernetes cluster.In the master node, run below command to initialize the cluster using kubeadm
 
@@ -187,7 +187,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-#####            Note: Complete the following section on the `Worker Nodes` ONLY!
+####           Note: Complete the following section on the `Worker Nodes` ONLY!
          
 ### Join the worker nodes to the cluster, Copy kubeadm join command from output of "kubeadm init on master node" on each WORKER NODE
 ```bash     
@@ -197,7 +197,7 @@ kubeadm join 172.31.24.221:6443 --token pexa5a.4zk3o0xs7e0bq4ip --discovery-toke
 <kubeadm join command copies from master node>
 
 ```
-#####            Note: Complete the following section on the `MASTER` Node ONLY!
+####           Note: Complete the following section on the `MASTER` Node ONLY!
 
 ### Apply Calico CNI network overlay , On Master Node only
 ```bash 
