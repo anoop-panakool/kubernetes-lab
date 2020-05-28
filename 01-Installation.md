@@ -144,15 +144,15 @@ You will install these packages on all of your machines:
 #### Get the Kubernetes gpg key
 ```bash
 sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 ```
 #### Add the Kubernetes repository
 ```bash
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 ```
-
 #### downloads the package lists from the repositories and Update your packages & dependecies to the newest versions
 ```bash
 sudo apt-get update
@@ -167,8 +167,13 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
                 Note: Complete the following section on the MASTER Node ONLY!
-
 ### Initialize the Kubernetes cluster.In the master node, run below command to initialize the cluster using kubeadm
+
+> #### *This if for `flannel` networking*
+```bash
+kubeadm init --pod-network-cidr=10.244.0.0/16
+```
+> #### *This if for `Calico`  networking*
 ```bash
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=NumCPU
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 #Do this only if proper CPU cores are available
@@ -195,10 +200,16 @@ kubeadm join 172.31.24.221:6443 --token pexa5a.4zk3o0xs7e0bq4ip --discovery-toke
 ### Apply Calico CNI network overlay , On Master Node only
 ```bash 
 apt install git -y
+
 git clone https://github.com/shivamjhalabfiles/kubernetes-lab.git
+
 cd kubernetes-lab/Labs/Calico/
-    
+
 kubectl apply -f .
+```
+### Apply Flannel CNI network overlay , On Master Node only
+```bash
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 ### Validate the Setup
 ```bash 
