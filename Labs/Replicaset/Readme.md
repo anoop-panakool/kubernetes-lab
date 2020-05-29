@@ -93,3 +93,16 @@ go-demo-2-87djm   2/2     Running   0          22m     db=mongo,language=go,serv
 go-demo-2-f4x2h   2/2     Running   0          22m     db=mongo,language=go,service=go-demo-2,type=backend
 ```
 ![db1-yaml.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/db1-yaml.png)
+
+
+
+
+
+
+
+
+
+![sequence-replicaset](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/sequence-replicaset.png)
+
+
+![replicaset-events](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/replicaset-events.png)
