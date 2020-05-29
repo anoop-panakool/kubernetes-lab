@@ -17,7 +17,7 @@ metadata:
     env: development
 spec:
   containers:
-  - name: sise
+  - name: simpleservice
     image: quay.io/openshiftlabs/simpleservice:0.5.0
     ports:
     - containerPort: 9876
