@@ -116,7 +116,7 @@ $ kubectl delete pods labelexother
 Note that labels are not restricted to pods. In fact you can apply them to
 all sorts of objects, such as nodes or services.
 
-#### Create a new pod with two labels.
+###  Create a new pod with two labels.
 Let's create a POD named [kubia-manual-with-labels.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/kubia-manual-with-labels.yaml)
 
 #### Deploy this `label-demo-nginx.yaml` POD
@@ -124,21 +124,43 @@ Let's create a POD named [kubia-manual-with-labels.yaml](https://github.com/shiv
 apiVersion: v1
 kind: Pod
 metadata:
-  name: label-demo
+  name: kubia-manual-v2
   labels:
-    environment: production
-    app: nginx
+    creation_method: manual
+    env: prod
+    app: kubia
 spec:
   containers:
-  - name: nginx
-    image: nginx:1.14.2
+  - image: luksa/kubia
+    name: kubia
     ports:
-    - containerPort: 80
+    - containerPort: 8080
+      protocol: TCP
 ```
 ```
-kubectl create -f label-demo-nginx.yaml
+kubectl create -f kubia-manual-with-labels.yaml
 ```
-#### Get pod description:
-    kubectl get po label-demo -o yaml
-    kubectl describe po label-demo
+The kubectl get pods command doesn’t list any labels by default, but you can see them by using the --show-labels
+```
+kubectl get po --show-labels
+```
+Instead of listing all labels, we are interested in certain labels, you can specify them with the -L  and have  List pods again
+```
+kubectl get po -L creation_method,env
+```
+#### Modify labels of existing pods
+> Labels can also be added to and modified on existing pods.
+
+Add the `creation_method=manual` label to `kubia-manual` pod
+```
+kubectl label po kubia-manual creation_method=manual
+```
+Change the `env=prod` label to `env=debug` on the `kubia-manual-v2` pod
+> NOTE: You need to use the `--overwrite` option when changing existing labels.
+```
+kubectl label po kubia-manual-v2 env=debug --overwrite
+```
+List the pods again to see the updated labels:
+```
+kubectl get po -L creation_method,env
 ```
