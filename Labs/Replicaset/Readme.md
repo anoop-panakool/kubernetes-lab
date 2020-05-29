@@ -115,8 +115,7 @@ The sequence of events that happens when you run `kubectl create -f go-demo-2.ym
 8. Finally, Kubelet sent a request to the API server notifying it that the Pods were created successfully.
 
 
-
-
+### `The sequence described above says what happened in the cluster from the moment we requested the creation of a new ReplicaSet. We will see the same process through a diagram that more closely represents the cluster.`
 
 ![sequence-replicaset](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/sequence-replicaset.png)
 
