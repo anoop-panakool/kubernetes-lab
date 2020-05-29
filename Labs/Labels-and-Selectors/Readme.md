@@ -47,7 +47,7 @@ To use a label for filtering, for example to list only pods that have an
 `owner` that equals `shivam`, use the `--selector` option:
 
 ```bash
-$ kubectl get pods --selector owner=michael
+$ kubectl get pods --selector owner=shivam
 NAME      READY     STATUS    RESTARTS   AGE
 labelex   1/1       Running   0          27m
 ```
