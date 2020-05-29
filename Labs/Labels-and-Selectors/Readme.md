@@ -1,9 +1,4 @@
-+++
-title = "Labels"
-subtitle = "Kubernetes labels by example"
-date = "2019-02-27"
-url = "/labels/"
-+++
+### Labels & Selectors 
 
 Labels are the mechanism you use to organize Kubernetes objects. A label is a key-value
 pair with certain [restrictions](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
@@ -12,11 +7,24 @@ So you're free to choose labels as you see fit, for example, to express
 environments such as 'this pod is running in production' or ownership,
 like 'department X owns that pod'.
 
-Let's create a [pod](https://github.com/openshift-evangelists/kbe/blob/master/specs/labels/pod.yaml) that initially has one label (`env=development`):
-
+Let's create a [pod](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelex.yaml) that initially has one label (`env=development`):
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: labelex
+  labels:
+    env: development
+spec:
+  containers:
+  - name: sise
+    image: quay.io/openshiftlabs/simpleservice:0.5.0
+    ports:
+    - containerPort: 9876
+```
 
 ```bash
-$ kubectl apply -f https://raw.githubusercontent.com/openshift-evangelists/kbe/master/specs/labels/pod.yaml
+$ kubectl apply -f labelex.yaml
 
 $ kubectl get pods --show-labels
 NAME       READY     STATUS    RESTARTS   AGE    LABELS
@@ -32,11 +40,11 @@ $ kubectl label pods labelex owner=michael
 
 $ kubectl get pods --show-labels
 NAME        READY     STATUS    RESTARTS   AGE    LABELS
-labelex     1/1       Running   0          16m    env=development,owner=michael
+labelex     1/1       Running   0          16m    env=development,owner=shivam
 ```
 
 To use a label for filtering, for example to list only pods that have an
-`owner` that equals `michael`, use the `--selector` option:
+`owner` that equals `shivam`, use the `--selector` option:
 
 ```bash
 $ kubectl get pods --selector owner=michael
@@ -54,11 +62,28 @@ labelex   1/1       Running   0          27m
 ```
 
 Oftentimes, Kubernetes objects also support set-based selectors.
-Let's launch [another pod](https://github.com/openshift-evangelists/kbe/blob/master/specs/labels/anotherpod.yaml)
-that has two labels (`env=production` and `owner=michael`):
+Let's launch [another pod](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelexother.yaml)
+that has two labels (`env=production` and `owner=shivam`):
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: labelexother
+  labels:
+    env: production
+    owner: shivam
+spec:
+  containers:
+  - name: simpleservice
+    image: quay.io/openshiftlabs/simpleservice:0.5.0
+    ports:
+    - containerPort: 9876
+```
+
 
 ```bash
-$ kubectl apply -f https://raw.githubusercontent.com/openshift-evangelists/kbe/master/specs/labels/anotherpod.yaml
+$ kubectl apply -f labelexother.yaml
 ```
 
 Now, let's list all pods that are either labelled with `env=development` or with
