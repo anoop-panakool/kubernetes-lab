@@ -92,4 +92,4 @@ NAME              READY   STATUS    RESTARTS   AGE     LABELS
 go-demo-2-87djm   2/2     Running   0          22m     db=mongo,language=go,service=go-demo-2,type=backend
 go-demo-2-f4x2h   2/2     Running   0          22m     db=mongo,language=go,service=go-demo-2,type=backend
 ```
-![go-demo-2.yml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/go-demo-2.png)
+![go-demo.yml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/replicaset-pod.png)
