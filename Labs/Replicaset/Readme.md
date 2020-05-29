@@ -10,7 +10,7 @@
 
 1. Let’s take a look at a `ReplicaSet` based on the Pod defination file [go-demo-2.yml](/Labs/Replicaset/go-demo-2.yml)
 
-![go-demo-2.yml] (https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/go-demo-2.png)
+![go-demo-2.yml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/go-demo-2.png)
 > #### Note : The `apiVersion`, `kind`, and `metadata` fields are mandatory with all Kubernetes objects. `ReplicaSet` is no exception, i.e., it is also a Kubernetes object.
 
 ```bash
