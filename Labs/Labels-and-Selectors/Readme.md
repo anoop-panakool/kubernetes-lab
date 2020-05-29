@@ -200,7 +200,55 @@ kubectl get pods --selector app=pc,rel=beta
 Using a label selector to schedule a pod named []to a specific node: kubia-gpu.yaml
 > You’ve added a `nodeSelector` field under the `spec` section. When you create the pod, the scheduler will only choose among the nodes that contain the `gpu=true` label (which is only a single node in your case).
 
-Add the label `gpu=true` to one of your worker nodes (`kubectl get nodes`)
+Step One : Attach label to the node
+> Run `kubectl get nodes` to get the names of your cluster’s nodes.
+```
+kubectl get nodes
+```
+> `kubectl label nodes <node-name> <label-key>=<label-value>` to add a label to the node you’ve chosen. For example, if my node name is ‘shivamjha-k8s-3cudh’ and my desired label is ‘disktype=ssd’, then I can run 
+```
+kubectl label nodes shivamjha-k8s-3cudh disktype=ssd
+```
+> Now verify that it worked by re-running `kubectl get nodes --show-labels` and check that the node now has a label.
+```
+kubectl get nodes --show-labels
+```
+Step Two: Add a `nodeSelector` field to your pod `pod-nginx.yaml` configuration
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+```
+> Then add a `nodeSelector` under spec sction in `pod-nginx.yaml` file like as below: 
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  nodeSelector:
+    disktype: ssd
+```
+> Then run `kubectl apply -f pod-nginx.yaml` Pod will get scheduled on the node that you attached the label to.    You can verify that it worked by running `kubectl get pods -o wide` and looking at the “NODE” that the Pod was assigned to.
+```
+kubectl get pods -o wide
+```
+### Add the label `gpu=true` to one of your worker nodes (`kubectl get nodes`)
 ```
 kubectl label node [Node-Name] gpu=true
 ```
@@ -297,7 +345,7 @@ The output is similar to this:
     nginx    1/1       Running   0          13s    10.200.0.4   worker0
 ```
 ### Create a pod that gets scheduled to specific node
-> You can also schedule a pod to one specific node via setting nodeName
+> You can also schedule a pod to one specific node via setting `nodeName`
 
 Create the Pod named `nginx`from file [pod-nginx-specific-node.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/pod-nginx-specific-node.yaml)
 
