@@ -7,7 +7,7 @@ So you're free to choose labels as you see fit, for example, to express
 environments such as 'this pod is running in production' or ownership,
 like 'department X owns that pod'.
 
-Let's create a [pod](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelex.yaml) that initially has one label (`env=development`):
+Let's create a POD[labelex.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelex.yaml) that initially has one label (`env=development`):
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -62,7 +62,7 @@ labelex   1/1       Running   0          27m
 ```
 
 Oftentimes, Kubernetes objects also support set-based selectors.
-Let's launch [another pod](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelexother.yaml)
+Let's launch POD[labelexother.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelexother.yaml)
 that has two labels (`env=production` and `owner=shivam`):
 
 ```yaml
