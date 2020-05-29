@@ -119,7 +119,6 @@ all sorts of objects, such as nodes or services.
 ###  Create a new pod with two labels.
 Let's create a POD named [kubia-manual-with-labels.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/kubia-manual-with-labels.yaml)
 
-#### Deploy this `label-demo-nginx.yaml` POD
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -163,4 +162,46 @@ kubectl label po kubia-manual-v2 env=debug --overwrite
 List the pods again to see the updated labels:
 ```
 kubectl get po -L creation_method,env
+```
+
+#### Listing pods using a label selector
+To see all pods you created manually (you labeled them with creation_method=manual), do the following
+```
+kubectl get po -l creation_method=manual
+```
+List all pods that include the env label, whatever its value is
+```
+kubectl get po -l env
+```
+List all the pods that don’t have the env label
+```
+kubectl get po -l '!env'
+```
+> NOTE Make sure to use single quotes around !env, so the bash shell doesn’t evaluate the exclamation mark.
+
+Select the pods with the creation_method label with any value other than manual
+```
+kubectl get po -l creation_method!=manual
+```
+Select pods with the env label set to either prod or devel
+```
+kubectl get pods -l 'env in (prod, devel)'
+```
+Select pods with the env label set to any value other than prod or devel
+```
+kubectl get pods -l 'env notin (prod, devel)'
+```
+Select all pods those have `app=pc`& `rel=betalabel` by using `selector`
+```
+kubectl get pods --selector app=pc,rel=beta
+```
+## Using labels and selectors to constrain pod scheduling
+
+Add the label `gpu=true` to one of your worker nodes (`kubectl get nodes`)
+```
+kubectl label node [Node-Name] gpu=true
+```
+List only nodes that include the label `gpu=true`
+```
+kubectl get nodes -l gpu=true
 ```
