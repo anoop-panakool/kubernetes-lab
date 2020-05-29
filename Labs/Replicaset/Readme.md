@@ -94,4 +94,5 @@ go-demo-2-f4x2h   2/2     Running   0          22m     db=mongo,language=go,serv
 
 ```
 
-![ReplicaSet-with-two-replicas-of-a-Pod](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/ReplicaSet-with-two-replicas-of-a-Pod.png)
+![ReplicaSet-with-two-pods](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/ReplicaSet-with-two-replicas-of-a-Pod.png)
+![liveness-rediness-probe](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/liveness-rediness-probe.png)
