@@ -4,13 +4,46 @@
 
 ## Prerequisites
 
-- Cluster is in Ready state
+- Cluster should be in Ready state
 
 ## Instructions
 
-1. Creating a Pod with Mongo
+1. Let’s take a look at a `ReplicaSet` based on the Pod defination file [go-demo-2.yml](/Labs/Replicaset/go-demo-2.yml)
+
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: go-demo-2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: backend
+      service: go-demo-2
+  template:
+    metadata:
+      labels:
+        type: backend
+        service: go-demo-2
+        db: mongo
+        language: go
+    spec:
+      containers:
+      - name: db
+        image: mongo:3.3
+      - name: api
+        image: vfarcic/go-demo-2
+        env:
+        - name: DB
+          value: localhost
+        livenessProbe:
+          httpGet:
+            path: /demo/hello
+            port: 8080
+```
 `
-kubectl allows us to create Pods with a single command. For example, if we would like to create a Pod with a Mongo database, the command is as follows.
+The apiVersion, kind, and metadata fields are mandatory with all Kubernetes objects. ReplicaSet is no exception, i.e., it is also a Kubernetes object.
 `
 ```bash
 kubectl run db --image mongo \
@@ -79,7 +112,7 @@ The Ouptput is as follows.
 
   ![db-yaml-file](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/db-yaml.png)
 
- > click [here](/Labs/Pod/Lab06-pod/db.yml)
+ > click [db.yml](/Labs/Pod/Lab06-pod/db.yml)
 Let’s analyze the various sections in the output definition of a Pod.
 ```
 Line 1-2: We’re using v1 of Kubernetes Pods API. Both apiVersion and kind are mandatory. That way, Kubernetes knows what we want to do (create a Pod) and which API version to use.
