@@ -291,6 +291,13 @@ kubectl get pods --show-labels
 ```
 > The **output** is as follows
 ```
+root@master:~# kubectl get pods --show-labels
+NAME              READY   STATUS    RESTARTS   AGE     LABELS
+go-demo-2-7c5fs   2/2     Running   3          50m     db=mongo,language=go,service=go-demo-2,type=backend
+go-demo-2-87djm   2/2     Running   3          3h53m   db=mongo,language=go,service=go-demo-2,type=backend
+go-demo-2-nf224   2/2     Running   0          71s     db=mongo,language=go,service=go-demo-2,type=backend
+go-demo-2-pgrr7   2/2     Running   3          49m     db=mongo,language=go,service=go-demo-2,type=backend
+go-demo-2-rcf7d   2/2     Running   3          49m     db=mongo,language=go,type=backend
 ```
 #### Let’s Re-add a label
 
@@ -304,3 +311,79 @@ kubectl get pods --show-labels
 We added the `service=go-demo-2` label and listed all the Pods.
 
 > The **output** is as follows
+```
+root@master:~# kubectl get pods --show-labels
+NAME              READY   STATUS        RESTARTS   AGE     LABELS
+go-demo-2-7c5fs   2/2     Running       3          51m     db=mongo,language=go,service=go-demo-2,type=backend
+go-demo-2-87djm   2/2     Running       3          3h53m   db=mongo,language=go,service=go-demo-2,type=backend
+go-demo-2-nf224   0/2     Terminating   0          2m1s    db=mongo,language=go,service=go-demo-2,type=backend
+go-demo-2-pgrr7   2/2     Running       3          50m     db=mongo,language=go,service=go-demo-2,type=backend
+go-demo-2-rcf7d   2/2     Running       3          50m     db=mongo,language=go,service=go-demo-2,type=backend
+```
+
+> *`The moment we added the label, the ReplicaSet discovered that there are five Pods with matching selector labels. Since the specification states that there should be four replicas of the Pod, it removed one of the Pods so that the desired state matches the actual state.`*
+
+> *`ReplicaSets and Pods are loosely coupled through matching labels and that ReplicaSets are using those labels to maintain the actual and the desired state.`*
+
+### This is so called self-healing.
+
+
+
+# Quick Quiz
+
+> **This quiz is based on the REplicaSets.**
+
+Let's test our understanding of ReplicaSets with the help of this quiz.
+
+```
+1. ReplicaSets are used to scale Pods.
+A)
+True
+B)
+False
+```
+```
+2. When compared with the replication Controllers, ReplicaSets have an extended support for?
+A)
+Tags
+B)
+Selectors
+C)
+Replication
+```
+```
+3. Which of the following fields are mandatory when defining a Kubernetes object?
+A)
+specs
+B)
+template
+C)
+apiVersion , kind, metadata
+```
+```
+4. Which of the following argument is used to prevent Kubernetes from removing the downstream objects?
+A)
+--cascade=true
+B)
+--cascade=false
+C)
+--cascade
+```
+```
+5. Which of the following is the key property of ReplicaSets?
+A)
+Self-healing
+B)
+Self-destructing
+C)
+Scheduling
+```
+```
+6. ReplicaSets make sure that?
+A)
+The desired number of Nodes are available
+B)
+The desired number of Pods are running
+C)
+The desired number of containers are running
+```

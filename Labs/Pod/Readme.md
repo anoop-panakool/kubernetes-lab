@@ -701,7 +701,9 @@ cat go-demo-2.yml
 
 # Quick Quiz
 
-> **This quiz is on the Pods.**
+> **This quiz is based on the Pods.**
+Let's test our understanding of POD with the help of this quiz.
+
 ```
 1. Which of the following is the smallest unit running inside a Kubernetes Cluster?
 
