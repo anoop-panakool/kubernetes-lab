@@ -95,3 +95,4 @@ go-demo-2-f4x2h   2/2     Running   0          22m     db=mongo,language=go,serv
 ```
 
 ![replicapods] (https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/replicaset-pod.png)
+![go-demo-2.yml] (https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/go-demo-2.png)
