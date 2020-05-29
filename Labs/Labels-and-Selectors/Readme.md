@@ -270,8 +270,9 @@ Use the configuration file to create a pod that will get scheduled on your chose
 Verify that the pod is running on your chosen node:
 ```shell
     kubectl get pods --output=wide
+             or
+    kubectl get pods -o wide   
 ```
-
 The output is similar to this:
     
 ```shell
