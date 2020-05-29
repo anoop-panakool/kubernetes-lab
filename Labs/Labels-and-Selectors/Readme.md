@@ -205,3 +205,4 @@ List only nodes that include the label `gpu=true`
 ```
 kubectl get nodes -l gpu=true
 ```
+![Label-microservice](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/Label-microservice.png)
