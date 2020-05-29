@@ -262,9 +262,26 @@ In this output, you can see that the `worker0` node has a `disktype=ssd` label.
 
 This pod configuration file describes a pod that has a node selector, `disktype: ssd`. This means that the pod will get scheduled on a node that has a `disktype=ssd` label.
 
-Use the configuration file to create a pod that will get scheduled on your chosen node:
+Create the Pod named `nginx`from file [pod-nginx.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/pod-nginx.yaml)
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  nodeSelector:
+    disktype: ssd
+```
+
 ```shell
-    kubectl apply -f https://k8s.io/examples/pods/pod-nginx.yaml
+    kubectl apply -f pod-nginx.yaml
 ```
 
 Verify that the pod is running on your chosen node:
@@ -278,4 +295,27 @@ The output is similar to this:
 ```shell
     NAME     READY     STATUS    RESTARTS   AGE    IP           NODE
     nginx    1/1       Running   0          13s    10.200.0.4   worker0
+```
+### Create a pod that gets scheduled to specific node
+> You can also schedule a pod to one specific node via setting nodeName
+
+Create the Pod named `nginx`from file [pod-nginx-specific-node.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/pod-nginx-specific-node.yaml)
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  nodeName: shivamjha-k8s-3cudh # Change the node name as per your cluster setup and schedule pod to specific node
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+```
+```
+kubectl create -f pod-nginx-specific-node.yaml
+```
+```
+kubectl get pods nginx -o wide
 ```
