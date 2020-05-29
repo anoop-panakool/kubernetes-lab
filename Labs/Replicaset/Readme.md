@@ -42,7 +42,7 @@ spec:
             path: /demo/hello
             port: 8080
 ```
-> The `apiVersion`, `kind`, and `metadata` fields are mandatory with all Kubernetes objects. `ReplicaSet` is no exception, i.e., it is also a Kubernetes object.
+> #### The `apiVersion`, `kind`, and `metadata` fields are mandatory with all Kubernetes objects. `ReplicaSet` is no exception, i.e., it is also a Kubernetes object.
 
 ```bash
 kubectl run db --image mongo \
