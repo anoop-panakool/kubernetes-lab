@@ -1,0 +1,1 @@
+> 📝 *`What is diffrence in  kubectl create -f & kubectl apply  -f The apply command automatically saves the configuration so that we can edit it later on. The create command does not do such thing by default so we had to save it with --save-config.`*

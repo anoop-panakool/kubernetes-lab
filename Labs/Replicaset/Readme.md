@@ -117,10 +117,146 @@ The sequence of events that happens when you run `kubectl create -f go-demo-2.ym
 ![sequence-replicaset](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/sequence-replicaset.png)
 
 ### The sequence described above says what happened in the cluster from the moment we requested the creation of a new ReplicaSet. 
-### **We will see the same process through a diagram that more closely represents the cluster.**
+## **We will see the same process through a diagram that more closely represents the cluster.**
 
 ![replicaset-events](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/replicaset-events.png)
 
 ## **Operating ReplicaSets & self-healing feature**
 
-> *Deleting ReplicaSets* 
+> *Deleting ReplicaSets - What would happen if we delete the ReplicaSet?*
+
+Remove the ReplicaSet `go-demo-2` created
+```
+root@master:~/# kubectl delete -f go-demo-2.yml --cascade=false
+replicaset.apps "go-demo-2" deleted
+```
+Let’s confirm that `replicaset` removed from the system.
+```
+root@master:~/# kubectl get rs
+No resources found in default namespace.
+```
+If --cascade=false prevents Kubernetes from removing the dependents objects, the Pods should continue running in the cluster. Let’s confirm it.
+```
+kubectl get pods
+```
+> The **output** is as follows.
+```
+NAME              READY   STATUS    RESTARTS   AGE
+go-demo-2-87djm   2/2     Running   0          146m
+go-demo-2-f4x2h   2/2     Running   0          146m
+```
+The two Pods created by the ReplicaSet are still running in the cluster even though we removed the ReplicaSet.
+
+> Note: *`ReplicaSet uses labels to decide whether the desired number of Pods is already running in the cluster,if we create the same ReplicaSet again, it should reuse the two Pods that are running in the cluster.`*
+
+ Let’s confirm that,Create the ReplicaSet again
+```
+root@master:~/# kubectl create -f go-demo-2.yml --save-config
+replicaset.apps/go-demo-2 created
+```
+> The **output** is as follows.
+```
+root@master:~/# kubectl get pods
+NAME              READY   STATUS    RESTARTS   AGE
+go-demo-2-87djm   2/2     Running   0          152m
+go-demo-2-f4x2h   2/2     Running   0          152m
+```
+> *`If you compare the names of the Pods, you’ll see that they are the same as before we created the ReplicaSet. It looked for matching labels, deduced that there are two Pods that match them, and decided that there’s no need to create new ones. The matching Pods fulfill the desired number of replicas.`*
+
+### Updating the Definition of ReplicaSet
+
+Now we will use `ReplicaSet` defination file [go-demo-2-scaled.yml](/Labs/Replicaset/go-demo-2-scaled.yml) that differs only in the number of replicas set to 4.
+```yaml
+apiVersion:  apps/v1
+kind: ReplicaSet
+metadata:
+  name: go-demo-2
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      type: backend
+      service: go-demo-2
+  template:
+    metadata:
+      labels:
+        type: backend
+        service: go-demo-2
+        db: mongo
+        language: go
+    spec:
+      containers:
+      - name: db
+        image: mongo:3.3
+      - name: api
+        image: vfarcic/go-demo-2
+        env:
+        - name: DB
+          value: localhost
+        livenessProbe:
+          httpGet:
+            path: /demo/hello
+            port: 8080
+```
+Let’s create the ReplicaSet with defination file *`go-demo-2-scaled.yml`*
+```
+root@master:~/# kubectl apply -f go-demo-2-scaled.yml 
+replicaset.apps/go-demo-2 configured
+```
+This time, the output is slightly different. Instead of saying that the ReplicaSet was created, we can see that it was configured.
+
+Let’s take a look at the Pods.
+```
+kubectl get pods
+```
+> The **output** is as follows.
+```
+root@master:~/# kubectl get pods
+NAME              READY   STATUS    RESTARTS   AGE
+go-demo-2-87djm   2/2     Running   0          173m
+go-demo-2-f4x2h   2/2     Running   0          173m
+go-demo-2-r4bjm   2/2     Running   0          119s
+go-demo-2-vpls4   2/2     Running   0          119s
+```
+> As expected, now there are four Pods in the cluster. If you pay closer attention to the names of the Pods, you’ll notice that two of them are the same as before.
+
+### Self-healing property of ReplicaSet
+
+> Let’s test this property by making a chnages to our system.
+
+Let’s destroy the Pod
+
+```
+root@master:~/# kubectl get pods
+NAME              READY   STATUS    RESTARTS   AGE
+go-demo-2-7c5fs   2/2     Running   0          17s
+go-demo-2-87djm   2/2     Running   0          3h2m
+go-demo-2-cfwln   2/2     Running   0          17s
+go-demo-2-f4x2h   2/2     Running   0          3h2m
+```
+Retrive all the Pods ( used `-o name` to retrive only their names & the result was piped to tail -2 so that only two of the mames is output . Later command will use the variables to remove the pod)
+```
+root@master:~/# POD_NAME=$(kubectl get pods -o name | tail -2)
+```
+Delete the Pods captured in varibale `POD_NAME`
+```
+root@master:~/# kubectl delete $POD_NAME
+pod "go-demo-2-cfwln" deleted
+pod "go-demo-2-f4x2h" deleted
+```
+Let’s take another look at the Pods in the cluster
+```
+kubectl get pods
+```
+> The **output** is as follows.
+```
+root@master:~/# kubectl get pods
+NAME              READY   STATUS    RESTARTS   AGE
+go-demo-2-7c5fs   2/2     Running   0          31s
+go-demo-2-87djm   2/2     Running   0          3h3m
+go-demo-2-pgrr7   2/2     Running   0          6s
+go-demo-2-rcf7d   2/2     Running   0          6s
+```
+> *`We can see that the Pod we deleted is created back. Since we have a ReplicaSet with replicas set to 4, as soon as it discovered that the number of Pods dropped to 3, it created the two new. This is what called as self-healing features.`*
+
+> *`As long as there are enough available resources in the cluster, ReplicaSets will make sure that the specified number of Pod replicas are (almost) always up-and-running.`*
