@@ -331,7 +331,7 @@ go-demo-2-rcf7d   2/2     Running       3          50m     db=mongo,language=go,
 
 # Quick Quiz
 
-> **This quiz is based on the REplicaSets.**
+> **This quiz is based on the ReplicaSets.**
 
 Let's test our understanding of ReplicaSets with the help of this quiz.
 
