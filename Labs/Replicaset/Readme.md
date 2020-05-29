@@ -94,9 +94,25 @@ go-demo-2-f4x2h   2/2     Running   0          22m     db=mongo,language=go,serv
 ```
 ![db1-yaml.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/db1-yaml.png)
 
+### `Sequential breakdown of the Process followed to create the ReplicaSet`
 
+The sequence of events that happens when you run `kubectl create -f go-demo-2.yml` command is as follows.
 
+1. Kubernetes client (kubectl) sent a request to the API server requesting the creation of a ReplicaSet defined in the `go-demo-2.yml` file.
 
+2. The controller is watching the API server for new events, and it detected that there is a new ReplicaSet object.
+
+3. The controller creates two new pod definitions because we have configured replica value as 2 in go-demo-2.yml file.
+
+4. Since the scheduler is watching the API server for new events,it detected that there are two unassigned Pods.
+
+5. The scheduler decided which node to assign the Pod and sent that information to the API server.
+
+6. Kubelet is also watching the API server.It detected that the two Pods are assigned to the node it is running on.
+
+7. Kubelet sent requests to Docker requesting the creation of the containers that form the Pod. In our case, the Pod defines two containers based on the mongo and api image. So in total four containers are created.
+
+8. Finally, Kubelet sent a request to the API server notifying it that the Pods were created successfully.
 
 
 
