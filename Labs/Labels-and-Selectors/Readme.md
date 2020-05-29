@@ -116,6 +116,9 @@ $ kubectl delete pods labelexother
 Note that labels are not restricted to pods. In fact you can apply them to
 all sorts of objects, such as nodes or services.
 
+#### Create a new pod with two labels.
+Let's create a POD named [kubia-manual-with-labels.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/kubia-manual-with-labels.yaml)
+
 #### Deploy this `label-demo-nginx.yaml` POD
 ```yaml
 apiVersion: v1
