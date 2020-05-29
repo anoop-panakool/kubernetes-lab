@@ -28,9 +28,9 @@ Sr No | Username | Password  | Project Name
 8   | *Student08* | *June@2020* | *LFS458-Student08*
 
 > [Treaining Resources](https://training.linuxfoundation.org/cm/LFS258/)
+> [Practise Files](https://github.com/shivamjhalabfiles/kubernetes-lab)
 
-
-> This LAB setup uses `kubeadm` to install and configure kubernetes cluster.
+> ### This LAB setup uses `kubeadm` to install and configure kubernetes cluster.
 
 ![K8s-cluster](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/K8s-cluster.png)
 
