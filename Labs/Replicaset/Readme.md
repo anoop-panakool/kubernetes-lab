@@ -224,7 +224,7 @@ go-demo-2-vpls4   2/2     Running   0          119s
 
 > Let’s test this property by making a chnages to our system.
 
-Let’s destroy the Pod
+#### Let’s destroy the Pod
 
 ```
 root@master:~/# kubectl get pods
@@ -257,6 +257,50 @@ go-demo-2-87djm   2/2     Running   0          3h3m
 go-demo-2-pgrr7   2/2     Running   0          6s
 go-demo-2-rcf7d   2/2     Running   0          6s
 ```
-> *`We can see that the Pod we deleted is created back. Since we have a ReplicaSet with replicas set to 4, as soon as it discovered that the number of Pods dropped to 3, it created the two new. This is what called as self-healing features.`*
+> *`We can see that the Pod we deleted is created back. Since we have a ReplicaSet with replicas set to 4, as soon as it discovered that the number of Pods dropped to 3, it created the two new. This is what called as self-healing feature.`*
 
 > *`As long as there are enough available resources in the cluster, ReplicaSets will make sure that the specified number of Pod replicas are (almost) always up-and-running.`*
+
+#### Let’s remove a label
+
+Let’s see what happens if we remove one of the Pod labels ReplicaSet uses in its selector.
+
+```
+POD_NAME=$(kubectl get pods -o name | tail -1)
+kubectl label $POD_NAME service-
+kubectl describe $POD_NAME
+```
+> ℹ️ *`Please note - at the end of the name of the label. It is the syntax that indicates that a label should be removed.`*
+
+Described the Pod 
+
+The output of the last command, limited to the labels section, is as follows.
+```
+...
+Labels: db=mongo
+        language=go
+        type=backend
+...
+```
+You will see, the label service is gone.
+
+Now, let’s list the Pods in the cluster and check whether there is any change.
+
+```
+kubectl get pods --show-labels
+```
+> The **output** is as follows
+```
+```
+#### Let’s Re-add a label
+
+> What would happen if we add the label we removed?
+
+```
+kubectl label $POD_NAME service=go-demo-2
+
+kubectl get pods --show-labels
+```
+We added the `service=go-demo-2` label and listed all the Pods.
+
+> The **output** is as follows
