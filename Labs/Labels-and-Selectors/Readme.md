@@ -116,7 +116,7 @@ $ kubectl delete pods labelexother
 Note that labels are not restricted to pods. In fact you can apply them to
 all sorts of objects, such as nodes or services.
 
-## Deploy this `label-demo-nginx.yaml` POD
+#### Deploy this `label-demo-nginx.yaml` POD
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -135,7 +135,7 @@ spec:
 ```
 kubectl create -f label-demo-nginx.yaml
 ```
-## Get pod description:
+#### Get pod description:
     kubectl get po label-demo -o yaml
     kubectl describe po label-demo
 ```
