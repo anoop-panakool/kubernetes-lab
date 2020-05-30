@@ -9,13 +9,12 @@
 - Alibaba provides the [Alibaba Cloud Container Service](https://www.alibabacloud.com/product/container-service)
 
 Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
-## Follow below commnads and observe how pods are getting created 
 
-    kubectl create -f kubia-rc.yaml
-    kubectl get pods
-    kubectl delete pod kubia-53thy
-    kubectl get pods
-    kubectl get rc
+## Using the built-in Kubernetes cluster in Docker Desktop
+
+    If you use macOS or Windows, you can unstall Docker as Desktop to run kubernetes
+    It contains a single-node Kubernetes cluster that you canenable via its Settings dialog box. This may be the easiest way for you to start your Kubernetes journey
+
 
  ### Observe RC
 
