@@ -222,11 +222,48 @@ Events:
   Normal  Started    23m   kubelet, shivam2.labserver.com  Started container kubia
 ```
 
+#### Visualize what happened when you created the Deployment
 
+How creating a Deployment object results in a running application container ?
 
+![visualize-deployment](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/visualize-deployment.jpg)
+
+1. When you ran the kubectl create command, it created a new Deployment object in the cluster by sending an HTTP request to the Kubernetes API server.
+
+2. Kubernetes then created a new Pod object, which was then assigned or scheduled to one of the worker nodes.
+
+3. The Kubernetes agent on the worker node (the Kubelet) became aware of the newly created Pod object, saw that it was scheduled to its node, and instructed Docker to pull the specified image from the registry, create a container from the image, and execute it.
+
+### Expose application to the world
+
+Since our application is now running,but how to access it ?
+
+To make the pod accessible externally, you have to expose it but how ?
+
+#### Creating a Service
+
+    $ kubectl expose deployment shivam --type=LoadBalancer --port 8080
+    service/shivam exposed
+
+#### List the Services
+
+    $ kubectl get services
+    NAME         TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+    kubernetes   ClusterIP      10.96.0.1     <none>        443/TCP          2d2h
+    shivam       LoadBalancer   10.99.22.40   <pending>     8080:31984/TCP   2m16s
+
+NOTE:  Notice the use of the abbreviation `svc` instead of `services`. Most resource types have a short name that you can use instead of the full object type (for example, `po` is short for `pods`, `no` for `nodes` and `deploy` for `deployments`).
+
+![loadBalancer-works](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/loadBalancer-works.jpg)
 
 ## Examples: Common operations
 
+You can display a list of all supported types by running kubectl api-resources. The list also shows the short name for each type and some other information you need to define objects in JSON/YAML files
+
+```shell
+# List all Kubernetes object types
+kubectl api-resources
+```
 Use the following set of examples to help you familiarize yourself with running the commonly used `kubectl` operations:
 
 `kubectl apply` - Apply or Update a resource from a file or stdin.
