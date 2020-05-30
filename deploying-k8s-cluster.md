@@ -141,8 +141,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 
 
-
-    ## Examples: Common operations
+## Examples: Common operations
 
 Use the following set of examples to help you familiarize yourself with running the commonly used `kubectl` operations:
 
