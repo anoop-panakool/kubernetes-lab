@@ -30,7 +30,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
  ### How variuos components in Kubernetes cluster run in Docker Desktop?
 
- [k8s-running-in-docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/k8s-running-in-docker-desktop.jpg)
+![k8s-running-in-docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/k8s-running-in-docker-desktop.jpg)
 
     kubectl get nodes --show-labels
     kubectl drain <node name> --ignore-daemonsets
