@@ -88,9 +88,9 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 ### Create a GKE Kubernetes Cluster with 3 Nodes
 
-    First decide in which geographical region and zone it should be created . Refer to Refer to https://cloud.google.com/compute/docs/regions-zones . 
-    In my case, I use the europe-west3 region based in Frankfurt, Germany. It has three different zones - I’ll use the zone europe-west3-c.
-    The default zone for all gcloud operations can be set with the following command:
+##### First decide in which geographical region and zone it should be created . Refer to Refer to https://cloud.google.com/compute/docs/regions-zones . 
+##### In my case, I use the europe-west3 region based in Frankfurt, Germany. It has three different zones - I’ll use the zone europe-west3-c.
+##### The default zone for all gcloud operations can be set with the following command:
 
     $ gcloud config set compute/zone europe-west3-c
 
@@ -98,17 +98,19 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
     
     
     $ gcloud container clusters create shivam --num-nodes 3
+    
     Creating cluster shivam in europe-west3-c...
     ...
     kubeconfig entry generated for shivam.
     NAME LOCAT. MASTER_VER MASTER_IP MACH_TYPE ... NODES STATUS
     shivam eu-w3-c 1.13.11... 5.24.21.22 n1-standard-1 ... 3 RUNNING
 
-#### NOTE- I’m creating all three worker nodes in the same zone, but you can also spread them across all zones in the region by setting the compute/zone config value to an entire region instead of a single zone. If you do, note that --num-nodes indicates the number of nodes per zone. If the region contains three zones and you only want three nodes, you must set --num-nodes to 1.
+#### NOTE- I have all three worker nodes in the same zone, but you can also spread them across all zones in the region by setting the compute/zone config value to an entire region instead of a single zone. If you do, note that --num-nodes indicates the number of nodes per zone. If the region contains three zones and you only want three nodes, you must set --num-nodes to 1.
     
 ### List the GCE virtual machines
 
    $ gcloud compute instances list
+
    NAME ZONE MACHINE_TYPE INTERNAL_IP EXTERNAL_IP STATUS
    ...-ctlk eu-west3-c n1-standard-1 10.156.0.16 34.89.238.55 RUNNING
    ...-gj1f eu-west3-c n1-standard-1 10.156.0.14 35.242.223.97 RUNNING
