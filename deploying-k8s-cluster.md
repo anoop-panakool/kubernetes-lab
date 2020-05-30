@@ -29,26 +29,34 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
  ####   Remember the Reset Kubernetes Cluster button if you ever want to reset the cluster toremove all the objects you’ve deployed in it.
 
  ### How variuos components in Kubernetes cluster run in Docker Desktop?
- 
+
 
 ![k8s-running-in-docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/k8s-running-in-docker-desktop.jpg)
 
-    kubectl get nodes --show-labels
-    kubectl drain <node name> --ignore-daemonsets
-    kubectl uncordon <node name>
 
- ### Modify a pod's label 
- 
-     kubectl get pods --show-labels
-     kubectl label pod <podname> app=foo --overwrite
- 
-### observe the pods with label column [new pod being created]
-  
-    kubectl get pods -L app
-    kubectl get pods --show-labels
-  
+## Run a local cluster using Minikube
 
-  ![remove-rc-pod.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/remove-rc-pod.png)
+    You can create a Kubernetes cluster using Minikube, a tool maintained by theKubernetes community.
+    The cluster consists of a single node and is suitable for both testing Kubernetes and developing applications locally.
+    It normally runs Kubernetes in a Linux VM, but if your computer is Linux-based, it can also deploy Kubernetes directly in your host OS via Docker.
+ 
+### Install Minikube
+  
+    Minikube supports macOS, Linux, and Windows.
+    It has a single binary executable file, whichy ou’ll find in the Minikube repository on GitHub (http://github.com/kubernetes/minikube).
+    Follow the current installation instructions published there.
+    - On macOS you can install it using the Brew Package Manager,
+    - On Windows there is an installer that you can download, and
+    - On Linux you can either download a .deb or .rpmpackage or simply download the binary file and make it executable with the following command:
+
+    ```
+    $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube
+      [CA] -linux-amd64 && sudo install minikube-linux-amd64 /usr/local/bin/mini
+      [CA] kube
+    ```
+### Start a Kubernetes Cluster with Minikube
+
+  ![minikube-start.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/minikube-start.png)
 
 
 ### Scale out (Horizontally scaling pods)
