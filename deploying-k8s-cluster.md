@@ -16,8 +16,11 @@ If you use macOS or Windows, you can unstall Docker as Desktop to run kubernetes
 
 ## Enable Kubernetes In Docker Desktop
 
-Once you install Docker Desktop installed on your computer, you can start the Kubernetescluster by:  Clicking the whale icon in the system tray and opening the Settings dialog box. Clickthe Kubernetes tab and make sure the Enable Kubernetes checkbox is selected. The components that make up the Control Plane run as Docker containers, but they aren’t displayed in the list of running containers when you invoke the docker ps command.To display them:
-Select the Show system containers checkbox.
+Once you install Docker Desktop installed on your computer, you can start the Kubernetescluster by:
+- Clicking the whale icon in the system tray and opening the Settings dialog box.
+- Clickthe Kubernetes tab and make sure the Enable Kubernetes checkbox is selected.
+- The components that make up the Control Plane run as Docker containers, but they aren’t displayed in the list of running containers when you invoke the docker ps command.To display them:
+- Select the Show system containers checkbox.
 
 ![docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/docker-desktop.jpg)
 
@@ -35,12 +38,12 @@ You can create a Kubernetes cluster using Minikube, a tool maintained by theKube
  
 ### Install Minikube
   
-    Minikube supports macOS, Linux, and Windows.
-    It has a single binary executable file, whichy ou’ll find in the Minikube repository on GitHub (http://github.com/kubernetes/minikube).
-    Follow the current installation instructions published there.
-    - On macOS you can install it using the Brew Package Manager,
-    - On Windows there is an installer that you can download, and
-    - On Linux you can either download a .deb or .rpmpackage or simply download the binary file and make it executable with the following command:
+Minikube supports macOS, Linux, and Windows.
+It has a single binary executable file, whichy ou’ll find in the Minikube repository on GitHub (http://github.com/kubernetes/minikube).
+Follow the current installation instructions published there.
+- On macOS you can install it using the Brew Package Manager,
+- On Windows there is an installer that you can download, and
+- On Linux you can either download a .deb or .rpmpackage or simply download the binary file and make it executable with the following command:
 
     ```
     $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube
@@ -71,14 +74,14 @@ You can create a Kubernetes cluster using Minikube, a tool maintained by theKube
 
 ### Set-up Google Cloud and Installing the GCloud client binary
 
-    First set up your GKE environment
+First set up your GKE environment
 
-    Below are the procedure:  
-    1. Signing up for a Google account if you don’t have one already.
-    2. Creating a project in the Google Cloud Platform Console.
-    3. Enabling billing. This does require your credit card info, but Google provides a 12-month free trial with a free $300 credit. And they don’t start charging automaticallyafter the free trial is over.
-    4. Downloading and installing the Google Cloud SDK, which includes the gcloud tool.
-    5. Creating the cluster using the gcloud command-line tool.
+Below are the procedure:  
+1. Signing up for a Google account if you don’t have one already.
+2. Creating a project in the Google Cloud Platform Console.
+3. Enabling billing. This does require your credit card info, but Google provides a 12-month free trial with a free $300 credit. And they don’t start charging automaticallyafter the free trial is over.
+4. Downloading and installing the Google Cloud SDK, which includes the gcloud tool.
+5. Creating the cluster using the gcloud command-line tool.
 
 ### Create a GKE Kubernetes Cluster with 3 Nodes
 
