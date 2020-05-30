@@ -18,7 +18,11 @@
 
 ![delete-rc-pod.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/delete-rc-pod.png)
 
+ ### Remove One Node(Use kubectl drain to remove a node) from cluster and check the status of POD
 
+    kubectl get nodes --show-labels
+    kubectl drain <node name> --ignore-daemonsets
+    kubectl uncordon <node name>
 
  ### Modify a pod's label 
  
