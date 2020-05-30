@@ -68,7 +68,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
    
     The architecture of the system, in this figure, is practically identical to Docker Desktop.
 
-![Kubernetes-cluster-using-Minikube.jpg](](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/Kubernetes-cluster-using-Minikube.jpg)
+![Kubernetes-cluster-using-Minikube.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/Kubernetes-cluster-using-Minikube.jpg)
 
 
 ## Create a managed cluster with Google Kubernetes Engine
@@ -116,4 +116,4 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 #### NOTE-  Each VM incurs costs. To reduce the cost of your cluster, you can reduce the number of nodes to one, or even to zero while not using it. See next section for details.
 
-![GoogleKubernetesEngine.jpg](](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/GoogleKubernetesEngine)
+![GoogleKubernetesEngine.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/GoogleKubernetesEngine)
