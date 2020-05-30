@@ -1,6 +1,6 @@
 ### Deploying a Kubernetes Cluster
 
-####  A proper Kubernetes installation spans multiple physical or virtual machines and requires proper network setup to allow all containers in the cluster to communicate with each other. You can install Kubernetes on your laptop computer, on your organization’s infrastructure, or on virtual machines provided by cloud providers (Google Compute Engine, Amazon EC2,Microsoft Azure, and so on). Most cloud providers now offer managed Kubernetes services, saving you from the hassle of installation and management. Few of the largest cloud providers offer:
+A proper Kubernetes installation spans multiple physical or virtual machines and requires proper network setup to allow all containers in the cluster to communicate with each other. You can install Kubernetes on your laptop computer, on your organization’s infrastructure, or on virtual machines provided by cloud providers (Google Compute Engine, Amazon EC2,Microsoft Azure, and so on). Most cloud providers now offer managed Kubernetes services, saving you from the hassle of installation and management. Few of the largest cloud providers offer:
 
 - Google offers GKE - [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine)
 - Amazon has EKS - [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/)
@@ -12,17 +12,17 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 ## Using the built-in Kubernetes cluster in Docker Desktop
 
-##### If you use macOS or Windows, you can unstall Docker as Desktop to run kubernetes. It contains a single-node Kubernetes cluster that you canenable via its Settings dialog box. This may be the easiest way for you to start your Kubernetes journey.
+If you use macOS or Windows, you can unstall Docker as Desktop to run kubernetes. It contains a single-node Kubernetes cluster that you canenable via its Settings dialog box. This may be the easiest way for you to start your Kubernetes journey.
 
 ## Enable Kubernetes In Docker Desktop
 
-##### Once you install Docker Desktop installed on your computer, you can start the Kubernetescluster by:  Clicking the whale icon in the system tray and opening the Settings dialog box. Clickthe Kubernetes tab and make sure the Enable Kubernetes checkbox is selected. The components that make up the Control Plane run as Docker containers, but they aren’t displayed in the list of running containers when you invoke the docker ps command.To display them:
-##### Select the Show system containers checkbox.
+Once you install Docker Desktop installed on your computer, you can start the Kubernetescluster by:  Clicking the whale icon in the system tray and opening the Settings dialog box. Clickthe Kubernetes tab and make sure the Enable Kubernetes checkbox is selected. The components that make up the Control Plane run as Docker containers, but they aren’t displayed in the list of running containers when you invoke the docker ps command.To display them:
+Select the Show system containers checkbox.
 
 ![docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/docker-desktop.jpg)
 
 
- ####   Remember the Reset Kubernetes Cluster button if you ever want to reset the cluster toremove all the objects you’ve deployed in it.
+ Remember the Reset Kubernetes Cluster button if you ever want to reset the cluster toremove all the objects you’ve deployed in it.
 
  ### Visualize how variuos components in Kubernetes cluster run in Docker Desktop?
 
@@ -31,7 +31,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 ## Run a local cluster using Minikube
 
-##### You can create a Kubernetes cluster using Minikube, a tool maintained by theKubernetes community. The cluster consists of a single node and is suitable for both testing Kubernetes and developing applications locally.It normally runs Kubernetes in a Linux VM, but if your computer is Linux-based, it can also deploy Kubernetes directly in your host OS via Docker.
+You can create a Kubernetes cluster using Minikube, a tool maintained by theKubernetes community. The cluster consists of a single node and is suitable for both testing Kubernetes and developing applications locally.It normally runs Kubernetes in a Linux VM, but if your computer is Linux-based, it can also deploy Kubernetes directly in your host OS via Docker.
  
 ### Install Minikube
   
@@ -82,7 +82,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 ### Create a GKE Kubernetes Cluster with 3 Nodes
 
-##### First decide in which geographical region and zone it should be created . Refer to Refer to https://cloud.google.com/compute/docs/regions-zones .In my case, I use the europe-west3 region based in Frankfurt, Germany. It has three different zones - I’ll use the zone europe-west3-c.The default zone for all gcloud operations can be set with the following command:
+First decide in which geographical region and zone it should be created . Refer to Refer to https://cloud.google.com/compute/docs/regions-zones .In my case, I use the europe-west3 region based in Frankfurt, Germany. It has three different zones - I’ll use the zone europe-west3-c.The default zone for all gcloud operations can be set with the following command:
 
     $ gcloud config set compute/zone europe-west3-c
 
