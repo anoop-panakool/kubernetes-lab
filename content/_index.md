@@ -1,6 +1,6 @@
 This is a hands-on introduction to Kubernetes. Browse the examples:
 
-- [pods](pods/)
+- [pods](/pods.md)
 - [labels](/labels/)
 - [deployments](/deployments/)
 - [services](/services/)
