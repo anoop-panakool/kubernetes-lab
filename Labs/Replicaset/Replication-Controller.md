@@ -3,19 +3,19 @@
 # Replication Controller
 
 ## Follow below commnads and observe how pods are getting created 
-   ```
+
     kubectl create -f kubia-rc.yaml
     kubectl get pods
     kubectl delete pod kubia-53thy
     kubectl get pods
     kubectl get rc
-   ```
- ### Observe RC
-    ```
-    kubectl describe rc kubia
-  ```
 
-  
+ ### Observe RC
+
+    kubectl describe rc kubia
+
+
+
 ![delete-rc-pod.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/delete-rc-pod.png)
 
 
