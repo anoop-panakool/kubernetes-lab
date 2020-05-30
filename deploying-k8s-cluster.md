@@ -80,7 +80,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
     First set up your GKE environment
 
     Below are the procedure:  
-    1.  Signing up for a Google account if you don’t have one already.
+    1. Signing up for a Google account if you don’t have one already.
     2. Creating a project in the Google Cloud Platform Console.
     3. Enabling billing. This does require your credit card info, but Google provides a 12-month free trial with a free $300 credit. And they don’t start charging automaticallyafter the free trial is over.
     4. Downloading and installing the Google Cloud SDK, which includes the gcloud tool.
@@ -88,9 +88,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 ### Create a GKE Kubernetes Cluster with 3 Nodes
 
-##### First decide in which geographical region and zone it should be created . Refer to Refer to https://cloud.google.com/compute/docs/regions-zones . 
-##### In my case, I use the europe-west3 region based in Frankfurt, Germany. It has three different zones - I’ll use the zone europe-west3-c.
-##### The default zone for all gcloud operations can be set with the following command:
+##### First decide in which geographical region and zone it should be created . Refer to Refer to https://cloud.google.com/compute/docs/regions-zones .In my case, I use the europe-west3 region based in Frankfurt, Germany. It has three different zones - I’ll use the zone europe-west3-c.The default zone for all gcloud operations can be set with the following command:
 
     $ gcloud config set compute/zone europe-west3-c
 
