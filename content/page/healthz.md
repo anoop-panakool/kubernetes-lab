@@ -1,9 +1,8 @@
-+++
-title = "Health Checks"
-subtitle = "Kubernetes health checks by example"
-date = "2019-02-27"
-url = "/healthz/"
-+++
+
+![Kubernetes_logo.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/Kubernetes-logo.png)
+
+###  `Kubernetes health checks by example`
+
 
 In order to verify if a container in a pod is healthy and ready to serve traffic,
 Kubernetes provides for a range of health checking mechanisms. Health checks,
