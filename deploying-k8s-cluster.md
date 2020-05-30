@@ -113,7 +113,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 ![GoogleKubernetesEngine.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/GoogleKubernetesEngine.jpg)
 
 
-### How to scale the number of nodes in GKE
+### How to scale the number of nodes in GKE?
 
 ##### We can easily increase or decrease the number of nodes in your cluster
 
