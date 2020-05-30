@@ -111,3 +111,12 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 #### NOTE-  Each VM incurs costs. To reduce the cost of your cluster, you can reduce the number of nodes to one, or even to zero while not using it. See next section for details.
 
 ![GoogleKubernetesEngine.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/GoogleKubernetesEngine.jpg)
+
+
+### How to scale the number of nodes in GKE
+
+##### We can easily increase or decrease the number of nodes in your cluster
+
+##### To scale the cluster to zero, use the below command:
+
+    $ gcloud container clusters resize kubia --size 0
