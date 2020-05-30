@@ -25,6 +25,9 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 ![docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/docker-desktop.jpg)
 
+
+ ####   Remember the Reset Kubernetes Cluster button if you ever want to reset the cluster toremove all the objects you’ve deployed in it.
+
  ### Remove One Node(Use kubectl drain to remove a node) from cluster and check the status of POD
 
     kubectl get nodes --show-labels
