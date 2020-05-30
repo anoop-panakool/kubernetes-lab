@@ -16,10 +16,10 @@ To install docker desktop [follow these steps](https://docs.docker.com/docker-fo
 
 **Student LAB details**
 
-Sr No | Username | Password  | Project Name| Email Id
+Sr No | Username | Password  | Project Name | Email Id
 ------|-------------|--------| ---------------------- 
 1   | *Student01* | *June@2020* | *LFS458-Student01*|
-2   | *Student02* | *June@2020* | *LFS458-Student02*|edi5k8student02@gmail.com
+2   | *Student02* | *June@2020* | *LFS458-Student02*| *edi5k8student02@gmail.com*
 3   | *Student03* | *June@2020* | *LFS458-Student03*|
 4   | *Student04* | *June@2020* | *LFS458-Student04*|
 5   | *Student05* | *June@2020* | *LFS458-Student05*|
