@@ -158,7 +158,7 @@ A pod is a group of one or more closely related containers that run together on 
 
 In this picture we can see, the relationship between containers, pods, and worker nodes
 
-[pod-containers-workernode-relation] (https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/rpod-containers-workernode-relation.jpg)
+![pod-containers-workernode-relation] (https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/rpod-containers-workernode-relation.jpg)
 
 #### List the PODS
 
