@@ -28,7 +28,9 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
  ####   Remember the Reset Kubernetes Cluster button if you ever want to reset the cluster toremove all the objects you’ve deployed in it.
 
- ### Remove One Node(Use kubectl drain to remove a node) from cluster and check the status of POD
+ ### How variuos components in Kubernetes cluster run in Docker Desktop?
+
+ [k8s-running-in-docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/k8s-running-in-docker-desktop.jpg)
 
     kubectl get nodes --show-labels
     kubectl drain <node name> --ignore-daemonsets
