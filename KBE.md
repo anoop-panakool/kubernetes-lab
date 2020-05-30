@@ -1,6 +1,7 @@
-# Learn Kubernetes By Example !
+# Learn Kubernetes By Example ! 
 
-  [`kubernetesbyexample.com`](http://kubernetesbyexample.com) 
+[`kubernetesbyexample.com`](http://kubernetesbyexample.com) 
+
 
 
 
