@@ -131,11 +131,35 @@ Once Kubernetes Cluster is up and running then deploy something to your cluster.
 Since this may be our first time deploying an application to Kubernetes, let’s choose an easier way to do this. We’ll use simple, one-line imperative commands to deploy our application.
 
 #### Deploying application using imperative way, use the *`kubectl create deployment`* command
+By default, the image is pulled from Docker Hub, but you can also specify the image registry in the image name (for example, quay.io/).
+### 
+Make sure that the image is stored in a public registry and can be pulled without access authorization.
 
-    Create Deployment
+#### Create Deployment
     
-    $ kubectl create deployment kubia --image=luksa/kubia
-    deployment.apps/kubia created
+    $ kubectl create deployment shivam --image=luksa/kubia
+    deployment.apps/shivam created
+
+    $ kubectl get deployments
+
+    NAME     READY   UP-TO-DATE   AVAILABLE   AGE
+    shivam   0/1     1            0           88s
+
+    NAME     READY   UP-TO-DATE   AVAILABLE   AGE
+    shivam   1/1     1            1           88s
+     
+    $ kubectl get containers
+    error: the server doesn't have a resource type "containers"
+
+##  Introduction of PODS
+
+In Kubernetes, instead of deploying individual containers, you deploy groups of co-located containers – so-called pods.
+A pod is a group of one or more closely related containers that run together on the same worker node and need to share certain Linux namespaces, so that they can interact more closely than with other pods.
+
+In this picture we can see, the relationship between containers, pods, and worker nodes
+
+[pod-containers-workernode-relation] (https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/rpod-containers-workernode-relation.jpg)
+
 
 
 
