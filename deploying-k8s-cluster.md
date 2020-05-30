@@ -23,12 +23,6 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
     The components that make up the Control Plane run as Docker containers, but they aren’t displayed in the list of running containers when you invoke the docker ps command.To display them: 
     Select the Show system containers checkbox.
 
- ### Observe RC
-
-    kubectl describe rc kubia
-
-
-
 ![docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/docker-desktop.jpg)
 
  ### Remove One Node(Use kubectl drain to remove a node) from cluster and check the status of POD
