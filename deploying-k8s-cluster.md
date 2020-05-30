@@ -124,8 +124,8 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 ##  Running your first application on Kubernetes
 
-#### Once Kubernetes Cluster is up and running then deploy something to your cluster.To deploy an application you have to prepare a JSON or YAML file describing all the components that your application consists of and apply that file to your cluster. This would be the declarative approach.
-#### Since this may be our first time deploying an application to Kubernetes, let’s choose an easier way to do this. We’ll use simple, one-line imperative commands to deploy our application.
+Once Kubernetes Cluster is up and running then deploy something to your cluster.To deploy an application you have to prepare a JSON or YAML file describing all the components that your application consists of and apply that file to your cluster. This would be the declarative approach.
+Since this may be our first time deploying an application to Kubernetes, let’s choose an easier way to do this. We’ll use simple, one-line imperative commands to deploy our application.
 
 #### Deploying application using imperative way, use the *`kubectl create deployment`* command
 
@@ -196,7 +196,7 @@ kubectl describe pods <rc-name>
 # Describe all pods
 kubectl describe pods
 ```
-### Snote
+### Note
 The `kubectl get` command is usually used for retrieving one or more resources of the same resource type. It features a rich set of flags that allows you to customize the output format using the `-o` or `--output` flag, for example.
 You can specify the `-w` or `--watch` flag to start watching updates to a particular object. The `kubectl describe` command is more focused on describing the many related aspects of a specified resource. It may invoke several API calls to the API server to build a view for the user. For example, the `kubectl describe node`
 command retrieves not only the information about the node, but also a summary of the pods running on it, the events generated for the node etc.
