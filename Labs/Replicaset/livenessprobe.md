@@ -1,6 +1,6 @@
-### liveness probes & rediness probes
+## liveness probes & rediness probes
 
-#### `Kubernetes can check if a container is still alive through liveness probes. You can specify a liveness probe for each container in the pod’s specification. Kubernetes will periodically execute the probe and restart the container if the probe fails.`
+#### Kubernetes can check if a container is still alive through liveness probes. You can specify a liveness probe for each container in the pod’s specification. Kubernetes will periodically execute the probe and restart the container if the probe fails.
 
 #### Kubernetes can probe a container using one of the three mechanisms:
 
@@ -29,50 +29,8 @@ the command’s exit status code. If the status code is 0, the probe is successf
 ``` 
     kubectl describe po kubia-liveness
 ```
-*`You can see that the container is currently running/Waiting, but it previously terminated because of an error.The exit code was 137, which has a special meaning—it denotes that the process was terminated by an external signal The number 137 is a sum of two numbers: 128+x, where x is the signal number sent to the process that caused it to terminate. In the example, x equals 9, which is the number of the SIGKILL signal, meaning the process was killed forcibly.`*
+*You can see that the container is currently running/Waiting, but it previously terminated because of an error.The exit code was 137, which has a special meaning—it denotes that the process was terminated by an external signal The number 137 is a sum of two numbers: 128+x, where x is the signal number sent to the process that caused it to terminate. In the example, x equals 9, which is the number of the SIGKILL signal, meaning the process was killed forcibly.*
 
-*`The events listed at the bottom show why the container was killed—Kubernetes detected the container was unhealthy, so it killed and re-created it.`*
+*The events listed at the bottom show why the container was killed—Kubernetes detected the container was unhealthy, so it killed and re-created it.*
 
-*`NOTE When a container is killed, a completely new container is created—it’s not the same container being restarted again.`*
-
-### Scale out
-```
-    kubectl scale rc kubia --replicas=10
-```
-### Delete without deleting pods 
-    kubectl delete rc kubia --cascade=false
-   
-  # Replica set
-   
- ### Replica Set creation 
-    kubectl create -f kubia-replicaset.yaml
-
-    kubectl get rs 
-    kubectl describe rs
- 
-# Daemon set
- 
- ### This daemon set is designed to run on all the disks that has ssd disk (disk=ssd )
-      kubectl create -f ssd-monitor-daemonset.yaml
-      kubectl get ds
-      kubectl get po
-      kubectl get node
-      kubectl label node <nodename> disk=ssd
- 
- ### check it now 
-     kubectl get po
-  
-# job
-      kubectl get jobs
-      kubectl get po
-
-### After the two minutes have passed, see the status "completed"
-     kubectl get po -a
-     kubectl logs <jobpodname>
-
-### Sequential completion and parallelism
-
-    kubectl create -f multi-completion-batch-job.yaml
-    kubectl create -f multi-completion-parallel-batch-job.yaml
-### You can even change a Job’s parallelism property while the Job is running
-    kubectl scale job multi-completion-batch-job --replicas 3
+*NOTE When a container is killed, a completely new container is created—it’s not the same container being restarted again.*
