@@ -128,3 +128,8 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 #### Since this may be our first time deploying an application to Kubernetes, let’s choose an easier way to do this. We’ll use simple, one-line imperative commands to deploy our application.
 
 #### Deploying application using imperative way, use the *`kubectl create deployment`* command
+
+     Create Deployment
+    
+    $ kubectl create deployment kubia --image=luksa/kubia
+    deployment.apps/kubia created 
