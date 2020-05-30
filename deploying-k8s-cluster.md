@@ -29,7 +29,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 
 
-![delete-rc-pod.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/delete-rc-pod.png)
+![docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/docker-desktop.jpg)
 
  ### Remove One Node(Use kubectl drain to remove a node) from cluster and check the status of POD
 
