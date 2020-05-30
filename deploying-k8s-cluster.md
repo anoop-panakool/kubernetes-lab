@@ -98,7 +98,7 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
     
     
     $ gcloud container clusters create shivam --num-nodes 3
-    
+
     Creating cluster shivam in europe-west3-c...
     ...
     kubeconfig entry generated for shivam.
@@ -109,12 +109,12 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
     
 ### List the GCE virtual machines
 
-   $ gcloud compute instances list
+    $ gcloud compute instances list
 
-   NAME ZONE MACHINE_TYPE INTERNAL_IP EXTERNAL_IP STATUS
-   ...-ctlk eu-west3-c n1-standard-1 10.156.0.16 34.89.238.55 RUNNING
-   ...-gj1f eu-west3-c n1-standard-1 10.156.0.14 35.242.223.97 RUNNING
-   ...-r01z eu-west3-c n1-standard-1 10.156.0.15 35.198.191.189 RUNNING
+    NAME ZONE MACHINE_TYPE INTERNAL_IP EXTERNAL_IP STATUS
+    ...-ctlk eu-west3-c n1-standard-1 10.156.0.16 34.89.238.55 RUNNING
+    ...-gj1f eu-west3-c n1-standard-1 10.156.0.14 35.242.223.97 RUNNING
+    ...-r01z eu-west3-c n1-standard-1 10.156.0.15 35.198.191.189 RUNNING
 
 #### NOTE-  Each VM incurs costs. To reduce the cost of your cluster, you can reduce the number of nodes to one, or even to zero while not using it. See next section for details.
 
