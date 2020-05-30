@@ -15,6 +15,13 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
     If you use macOS or Windows, you can unstall Docker as Desktop to run kubernetes
     It contains a single-node Kubernetes cluster that you canenable via its Settings dialog box. This may be the easiest way for you to start your Kubernetes journey
 
+## Enable Kubernetes In Docker Desktop
+
+    Once you install Docker Desktop installed on your computer, you can start the Kubernetescluster by:
+    Clicking the whale icon in the system tray and opening the Settings dialog box.
+    Clickthe Kubernetes tab and make sure the Enable Kubernetes checkbox is selected.
+    The components that make up the Control Plane run as Docker containers, but they aren’t displayed in the list of running containers when you invoke the docker ps command.To display them: 
+    Select the Show system containers checkbox.
 
  ### Observe RC
 
