@@ -18,14 +18,14 @@ To install docker desktop [follow these steps](https://docs.docker.com/docker-fo
 
 Sr No | Username | Password  | Project Name | Email Id
 ------|-------------|--------| --------------- |--------|
-1   | *Student01* | *June@2020* | *LFS458-Student01* |
-2   | *Student02* | *June@2020* | *LFS458-Student02* |
-3   | *Student03* | *June@2020* | *LFS458-Student03* |
-4   | *Student04* | *June@2020* | *LFS458-Student04* |
-5   | *Student05* | *June@2020* | *LFS458-Student05* |
-6   | *Student06* | *June@2020* | *LFS458-Student06* |
-7   | *Student07* | *June@2020* | *LFS458-Student07* |
-8   | *Student08* | *June@2020* | *LFS458-Student08* |
+1   | *Student01* | *June@2020* | *LFS458-Student01* | edi5k8student01@gmail.com
+2   | *Student02* | *June@2020* | *LFS458-Student02* | edi5k8student02@gmail.com
+3   | *Student03* | *June@2020* | *LFS458-Student03* | edi5k8student03@gmail.com
+4   | *Student04* | *June@2020* | *LFS458-Student04* | edi5k8student04@gmail.com
+5   | *Student05* | *June@2020* | *LFS458-Student05* | edi5k8student05@gmail.com
+6   | *Student06* | *June@2020* | *LFS458-Student06* | edi5k8student06@gmail.com
+7   | *Student07* | *June@2020* | *LFS458-Student07* | edi5k8student07@gmail.com
+8   | *Student08* | *June@2020* | *LFS458-Student08* | edi5k8student08@gmail.com
 
 > [Treaining Resources](https://training.linuxfoundation.org/cm/LFS258/)
 
