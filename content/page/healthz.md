@@ -1,7 +1,4 @@
-
-![Kubernetes_logo.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/Kubernetes-logo.png)
-
-###  `Kubernetes health checks by example`
+###                     `Kubernetes health checks by example`
 
 
 In order to verify if a container in a pod is healthy and ready to serve traffic,
@@ -130,4 +127,3 @@ $ kubectl delete pod/hc pod/ready pod/badpod
 Learn more about configuring probes, including TCP and command probes, via the
 [docs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).
 
-[Previous](/sd) | [Next](/envs)
