@@ -287,6 +287,7 @@ http://NODEIP:31000/#!/node?namespace=default
 The Dashboard Looks like:
 
 ![Kubernetes Dashboard.\label{fig:captioned_image}](images/Kubernetes-Dashboard.png)
+![k8s-dasboard.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/k8s-dasboard.png)
     
 ### Set up Visualiser
 
