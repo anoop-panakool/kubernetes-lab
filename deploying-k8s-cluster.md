@@ -160,10 +160,67 @@ In this picture we can see, the relationship between containers, pods, and worke
 
 [pod-containers-workernode-relation] (https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/rpod-containers-workernode-relation.jpg)
 
+#### List the PODS
 
+    $ kubectl get pods
+    NAME                      READY   STATUS    RESTARTS   AGE
+    shivam-7878fc7498-wccd9   1/1     Running   0          20m
 
+#### To see more information about the pod, use the `kubectl describe pod` command,
 
-
+```yaml
+root@master:~# kubectl describe pod shivam-7878fc7498-wccd9
+Name:         shivam-7878fc7498-wccd9
+Namespace:    default
+Priority:     0
+Node:         shivam2c.mylabserver.com/172.31.109.218
+Start Time:   Sat, 30 May 2020 22:01:23 +0000
+Labels:       app=shivam
+              pod-template-hash=7878fc7498
+Annotations:  <none>
+Status:       Running
+IP:           10.244.1.52
+IPs:
+  IP:           10.244.1.52
+Controlled By:  ReplicaSet/shivam-7878fc7498
+Containers:
+  kubia:
+    Container ID:   docker://af0e32ff383beec7b3a65206655d374edb6d39d7f5e7271cf4dfc30fe2663527
+    Image:          luksa/kubia
+    Image ID:       docker-pullable://luksa/kubia@sha256:3f28e304dc0f63dc30f273a4202096f0fa0d08510bd2ee7e1032ce600616de24
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sat, 30 May 2020 22:01:25 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-4dfq6 (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-4dfq6:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-4dfq6
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age   From                               Message
+  ----    ------     ----  ----                               -------
+  Normal  Scheduled  23m   default-scheduler                  Successfully assigned default/shivam-7878fc7498-wccd9 to shivam2.labserver.com
+  Normal  Pulling    23m   kubelet, shivam2.labserver.com  Pulling image "luksa/kubia"
+  Normal  Pulled     23m   kubelet, shivam2.labserver.com  Successfully pulled image "luksa/kubia"
+  Normal  Created    23m   kubelet, shivam2.labserver.com  Created container kubia
+  Normal  Started    23m   kubelet, shivam2.labserver.com  Started container kubia
+```
 
 
 
