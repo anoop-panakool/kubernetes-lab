@@ -43,9 +43,18 @@
     kubectl scale rc kubia --replicas=10
 
              OR Declarative way
-             
-    kubectl edit rc kubia2
 
+    kubectl edit rc kubia2
+    kubectl get rc
+
+### Scale down to 3
+
+    kubectl scale rc kubia --replicas=3
+
+             OR Declarative way
+
+    kubectl edit rc kubia2
+    kubectl get rc
 
 ### Delete RC without deleting pods 
 
