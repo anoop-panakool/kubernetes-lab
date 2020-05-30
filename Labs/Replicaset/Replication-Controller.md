@@ -21,24 +21,23 @@
 
 
  ### Modify a pod's label 
-     ```
+ 
      kubectl get pods --show-labels
      kubectl label pod <podname> app=foo --overwrite
-     ```
+ 
 ### observe the pods with label column [new pod being created]
-    ```
+  
     kubectl get pods -L app
-    ```
   
 ### Scale out
-```
+
     kubectl scale rc kubia --replicas=10
-```
+
 
 ### Delete without deleting pods 
-```
+
     kubectl delete rc kubia --cascade=false
-```
+
    
   # Replica set
    
