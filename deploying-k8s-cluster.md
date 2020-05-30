@@ -123,3 +123,8 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 
 ##  Running your first application on Kubernetes
+
+#### Once Kubernetes Cluster is up and running then deploy something to your cluster.To deploy an application you have to prepare a JSON or YAML file describing all the components that your application consists of and apply that file to your cluster. This would be the declarative approach.
+#### Since this may be our first time deploying an application to Kubernetes, let’s choose an easier way to do this. We’ll use simple, one-line imperative commands to deploy our application.
+
+##### Deploying application using imperative way, use the `kubectl create deployment` command
