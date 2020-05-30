@@ -276,17 +276,18 @@ kubectl apply -f https://gist.githubusercontent.com/initcron/32ff89394c881414ea7
 This will create a pod for the Kubernetes Dashboard.
 
 
-Dashboard would be setup and available on port 31000. To access it go to the browser, and provide the  following URL
+Dashboard would be setup and available on port 31000 ( in my cluster it's at 30085). To access it go to the browser, and provide the  following URL
 
 `use any of your node's (VM/Server) IP here`
 
 ```
 http://NODEIP:31000/#!/node?namespace=default
+       or 
+https://63.32.55.212:30085/#/login
 ```
 
 The Dashboard Looks like:
 
-![Kubernetes Dashboard.\label{fig:captioned_image}](images/Kubernetes-Dashboard.png)
 ![k8s-dasboard.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/k8s-dasboard.png)
     
 ### Set up Visualiser
