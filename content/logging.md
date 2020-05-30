@@ -1,9 +1,7 @@
-+++
-title = "Logging"
-subtitle = "Kubernetes logging by example"
-date = "2019-02-28"
-url = "/logging/"
-+++
+## Logging
+
+*Kubernetes logging by example*
+
 
 Logging is one option to understand what is going on inside your applications
 and the cluster at large. Basic logging in Kubernetes makes the output a
@@ -69,5 +67,3 @@ You can remove the created pods with:
 ```bash
 $ kubectl delete pod/logme pod/oneshot
 ```
-
-[Previous](/secrets) | [Next](/jobs)

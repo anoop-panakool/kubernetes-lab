@@ -1,9 +1,6 @@
-+++
-title = "Secrets"
-subtitle = "Kubernetes secrets by example"
-date = "2019-02-28"
-url = "/secrets/"
-+++
+## Secrets
+
+*Kubernetes secrets by example*
 
 You don't want sensitive information such as a database password or an
 API key kept around in clear text. Secrets provide you with a mechanism
@@ -62,5 +59,3 @@ You can remove both the pod and the secret with:
 ```bash
 $ kubectl delete pod/consumesec secret/apikey
 ```
-
-[Previous](/volumes) | [Next](/logging)

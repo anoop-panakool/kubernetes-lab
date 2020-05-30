@@ -1,4 +1,6 @@
-###                     `Kubernetes health checks by example`
+##  Kubernetes health checks by example
+
+*Kubernetes health checks (livenessProbe & readinessProbe) by example*
 
 
 In order to verify if a container in a pod is healthy and ready to serve traffic,

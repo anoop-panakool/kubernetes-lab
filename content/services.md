@@ -1,9 +1,6 @@
-+++
-title = "Services"
-subtitle = "Kubernetes services by example"
-date = "2019-02-27"
-url = "/services/"
-+++
+### Services
+
+*Kubernetes services by example*
 
 A service is an abstraction for pods, providing a stable, so called virtual IP (VIP) address. While pods may come and go and with it their IP addresses, a service allows clients to reliably connect to the containers running in the pod using the VIP. The `virtual` in VIP means it is not an actual IP address connected to a network interface, but its purpose is purely to forward traffic to one or more pods. Keeping the mapping between the VIP and the
 pods up-to-date is the job of [kube-proxy](https://kubernetes.io/docs/admin/kube-proxy/), a process that runs on every node, which queries the API server to learn about

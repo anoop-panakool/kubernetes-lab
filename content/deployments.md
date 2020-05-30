@@ -1,9 +1,6 @@
-+++
-title = "Deployments"
-subtitle = "Kubernetes deployments by example"
-date = "2019-02-27"
-url = "/deployments/"
-+++
+## Deployments
+
+*subtitle = "*Kubernetes deployments by example*
 
 A deployment is a supervisor for [pods](/pods/), giving you fine-grained control over how and when a new pod version is rolled out as well as rolled back to a previous state.
 
@@ -128,4 +125,3 @@ deployment "sise-deploy" deleted
 See also the [docs](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 for more options on deployments and when they are triggered.
 
-[Previous](/labels) | [Next](/services)

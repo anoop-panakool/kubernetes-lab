@@ -1,9 +1,6 @@
-+++
-title = "Namespaces"
-subtitle = "Kubernetes namespaces by example"
-date = "2020-03-23"
-url = "/ns/"
-+++
+## Namespaces
+
+*Kubernetes namespaces by example*
 
 Namespaces provide a scope for Kubernetes resources, carving up your cluster in smaller units. You can think of it
 as a workspace you're sharing with other users. Many resources such as pods and
@@ -94,5 +91,3 @@ $ kubectl delete ns test
 
 If you're an admin, you might want to check out the [docs](https://kubernetes.io/docs/tasks/administer-cluster/namespaces/)
 for more info how to handle namespaces.
-
-[Previous](/envs) | [Next](/volumes)

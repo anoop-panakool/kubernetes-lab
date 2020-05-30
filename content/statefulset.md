@@ -1,9 +1,6 @@
-+++
-title = "StatefulSet"
-subtitle = "Kubernetes statefulset by example"
-date = "2020-03-23"
-url = "/statefulset/"
-+++
+## StatefulSet
+
+*Kubernetes statefulset by example*
 
 If you have a stateless app you want to use a deployment. However, for a stateful app you might want to use a [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/). Unlike a deployment, the `StatefulSet` provides certain guarantees about the identity of the pods it is managing (that is, predictable names) and about the startup order. Two more things that are different compared to a deployment: for network communication you need to create a [headless services](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) and for persistency the `StatefulSet` manages a [persistent volume](/pv) per pod.
 

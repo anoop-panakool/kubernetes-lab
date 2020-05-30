@@ -1,9 +1,6 @@
-+++
-title = "Environment Variables"
-subtitle = "Kubernetes environment variables by example"
-date = "2019-02-27"
-url = "/envs/"
-+++
+## Environment Variables
+
+*Kubernetes environment variables by example*
 
 You can set environment variables for containers running in a pod and in
 addition, Kubernetes exposes certain runtime infos via environment variables
@@ -63,5 +60,3 @@ $ kubectl delete pod/envs
 
 In addition to the above provided environment variables, you can expose more using
 the [downward API](https://kubernetes.io/docs/user-guide/downward-api/).
-
-[Previous](/healthz) | [Next](/ns)

@@ -1,9 +1,6 @@
-+++
-title = "Init Containers"
-subtitle = "Kubernetes init containers by example"
-date = "2019-02-26"
-url = "/ic/"
-+++
+### Init Containers
+
+*Kubernetes init containers by example*
 
 It's sometimes necessary to prepare a container running in a pod. For example, you might want to wait for a service being available, want to configure things at runtime, or init some data in a database. In all of these cases, [init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) are useful. Note that Kubernetes will execute all init containers (and they must all exit successfully) before the main container(s) are executed. 
 

@@ -1,9 +1,6 @@
-+++
-title = "Pods"
-subtitle = "Kubernetes pods by example"
-date = "2019-03-23"
-url = "/pods/"
-+++
+## Pods
+
+*Kubernetes pods by example*
 
 A pod is a collection of containers sharing a network and mount namespace
 and is the basic unit of deployment in Kubernetes. All containers in a pod
@@ -100,4 +97,3 @@ however doing it directly as shown above comes with a serious limitation: you ha
 manually take care of keeping them running in case of a failure. A better way
 to supervise pods is to use [deployments](/deployments), giving you much more control over the life cycle, including rolling out a new version.
 
-[Next](/labels)

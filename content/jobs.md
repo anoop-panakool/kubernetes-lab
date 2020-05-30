@@ -1,9 +1,6 @@
-+++
-title = "Jobs"
-subtitle = "Kubernetes jobs by example"
-date = "2020-03-19"
-url = "/jobs/"
-+++
+## Jobs
+
+*Kubernetes jobs by example*
 
 A [job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/) in Kubernetes is a supervisor for pods carrying out batch processes, that is,
 a process that runs for a certain time to completion, for example a calculation
@@ -93,4 +90,3 @@ Note that there are also more advanced ways to use jobs, for example,
 by utilizing a [work queue](https://kubernetes.io/docs/tasks/job/coarse-parallel-processing-work-queue/)
 or scheduling the execution at a certain time via [cron jobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/).
 
-[Previous](/logging) | [Next](/statefulset)

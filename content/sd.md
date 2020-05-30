@@ -1,9 +1,6 @@
-+++
-title = "Service Discovery"
-subtitle = "Kubernetes service discovery by example"
-date = "2019-02-27"
-url = "/sd/"
-+++
+## Service Discovery
+
+*Kubernetes service discovery by example*
 
 Service discovery is the process of figuring out how to connect to a [service](/service/).
 While there is a service discovery option based on [environment variables](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#environment-variables) available,
@@ -90,5 +87,3 @@ $ kubectl delete ns other
 ```
 
 Keep in mind that removing a namespace will destroy every resource inside.
-
-[Previous](/services) | [Next](/pf)

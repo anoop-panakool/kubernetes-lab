@@ -1,9 +1,7 @@
-+++
-title = "Labels"
-subtitle = "Kubernetes labels by example"
-date = "2019-02-27"
-url = "/labels/"
-+++
+## Labels
+
+*Kubernetes labels by example*
+
 
 Labels are the mechanism you use to organize Kubernetes objects. A label is a key-value
 pair with certain [restrictions](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
@@ -90,5 +88,3 @@ $ kubectl delete pods labelexother
 
 Note that labels are not restricted to pods. In fact you can apply them to
 all sorts of objects, such as nodes or services.
-
-[Previous](/pods) | [Next](/deployments)

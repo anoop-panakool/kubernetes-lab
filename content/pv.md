@@ -1,9 +1,6 @@
-+++
-title = "Persistent Volumes"
-subtitle = "Kubernetes persistent volumes by example"
-date = "2019-02-27"
-url = "/pv/"
-+++
+## Persistent Volumes
+
+*Kubernetes persistent volumes by example*
 
 A [persistent volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) (PV) is a cluster-wide resource that you can use to store data in a way that it persists beyond the lifetime of a pod. The PV is not backed by locally-attached storage on a worker node but by networked storage system such as EBS or NFS or a distributed filesystem like Ceph.
 

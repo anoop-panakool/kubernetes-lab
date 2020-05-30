@@ -1,9 +1,6 @@
-+++
-title = "Nodes"
-subtitle = "Kubernetes nodes by example"
-date = "2020-03-23"
-url = "/nodes/"
-+++
+## Nodes
+
+*Kubernetes nodes by example*
 
 In Kubernetes, nodes are the (virtual) machines where your workloads in shape of pods run. As a developer you typically don't deal with nodes directly, however as an admin
 you might want to familiarize yourself with node [operations](https://kubernetes.io/docs/concepts/nodes/node/).
@@ -112,4 +109,3 @@ Allocated resources:
 
 Note that there are more sophisticated methods than shown above, such as using affinity, to [assign pods to nodes](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) and depending on your use case, you might want to check those out as well.
 
-[Previous](/ic) | [Next](/api)
