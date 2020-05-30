@@ -16,7 +16,8 @@ Refer to the [kubernetes.io](https://kubernetes.io) website to learn more.
 
 ## Enable Kubernetes In Docker Desktop
 
-##### Once you install Docker Desktop installed on your computer, you can start the Kubernetescluster by:  Clicking the whale icon in the system tray and opening the Settings dialog box. Clickthe Kubernetes tab and make sure the Enable Kubernetes checkbox is selected. The components that make up the Control Plane run as Docker containers, but they aren’t displayed in the list of running containers when you invoke the docker ps command.To display them:                                                                                                 Select the Show system containers checkbox.
+##### Once you install Docker Desktop installed on your computer, you can start the Kubernetescluster by:  Clicking the whale icon in the system tray and opening the Settings dialog box. Clickthe Kubernetes tab and make sure the Enable Kubernetes checkbox is selected. The components that make up the Control Plane run as Docker containers, but they aren’t displayed in the list of running containers when you invoke the docker ps command.To display them:
+##### Select the Show system containers checkbox.
 
 ![docker-desktop.jpg](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/docker-desktop.jpg)
 
