@@ -32,24 +32,29 @@
 ### observe the pods with label column [new pod being created]
   
     kubectl get pods -L app
+    kubectl get pods --show-labels
   
-### Scale out
+
+  ![remove-rc-pod.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/remove-rc-pod.png)
+
+
+### Scale out (Horizontally scaling pods)
 
     kubectl scale rc kubia --replicas=10
 
+             OR Declarative way
+             
+    kubectl edit rc kubia2
 
-### Delete without deleting pods 
+
+### Delete RC without deleting pods 
 
     kubectl delete rc kubia --cascade=false
 
-   
-  # Replica set
-   
- ### Replica Set creation 
-    kubectl create -f kubia-replicaset.yaml
+### Change the POD template
 
-    kubectl get rs 
-    kubectl describe rs
+    kubectl edit rc kubia
+   
  
 # Daemon set
  
