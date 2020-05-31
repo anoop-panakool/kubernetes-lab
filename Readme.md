@@ -18,7 +18,7 @@ To install docker desktop [follow these steps](https://docs.docker.com/docker-fo
 
 Sr No | Username | Password  | Project Name | Email Id
 ------|-------------|--------| --------------- |--------|
-1   | *Student01* | *XXXXXX* | *LFS458-Student01* | edi5k8student01@gmail.com
+1   | *Student01* | *June@2020* | *LFS458-Student01* | edi5k8student01@gmail.com
 2   | *Student02* | *XXXXXX* | *LFS458-Student02* | edi5k8student01@gmail.com
 3   | *Student03* | *JXXXXXX* |*LFS458-Student03* | edi5k8student01@gmail.com
 4   | *Student04* | *XXXXXX* | *LFS458-Student04* | edi5k8student01@gmail.com
