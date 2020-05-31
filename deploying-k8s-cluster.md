@@ -335,11 +335,110 @@ The objects are as follows:
 ![logical-view-of-application-deployed](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/logical-view-of-application-deployed.jpg)
 
 
+
 ## Examples: Common operations
 
+## Create a Deployment
+
+A Kubernetes [*Pod*](/docs/concepts/workloads/pods/pod/) is a group of one or more Containers,
+tied together for the purposes of administration and networking. The Pod in this
+tutorial has only one Container. A Kubernetes
+[*Deployment*](/docs/concepts/workloads/controllers/deployment/) checks on the health of your
+Pod and restarts the Pod's Container if it terminates. Deployments are the
+recommended way to manage the creation and scaling of Pods.
+
+1. Use the `kubectl create` command to create a Deployment that manages a Pod. The
+Pod runs a Container based on the provided Docker image.
+
+    ```shell
+    kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
+    ```
+
+2. View the Deployment:
+
+    ```shell
+    kubectl get deployments
+    ```
+
+    The output is similar to:
+
+    ```
+    NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+    hello-node   1/1     1            1           1m
+    ```
+
+3. View the Pod:
+
+    ```shell
+    kubectl get pods
+    ```
+
+    The output is similar to:
+
+    ```
+    NAME                          READY     STATUS    RESTARTS   AGE
+    hello-node-5f76cf6ccf-br9b5   1/1       Running   0          1m
+    ```
+
+4. View cluster events:
+
+    ```shell
+    kubectl get events
+    ```
+
+5. View the `kubectl` configuration:
+
+    ```shell
+    kubectl config view
+    ```
+
+{{< note >}}
+    For more information about `kubectl`commands, see the [kubectl overview](/docs/user-guide/kubectl-overview/).
+{{< /note >}}
+
+## Create a Service
+
+By default, the Pod is only accessible by its internal IP address within the
+Kubernetes cluster. To make the `hello-node` Container accessible from outside the
+Kubernetes virtual network, you have to expose the Pod as a
+Kubernetes [*Service*](/docs/concepts/services-networking/service/).
+
+1. Expose the Pod to the public internet using the `kubectl expose` command:
+
+    ```shell
+    kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+    ```
+
+    The `--type=LoadBalancer` flag indicates that you want to expose your Service
+    outside of the cluster.
+
+2. View the Service you just created:
+
+    ```shell
+    kubectl get services
+    ```
+
+    The output is similar to:
+
+    ```
+    NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+    hello-node   LoadBalancer   10.108.144.78   <pending>     8080:30369/TCP   21s
+    kubernetes   ClusterIP      10.96.0.1       <none>        443/TCP          23m
+    ```
+
+    On cloud providers that support load balancers,
+    an external IP address would be provisioned to access the Service. On Minikube,
+    the `LoadBalancer` type makes the Service accessible through the `minikube service`
+    command.
+
+3. Run the following command:
+
+    ```shell
+    minikube service hello-node
+    ```
 
 
-You can display a list of all supported types by running kubectl api-resources. The list also shows the short name for each type and some other information you need to define objects in JSON/YAML files
+### You can display a list of all supported types by running kubectl api-resources. The list also shows the short name for each type and some other information you need to define objects in JSON/YAML files
 
 ```shell
 # List all Kubernetes object types
