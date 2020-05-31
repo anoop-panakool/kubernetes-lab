@@ -26,7 +26,7 @@ Applications and their objects often need to be separated from each other to avo
 ```
 cat go-demo-2.yml
 ```
-We’ll start by deploying the go-demo-2.yml [file](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/go-demo-2.yml) application and use it to explore Namespaces.
+We’ll start by deploying the [go-demo-2.yml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/labs/Labels-and-Selectors/go-demo-2.yml) application and use it to explore Namespaces.
 
 > The **output** is as follows.
 
