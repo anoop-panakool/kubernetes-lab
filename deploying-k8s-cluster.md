@@ -457,45 +457,65 @@ Optionally, delete the Minikube VM:
     ```
 Running end-to-end tests ensures your application will run efficiently without having to worry about cluster health problems.
 
-Run a simple nginx deployment:
+Run a simple nginx deployment
 
+```
 kubectl run nginx --image=nginx
-View the deployments in your cluster:
-
+```
+View the deployments in your cluster
+```
 kubectl get deployments
-View the pods in the cluster:
+```
 
+View the pods in the cluster
+```
 kubectl get pods
-Use port forwarding to access a pod directly:
+```
 
+Use port forwarding to access a pod directly
+```
 kubectl port-forward $pod_name 8081:80
-Get a response from the nginx pod directly:
+```
 
+Get a response from the nginx pod directly
+```
 curl --head http://127.0.0.1:8081
+```
+
 View the logs from a pod:
-
+```
 kubectl logs $pod_name
+```
+
 Run a command directly from the container:
-
+```
 kubectl exec -it $pod_name -- nginx -v
+```
+
 Create a service by exposing port 80 of the nginx deployment:
-
+```
 kubectl expose deployment nginx --port 80 --type NodePort
-List the services in your cluster:
+```
 
+List the services in your cluster
+```
 kubectl get services
-Get a response from the service:
+```
 
-curl -I localhost:$node_port
-List the nodes' status:
-
+Get the list of Nodes
+```
 kubectl get nodes
+```
+
 View detailed information about the nodes:
-
+```
 kubectl describe nodes
-View detailed information about the pods:
+```
 
+View detailed information about the pods:
+```
 kubectl describe pods
+```
 
 ### You can display a list of all supported types by running kubectl api-resources. The list also shows the short name for each type and some other information you need to define objects in JSON/YAML files
 
