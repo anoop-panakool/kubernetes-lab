@@ -21,6 +21,13 @@ Applications and their objects often need to be separated from each other to avo
 
 - If that overhead is not enough, we must also be aware that each cluster needs resources dedicated to Kubernetes. The more clusters we have, the more resources (CPU, memory, IO) are spent. While that can be said for big clusters as well, the fact remains that the resource overhead of having many smaller clusters is higher than having a single big one.
 
+### Looking into the Definition
+
+```
+cat go-demo-2.yml
+```
+We’ll start by deploying the go-demo-2 application and use it to explore Namespaces.
+
 Let's create a POD named [labelex.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelex.yaml) that initially has one label (`env=development`):
 ```yaml
 apiVersion: v1
