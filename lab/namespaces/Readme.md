@@ -1,10 +1,11 @@
-### Namespaces
+## Namespaces
+*`A ways to split a cluster into different segments as an alternative to having multiple clusters`*
 
-#### Why to create Multiple Clusters?
+### Why to create Multiple Clusters?
 
 Applications and their objects often need to be separated from each other to avoid conflicts and other undesired effects.
 
-Benefits of creating muliple cluster: 
+### Benefits of creating muliple cluster: 
 
 - We might need to separate objects created by different teams. We can, for example, give each team a separate cluster so that they can “experiment” without affecting others.
 
@@ -12,7 +13,13 @@ Benefits of creating muliple cluster:
 
 - We might be afraid that a team will accidentally replace a production release of an application with an untested beta.
 
-We might be concerned that performance tests will slow down the whole cluster. Fear is one of the main reasons why we tend to be defensive and conservative. In some cases, it is founded on past experiences. In others, it might be produced by insufficient knowledge of the tools we adopted. More often than not, it is a combination of the two.
+- We might be concerned that performance tests will slow down the whole cluster.
+
+### What is the Problem with Multiple Clusters?
+
+- The problem with having many Kubernetes clusters is that each has an operational and resource overhead. Managing one cluster is often very hard. Having a few is complicated. Having many can become a nightmare and requires quite a significant investment in hours dedicated to operations and maintenance.
+
+- If that overhead is not enough, we must also be aware that each cluster needs resources dedicated to Kubernetes. The more clusters we have, the more resources (CPU, memory, IO) are spent. While that can be said for big clusters as well, the fact remains that the resource overhead of having many smaller clusters is higher than having a single big one.
 
 Let's create a POD named [labelex.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelex.yaml) that initially has one label (`env=development`):
 ```yaml
