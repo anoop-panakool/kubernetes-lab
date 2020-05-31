@@ -3,11 +3,7 @@
 #### Why to create Multiple Clusters?
 
 Labels are the mechanism you use to organize Kubernetes objects. A label is a key-value
-pair with certain [restrictions](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
-concerning length and allowed values but without any pre-defined meaning.
-So you're free to choose labels as you see fit, for example, to express
-environments such as 'this pod is running in production' or ownership,
-like 'department X owns that pod'.
+
 
 Let's create a POD named [labelex.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelex.yaml) that initially has one label (`env=development`):
 ```yaml
