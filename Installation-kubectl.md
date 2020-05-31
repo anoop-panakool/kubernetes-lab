@@ -25,7 +25,9 @@ The below steps are applicable for the below mentioned OS
 
  > Visual Studio Code a code editor: Click [here](https://code.visualstudio.com/download)
 
- > Download Puuty [Puuty](https://www.putty.org/)
+ > Download Putty [Putty](https://www.putty.org/)
+
+ > Download Puttygen [Puttygen](https://www.puttygen.com/download-putty)
 
  **On all nodes which would be part of this cluster, you need to do the base setup as described in the following steps. To simplify this, you could also**
 [download and run this script](https://gist.github.com/initcron/40b71211cb693f541ce35fe3fb1adb11)
