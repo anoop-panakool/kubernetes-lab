@@ -26,23 +26,115 @@ Applications and their objects often need to be separated from each other to avo
 ```
 cat go-demo-2.yml
 ```
-We’ll start by deploying the go-demo-2 application and use it to explore Namespaces.
+We’ll start by deploying the go-demo-2.yml [file](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/go-demo-2.yml) application and use it to explore Namespaces.
 
-Let's create a POD named [labelex.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelex.yaml) that initially has one label (`env=development`):
+> The **output** is as follows.
+
 ```yaml
-apiVersion: v1
-kind: Pod
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
-  name: labelex
-  labels:
-    env: development
+  name: go-demo-2
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  containers:
-  - name: simpleservice
-    image: quay.io/openshiftlabs/simpleservice:0.5.0
-    ports:
-    - containerPort: 9876
+  rules:
+  - host: go-demo-2.com
+    http:
+      paths:
+      - path: /demo
+        backend:
+          serviceName: go-demo-2-api
+          servicePort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-demo-2-db
+spec:
+  selector:
+    matchLabels:
+      type: db
+      service: go-demo-2
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        type: db
+        service: go-demo-2
+        vendor: MongoLabs
+    spec:
+      containers:
+      - name: db
+        image: mongo:3.3
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-demo-2-db
+spec:
+  ports:
+  - port: 27017
+  selector:
+    type: db
+    service: go-demo-2
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-demo-2-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: api
+      service: go-demo-2
+  template:
+    metadata:
+      labels:
+        type: api
+        service: go-demo-2
+        language: go
+    spec:
+      containers:
+      - name: api
+        image: vfarcic/go-demo-2
+        env:
+        - name: DB
+          value: go-demo-2-db
+        readinessProbe:
+          httpGet:
+            path: /demo/hello
+            port: 8080
+          periodSeconds: 1
+        livenessProbe:
+          httpGet:
+            path: /demo/hello
+            port: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-demo-2-api
+spec:
+  ports:
+  - port: 8080
+  selector:
+    type: api
+    service: go-demo-2
 ```
+
 
 ```bash
 $ kubectl apply -f labelex.yaml
