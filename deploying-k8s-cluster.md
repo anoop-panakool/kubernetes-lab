@@ -254,9 +254,90 @@ To make the pod accessible externally, you have to expose it but how ?
 
 NOTE:  Notice the use of the abbreviation `svc` instead of `services`. Most resource types have a short name that you can use instead of the full object type (for example, `po` is short for `pods`, `no` for `nodes` and `deploy` for `deployments`).
 
+
+
 ![loadBalancer-works](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/loadBalancer-works.jpg)
 
+    $ kubectl get services
+    NAME         TYPE           CLUSTER-IP    EXTERNAL-IP       PORT(S)          AGE
+    kubernetes   ClusterIP      10.96.0.1     <none>            443/TCP          2d2h
+    shivam       LoadBalancer   10.245.79.24   64.225.80.243     8080:32125/TCP   2m16s
+
+#### Accessing the application through Load Balancer
+    Go to the broser and enter <loadbalacer-external-ip:8080>
+Result will be as below
+    You've hit shivam-7d448449b4-f9hds
+
+#### Accessing the application when a Load Balancer is not available
+If Using Minikube
+
+    $ minikube service shivam --url
+    http://192.168.99.102:30838
+
+#### Access the application via the node ports.
+
+    $ curl <worker-node-ip>:30838
+    http://worker-node-ip:30838
+![service-nodeport](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/service-nodeport.jpg)
+
+#### Horizontally scaling the application
+
+Increase the Number of running Application instances
+    $ kubectl scale deployment shivam --replicas=3
+    deployment.apps/shivam scaled
+
+#### See the result of the Scale-Out
+
+    $ kubectl get deploy
+    NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+    shivam    3/3     3            3            18m
+
+#### List the PODS
+
+    $ kubectl get pods
+    NAME                     READY   STATUS    RESTARTS   AGE
+    shivam-9d785b578-58vhc   1/1     Running   0          17s
+    shivam-9d785b578-jmnj8   1/1     Running   0          17s
+    shivam-9d785b578-p449x   1/1     Running   0          18m
+
+#### Display the PODS host node when listing PODS
+
+    $ kubectl get pods -o wide
+    NAME                     READY   STATUS    RESTARTS   AGE    IP             NODE
+    shivam-9d785b578-58vhc   1/1     Running   0          17s    10.16.2.5      shivam2.labserver.com
+    shivam-9d785b578-jmnj8   1/1     Running   0          17s    10.16.2.4      shivam3.labserver.com
+    shivam-9d785b578-p449x   1/1     Running   0          18m    10.16.2.3      shivam2.labserver.com
+
+#### Observer the requests hitting all three pods when using the service
+
+    $ curl 35.246.179.22:8080
+    You've hit shivam-7878fc7498-tds4z
+    $ curl 35.246.179.22:8080
+    You've hit shivam-7878fc7498-wccd9
+    $ curl 35.246.179.22:8080
+    You've hit shivam-7878fc7498-tds4z
+    $ curl 35.246.179.22:8080
+    You've hit shivam-7878fc7498-p449x
+
+![verify-lb-request](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/verify-lb-request.jpg)
+
+### Understanding the deployed application
+
+The logical view consists of the objects you’ve created in the Kubernetes API – either directly or indirectly. This figure shows how the objects relate to each other.
+
+Our deployed application consists of a Deployment, several Pods, and a Service.
+
+The objects are as follows:
+- the Deployment object you created,
+- the Pod objects that were automatically created based on the Deployment, and
+- the Service object you created manually.
+
+![logical-view-of-application-deployed](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/logical-view-of-application-deployed.jpg)
+
+
 ## Examples: Common operations
+
+
 
 You can display a list of all supported types by running kubectl api-resources. The list also shows the short name for each type and some other information you need to define objects in JSON/YAML files
 
