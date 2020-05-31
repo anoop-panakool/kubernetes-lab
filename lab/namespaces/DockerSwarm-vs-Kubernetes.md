@@ -1,5 +1,10 @@
 ## Comparison with Docker Swarm
 
+
+
+![swarm-vs-k8s.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/swarm-vs-k8s.png)
+
+
 We will see about the comparison of Kubernetes Namespaces with the Docker Swarm equivalent.
 
 
