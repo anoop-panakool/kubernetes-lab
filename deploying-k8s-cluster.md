@@ -392,9 +392,8 @@ Pod runs a Container based on the provided Docker image.
     kubectl config view
     ```
 
-{{< note >}}
-    For more information about `kubectl`commands, see the [kubectl overview](/docs/user-guide/kubectl-overview/).
-{{< /note >}}
+#### NOTE
+For more information about `kubectl`commands, see the [kubectl overview](/docs/user-guide/kubectl-overview/).
 
 ## Create a Service
 
@@ -431,12 +430,72 @@ Kubernetes [*Service*](/docs/concepts/services-networking/service/).
     the `LoadBalancer` type makes the Service accessible through the `minikube service`
     command.
 
-3. Run the following command:
+3. View the Pod and Service you just created:
 
     ```shell
-    minikube service hello-node
+    kubectl get pod,svc -n kube-system
+    ```
+## Clean up
+
+Now you can clean up the resources you created in your cluster:
+
+    ```shell
+    kubectl delete service hello-node
+    kubectl delete deployment hello-node
     ```
 
+Optionally, stop the Minikube virtual machine (VM):
+
+    ```shell
+    minikube stop
+    ```
+
+Optionally, delete the Minikube VM:
+
+    ```shell
+    minikube delete
+    ```
+Running end-to-end tests ensures your application will run efficiently without having to worry about cluster health problems.
+
+Run a simple nginx deployment:
+
+kubectl run nginx --image=nginx
+View the deployments in your cluster:
+
+kubectl get deployments
+View the pods in the cluster:
+
+kubectl get pods
+Use port forwarding to access a pod directly:
+
+kubectl port-forward $pod_name 8081:80
+Get a response from the nginx pod directly:
+
+curl --head http://127.0.0.1:8081
+View the logs from a pod:
+
+kubectl logs $pod_name
+Run a command directly from the container:
+
+kubectl exec -it $pod_name -- nginx -v
+Create a service by exposing port 80 of the nginx deployment:
+
+kubectl expose deployment nginx --port 80 --type NodePort
+List the services in your cluster:
+
+kubectl get services
+Get a response from the service:
+
+curl -I localhost:$node_port
+List the nodes' status:
+
+kubectl get nodes
+View detailed information about the nodes:
+
+kubectl describe nodes
+View detailed information about the pods:
+
+kubectl describe pods
 
 ### You can display a list of all supported types by running kubectl api-resources. The list also shows the short name for each type and some other information you need to define objects in JSON/YAML files
 
