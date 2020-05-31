@@ -2,8 +2,17 @@
 
 #### Why to create Multiple Clusters?
 
-Labels are the mechanism you use to organize Kubernetes objects. A label is a key-value
+Applications and their objects often need to be separated from each other to avoid conflicts and other undesired effects.
 
+Benefits of creating muliple cluster: 
+
+- We might need to separate objects created by different teams. We can, for example, give each team a separate cluster so that they can “experiment” without affecting others.
+
+- We might want to create different clusters that will be used for various purposes. For example, we could have a production and a testing cluster.
+
+- We might be afraid that a team will accidentally replace a production release of an application with an untested beta.
+
+We might be concerned that performance tests will slow down the whole cluster. Fear is one of the main reasons why we tend to be defensive and conservative. In some cases, it is founded on past experiences. In others, it might be produced by insufficient knowledge of the tools we adopted. More often than not, it is a combination of the two.
 
 Let's create a POD named [labelex.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelex.yaml) that initially has one label (`env=development`):
 ```yaml
