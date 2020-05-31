@@ -59,6 +59,8 @@ kube-public This namespace is created automatically and is readable by all users
 The kube-system Namespace is critical.
 
 > Almost all the objects and resources Kubernetes needs are running inside kube-system Namespace.
+
+Check that by executing the command as follows.
 ```
     kubectl --namespace kube-system get all
 ```
@@ -102,21 +104,83 @@ replicaset.apps/coredns-66bff467f8                2         2         2       3d
 replicaset.apps/kubernetes-dashboard-57576c4679   1         1         1       8h
 
 ```
-$ kubectl label pods labelex owner=michael
 
-$ kubectl get pods --show-labels
-NAME        READY     STATUS    RESTARTS   AGE    LABELS
-labelex     1/1       Running   0          16m    env=development,owner=shivam
+## Creating a New Namespace
+
+    kubectl create ns testing
+    kubectl get ns
+
+> **The outputis as follows.**
 ```
+NAME              STATUS   AGE
+default           Active   4h36m
+kube-node-lease   Active   4h36m
+kube-public       Active   4h36m
+kube-system       Active   4h36m
+testing           Active   3s
 
-To use a label for filtering, for example to list only pods that have an
-`owner` that equals `shivam`, use the `--selector` option:
+```
+We can see that the new Namespace testing was created.
+We will continue using the --namespace argument to operate within the newly created Namespace. 
+However, writing --namespace with every command is tedious. Instead, we’ll create a new context.
+```
+kubectl config set-context testing --namespace testing --cluster kubernetes --user kubernetes-admin
+```
+We created a new context called testing. It is the same as the kubernetes context, except that it uses the testing Namespace.
+
+You can use the config view command, to view the config file
+```
+kubectl config view
+```
+> **The outputis as follows.**
+
+```json
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://172.31.106.125:6443
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: kubernetes-admin
+  name: kubernetes-admin@kubernetes
+- context:
+    cluster: kubernetes
+    namespace: testing
+    user: kubernetes-admin
+  name: testing
+current-context: kubernetes-admin@kubernetes
+kind: Config
+preferences: {}
+users:
+- name: kubernetes-admin
+  user:
+    client-certificate-data: REDACTED
+    client-key-data: REDACTED
+```
+We can see that there are two contexts. Both are set to use the same kubernetes cluster with the same kubernetes-admin user. The only difference is that one does not have the Namespace set, meaning that it will use the default. The other has it set to testing.
+
+#### Context Switching
+Now that we have two contexts, we can switch to testing.
 
 ```bash
-$ kubectl get pods --selector owner=shivam
-NAME      READY     STATUS    RESTARTS   AGE
-labelex   1/1       Running   0          27m
+kubectl config use-context testing
 ```
+  We switched to the testing context that uses the Namespace of the same name. From now on, all the kubectl commands will be executed within the context of the testing Namespace. That is, until we change the context again, or use the --namespace argument.
+
+### Verification
+
+```
+kubectl get all
+```
+The output shows that no resources were found.
+
+
+
+
+
 
 The `--selector` option can be abbreviated to `-l`, so to select pods that are
 labelled with `env=development`, do:
