@@ -1,5 +1,7 @@
 ### Namespaces
 
+#### Why to create Multiple Clusters?
+
 Labels are the mechanism you use to organize Kubernetes objects. A label is a key-value
 pair with certain [restrictions](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 concerning length and allowed values but without any pre-defined meaning.
