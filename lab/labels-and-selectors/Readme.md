@@ -7,7 +7,7 @@ So you're free to choose labels as you see fit, for example, to express
 environments such as 'this pod is running in production' or ownership,
 like 'department X owns that pod'.
 
-Let's create a POD named [labelex.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelex.yaml) that initially has one label (`env=development`):
+Let's create a POD named [labelex.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/labels-and-selectors/labelex.yaml) that initially has one label (`env=development`):
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -62,7 +62,7 @@ labelex   1/1       Running   0          27m
 ```
 
 Oftentimes, Kubernetes objects also support set-based selectors.
-Let's launch POD named [labelexother.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/labelexother.yaml)
+Let's launch POD named [labelexother.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/labels-and-selectors/labelexother.yaml)
 that has two labels (`env=production` and `owner=shivam`):
 
 ```yaml
@@ -117,7 +117,7 @@ Note that labels are not restricted to pods. In fact you can apply them to
 all sorts of objects, such as nodes or services.
 
 ###  Create a new pod with two labels.
-Let's create a POD named [kubia-manual-with-labels.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/kubia-manual-with-labels.yaml)
+Let's create a POD named [kubia-manual-with-labels.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/labels-and-selectors/kubia-manual-with-labels.yaml)
 
 ```yaml
 apiVersion: v1
@@ -256,7 +256,7 @@ List only nodes that include the label `gpu=true`
 ```
 kubectl get nodes -l gpu=true
 ```
-Create the Pod named kubia-gpu from file [kubia-gpu.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/kubia-gpu.yaml)
+Create the Pod named kubia-gpu from file [kubia-gpu.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/labels-and-selectors/kubia-gpu.yaml)
 
 ```
 kubectl create -f kubia-gpu.yaml
@@ -310,7 +310,7 @@ In this output, you can see that the `worker0` node has a `disktype=ssd` label.
 
 This pod configuration file describes a pod that has a node selector, `disktype: ssd`. This means that the pod will get scheduled on a node that has a `disktype=ssd` label.
 
-Create the Pod named `nginx`from file [pod-nginx.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/pod-nginx.yaml)
+Create the Pod named `nginx`from file [pod-nginx.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/labels-and-selectors/pod-nginx.yaml)
 
 ```yaml
 apiVersion: v1
@@ -347,7 +347,7 @@ The output is similar to this:
 ### Create a pod that gets scheduled to specific node
 > You can also schedule a pod to one specific node via setting `nodeName`
 
-Create the Pod named `nginx`from file [pod-nginx-specific-node.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/Labels-and-Selectors/pod-nginx-specific-node.yaml)
+Create the Pod named `nginx`from file [pod-nginx-specific-node.yaml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/Labs/labels-and-selectors/pod-nginx-specific-node.yaml)
 
 ```yaml
 apiVersion: v1
