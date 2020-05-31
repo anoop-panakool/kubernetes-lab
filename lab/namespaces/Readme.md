@@ -21,134 +21,87 @@ Applications and their objects often need to be separated from each other to avo
 
 - If that overhead is not enough, we must also be aware that each cluster needs resources dedicated to Kubernetes. The more clusters we have, the more resources (CPU, memory, IO) are spent. While that can be said for big clusters as well, the fact remains that the resource overhead of having many smaller clusters is higher than having a single big one.
 
-### Looking into the Definition
-
+## Getting the Existing Namespaces
 ```
-cat go-demo-2.yml
+kubectl get namespace
 ```
 We’ll start by deploying the [go-demo-2.yml](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/lab/namespaces/go-demo-2.yml) application and use it to explore Namespaces.
 
-> The **output** is as follows.
+> **The outputis as follows.**
+```
+    NAME              STATUS   AGE
+    default           Active   23m
+    kube-node-lease   Active   23m
+    kube-public       Active   23m
+    kube-system       Active   23m
+```
+### The Default Namespace 
+
+The default Namespace is the one we used all this time. If we do not specify any other namespace, all the kubectl commands will operate against the objects in the default Namespace. That’s where our go-demo-2 application is running. Even though we were not aware of its existence, we now know that’s where the objects we created are placed.
+
+![namespaces-with-pod](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/namespaces-with-pod.png)
+
+To specify a Namespace use `-ns` or `--namespace` argument for all `kubectl` commands
+
+### The kube-public Namespace
+    
+kube-public This namespace is created automatically and is readable by all users (including those not authenticated) from all Namespaces. This namespace is mostly reserved for cluster usage, in case that some resources should be visible and readable publicly throughout the whole cluster.
+
+```bash
+    kubectl --namespace kube-public get all
+```
+> **The primary reason for kube-public's existence is to provide space where we can create objects that should be visible throughout the whole cluster.**
+
+> **Anexample is ConfigMaps. When we create one in, let’s say, the default Namespace, it is accessible only by the other objects in the same Namespace. Those residing somewhere else would be oblivious of its existence. If we’d like such a ConfigMap to be visible to all objects no matter where they are, we’d put it into the kube-public Namespace instead. We won’t use this Namespace much (if at all).**
+
+### The kube-system Namespace
+
+The kube-system Namespace is critical.
+
+> Almost all the objects and resources Kubernetes needs are running inside kube-system Namespace.
+```
+    kubectl --namespace kube-system get all
+```
+> **The outputis as follows.**
 
 ```yaml
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: go-demo-2
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-spec:
-  rules:
-  - host: go-demo-2.com
-    http:
-      paths:
-      - path: /demo
-        backend:
-          serviceName: go-demo-2-api
-          servicePort: 8080
+kubectl --namespace kube-system get all
+NAME                                                   READY   STATUS    RESTARTS   AGE
+pod/coredns-66bff467f8-h9hx2                           1/1     Running   5          32h
+pod/coredns-66bff467f8-nrzfr                           1/1     Running   1          9h
+pod/etcd-master                                        1/1     Running   12         3d1h
+pod/kube-apiserver-master                              1/1     Running   12         3d1h
+pod/kube-controller-manager-master                     1/1     Running   12         3d1h
+pod/kube-flannel-ds-amd64-8b45j                        1/1     Running   15         3d1h
+pod/kube-flannel-ds-amd64-llmrn                        1/1     Running   13         3d1h
+pod/kube-flannel-ds-amd64-njr9z                        1/1     Running   13         3d1h
+pod/kube-proxy-lxxb8                                   1/1     Running   12         3d1h
+pod/kube-proxy-pptlt                                   1/1     Running   12         3d1h
+pod/kube-proxy-sb7rg                                   1/1     Running   12         3d1h
+pod/kube-scheduler-master                              1/1     Running   12         3d1h
+pod/kubernetes-dashboard-57576c4679-vpcjb              1/1     Running   1          8h
 
----
+NAME                           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                  AGE
+service/kube-dns               ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP,9153/TCP   3d1h
+service/kubernetes-dashboard   NodePort    10.109.158.56   <none>        80:31000/TCP             8h
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: go-demo-2-db
-spec:
-  selector:
-    matchLabels:
-      type: db
-      service: go-demo-2
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        type: db
-        service: go-demo-2
-        vendor: MongoLabs
-    spec:
-      containers:
-      - name: db
-        image: mongo:3.3
+NAME                                     DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+daemonset.apps/kube-flannel-ds-amd64     3         3         3       3            3           <none>                   3d1h
+daemonset.apps/kube-flannel-ds-arm       0         0         0       0            0           <none>                   3d1h
+daemonset.apps/kube-flannel-ds-arm64     0         0         0       0            0           <none>                   3d1h
+daemonset.apps/kube-flannel-ds-ppc64le   0         0         0       0            0           <none>                   3d1h
+daemonset.apps/kube-flannel-ds-s390x     0         0         0       0            0           <none>                   3d1h
+daemonset.apps/kube-proxy                3         3         3       3            3           kubernetes.io/os=linux   3d1h
 
----
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/coredns                2/2     2            2           3d1h
+deployment.apps/kubernetes-dashboard   1/1     1            1           8h
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: go-demo-2-db
-spec:
-  ports:
-  - port: 27017
-  selector:
-    type: db
-    service: go-demo-2
+NAME                                              DESIRED   CURRENT   READY   AGE
+replicaset.apps/coredns-66bff467f8                2         2         2       3d1h
+replicaset.apps/kubernetes-dashboard-57576c4679   1         1         1       8h
 
----
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: go-demo-2-api
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      type: api
-      service: go-demo-2
-  template:
-    metadata:
-      labels:
-        type: api
-        service: go-demo-2
-        language: go
-    spec:
-      containers:
-      - name: api
-        image: vfarcic/go-demo-2
-        env:
-        - name: DB
-          value: go-demo-2-db
-        readinessProbe:
-          httpGet:
-            path: /demo/hello
-            port: 8080
-          periodSeconds: 1
-        livenessProbe:
-          httpGet:
-            path: /demo/hello
-            port: 8080
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: go-demo-2-api
-spec:
-  ports:
-  - port: 8080
-  selector:
-    type: api
-    service: go-demo-2
 ```
-
-
-```bash
-$ kubectl apply -f labelex.yaml
-
-$ kubectl get pods --show-labels
-NAME       READY     STATUS    RESTARTS   AGE    LABELS
-labelex    1/1       Running   0          10m    env=development
-```
-In above `get pods` command note the `--show-labels` option that output the
-labels of an object in an additional column.
-
-You can add a label to the pod as:
-
-```bash
 $ kubectl label pods labelex owner=michael
 
 $ kubectl get pods --show-labels
