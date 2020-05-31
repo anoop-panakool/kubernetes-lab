@@ -162,7 +162,7 @@ users:
 ```
 We can see that there are two contexts. Both are set to use the same kubernetes cluster with the same kubernetes-admin user. The only difference is that one does not have the Namespace set, meaning that it will use the default. The other has it set to testing.
 
-#### Context Switching
+### Context Switching
 Now that we have two contexts, we can switch to testing.
 
 ```bash
