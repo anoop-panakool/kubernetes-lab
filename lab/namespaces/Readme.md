@@ -1,5 +1,5 @@
 ## Namespaces
-*`A ways to split a cluster into different segments as an alternative to having multiple clusters`*
+### *`A ways to split a cluster into different segments as an alternative to having multiple clusters`*
 
 ### Why to create Multiple Clusters?
 
