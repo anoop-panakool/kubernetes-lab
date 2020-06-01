@@ -28,7 +28,7 @@ Kubernetes *`Services`* provide addresses through which Pods can be accessed.
 
 Before we see how the services created and works, we will create a ReplicaSet. It’ll provide the Pods we can use to demonstrate how Services work.
 
-> Let’s take a quick look at the ReplicaSet definition [go-demo-2-rs.yml](/lab/Services/go-demo-2-rs.yml)
+1.  Let’s take a quick look at the ReplicaSet definition [go-demo-2-rs.yml](/lab/Services/go-demo-2-rs.yml)
 ```
 cat go-demo-2-rs.yml
 ```
@@ -44,7 +44,16 @@ The only significant difference is the db container definition. It is as follows
     protocol: TCP
 ...
 ```
+We customized the command and the arguments so that MongoDB exposes the REST interface. We also defined the containerPort. Those additions are needed so that we can test that the database is accessible through the Service.
 
+2. Let’s create the ReplicaSet.
+```
+kubectl create -f svc/go-demo-2-rs.yml
+```
+3. Let’s view the created ReplicaSet.
+```
+kubectl get -f svc/go-demo-2-rs.yml
+```
 ![svc-01.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc-01.png)
 
 ## The Kubernetes components view when requesting creation of a Service
