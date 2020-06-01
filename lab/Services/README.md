@@ -24,6 +24,17 @@
 
 Kubernetes *`Services`* provide addresses through which Pods can be accessed.
 
+Types of services:
+
+1. ClusterIP
+  - ClusterIP – The default value. The service is only accessible from within the Kubernetes cluster – you can’t make requests to your Pods from outside the cluster!
+
+2. NodePort
+  - NodePort - This makes the service accessible on a static port on each Node in the cluster. This means that the service can handle requests that originate from outside the cluster.
+
+3. LoadBalancer
+   - LoadBalancer -  The service becomes accessible externally through a cloud provider's load balancer functionality. GCP, AWS, Azure, and OpenStack offer this functionality. The cloud provider will create a load balancer, which then automatically routes requests to your Kubernetes Service
+
 ### Creating ReplicaSets
 
 Before we see how the services created and works, we will create a ReplicaSet. It’ll provide the Pods we can use to demonstrate how Services work.
@@ -48,11 +59,11 @@ We customized the command and the arguments so that MongoDB exposes the REST int
 
 2. Let’s create the ReplicaSet.
 ```
-kubectl create -f svc/go-demo-2-rs.yml
+kubectl create -f go-demo-2-rs.yml
 ```
 3. Let’s view the created ReplicaSet.
 ```
-kubectl get -f svc/go-demo-2-rs.yml
+kubectl get -f go-demo-2-rs.yml
 ```
 We created the ReplicaSet and retrieved its state from Kubernetes. The output is as follows.
 ```
@@ -67,9 +78,12 @@ go-demo-2-88rsw   2/2     Running   0          3m57s
 go-demo-2-qj65n   2/2     Running   0          3m57s
 ```
 
-### Exposing a Resource
+### Exposing a Resource Using `NodePort Service type`
 
 We can use the kubectl expose command to expose a resource as a new `Kubernetes Service`. That resource can be a Deployment,a ReplicaSet, a ReplicationController, or a Pod. We’ll expose the ReplicaSet since it is already running in the cluster.
+
+1. Run this command to expose the resources `kubectl expose <Resource Type>  <Resource Name> --name <Service Name> --target-port=<port-number> --type=<NodePort>
+
 ```bash
 kubectl expose rs go-demo-2 \
     --name=go-demo-2-svc \
@@ -88,6 +102,32 @@ kubectl expose rs go-demo-2 \
 - Line 4: we specified that the type of the Service should be NodePort.
 
 As a result, the target port will be exposed on every node of the cluster to the outside world, and it will be routed to one of the Pods controlled by the ReplicaSet.
+
+2. Get the services
+```
+kubectl get services
+```
+3. Output will be as below
+```
+kubectl get services
+
+NAME            TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)           AGE
+go-demo-2-svc   NodePort   10.111.97.246   <none>        28017:30358/TCP   13s
+```
+4. Describe the service
+```
+kubectl describe services go-demo-2-svc
+```
+6. Access the PODS from outsite world
+```
+http://PublicIP:30358
+
+Result will be as below
+
+![svc-08](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc08.png)
+
+## Other Types of Services 
+
 
 ![svc-01.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc-01.png)
 
