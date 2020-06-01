@@ -125,7 +125,7 @@ http://ExternalIP:<NodePort-Port Number>
 Example: http://ExternalIP:<30358>
 ```
 
-Result will be as below
+6. Result will be as below
 
 ![svc-08](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/sv08.png)
 
