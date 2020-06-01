@@ -354,7 +354,6 @@ spec:
         ports:
         - containerPort: 28017
 ```
-We’ll comment only on the things that changed.
 
 Since this ReplicaSet defines only the database, we reduced the number of replicas to 1. For now, we’ll pretend that one replica of a database is enough.
 
