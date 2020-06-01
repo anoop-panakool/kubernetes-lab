@@ -118,9 +118,12 @@ go-demo-2-svc   NodePort   10.111.97.246   <none>        28017:30358/TCP   13s
 ```
 kubectl describe services go-demo-2-svc
 ```
-6. Access the PODS from outsite world
+5. Access the PODS from outsite world
 ```
-http://PublicIP:30358
+http://ExternalIP:<NodePort-Port Number>
+
+Example: http://ExternalIP:<30358>
+```
 
 Result will be as below
 
