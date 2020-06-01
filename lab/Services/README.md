@@ -155,19 +155,19 @@ ExternalName maps a service to an external address (e.g., kubernetes.io).
 
 - The processes that were initiated with the creation of the Service are as follows:
 
-- - Kubernetes client (kubectl) sent a request to the API server requesting the creation of the Service based on Pods created through the go-demo-2 ReplicaSet.
+  - Kubernetes client (kubectl) sent a request to the API server requesting the creation of the Service based on Pods created through the go-demo-2 ReplicaSet.
 
-- - Endpoint controller is watching the API server for new service events. It detected that there is a new Service object.
+  - Endpoint controller is watching the API server for new service events. It detected that there is a new Service object.
 
-- - Endpoint controller created endpoint objects with the same name as the Service, and it used Service selector to identify endpoints (in this case the IP and the port of go-demo-2 Pods).
+  - Endpoint controller created endpoint objects with the same name as the Service, and it used Service selector to identify endpoints (in this case the IP and the port of go-demo-2 Pods).
 
-- - kube-proxy is watching for service and endpoint objects. It detected that there is a new Service and a new endpoint object.
+  - kube-proxy is watching for service and endpoint objects. It detected that there is a new Service and a new endpoint object.
 
-- - kube-proxy added iptables rules which capture traffic to the Service port and redirect it to endpoints. For each endpoint object, it adds iptables rule which selects a Pod.
+  - kube-proxy added iptables rules which capture traffic to the Service port and redirect it to endpoints. For each endpoint object, it adds iptables rule which selects a Pod.
 
-- - he kube-dns add-on is watching for Service. It detected that there is a new service.
+  - he kube-dns add-on is watching for Service. It detected that there is a new service.
 
-- - The kube-dns added db's record to the dns server (skydns).
+  - The kube-dns added db's record to the dns server (skydns).
 
 The sequence we described is useful when we want to understand everything that happened in the cluster from the moment we requested the creation of a new Service. 
 
@@ -195,8 +195,15 @@ kubectl describe svc go-demo-2-svc
 ![svc-04.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc-04.png)
 
 
+As we know, creating Kubernetes objects using imperative commands is not a good idea unless we’re trying some quick hack.
 
+The same applies to Services. Even though kubectl expose did the work, we should try to use a documented approach through YAML files. So, we’ll destroy the service we created and start creating using YAML.
 
+```
+kubectl delete svc go-demo-2-svc
+```
+
+## Creating Services through Declarative Syntax
 ![svc-05.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc-05.png)
 
 
