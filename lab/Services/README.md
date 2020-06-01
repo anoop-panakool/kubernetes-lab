@@ -127,7 +127,7 @@ Example: http://ExternalIP:<30358>
 
 Result will be as below
 
-![svc-08](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc08.png)
+![svc-08](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/sv08.png)
 
 ## Other Types of Services 
 
