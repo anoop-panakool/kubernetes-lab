@@ -658,8 +658,8 @@ Example: http://$ExternalIP:31148/demo/hello
 
 - Services can be discovered through two principal modes:
 
- - Environment variables
- - DNS
+  - Environment variables
+  - DNS
 
 - Every Pod gets environment variables for each of the active Services
 
@@ -777,48 +777,48 @@ Kubernetes converts Service names into DNSes and adds them to the DNS server.
 ![svc-06.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc-06.png)
 
 
-Quick Quiz!
+## Quick Quiz!
 
 1. A Pod replacing the killed or failed Pod will have the same IP.
-
+```yaml
 A)
 True
 B)
 False
-
+```
 
 2. The port exposed by the ClusterIP type service is
-
+```yaml
 A)
 Accessible from anywhere outside of the Cluster
 B)
 Accessible only from the inside of the Cluster
 C)
 Accessible from both inside and outside of the Cluster
-
+```
 
 3. When NodePort is used for creating a service, ClusterIP will be created automatically.
-
+```yaml
 A)
 True
 B)
 False
-
+```
 
 4. Which of the following command can be used to expose a resource as a new Kubernetes Service.
-
-
+```yaml
 A)
 kubectl resource
 B)
 kubectl expose
 C)
 kubectl create
-
+```
 
 5. If the number of Pods doesn’t change, the number of requests forwarded to each Pod will be?
-
+```yaml
 A)
 Equal
 B)
 Unequal
+```
