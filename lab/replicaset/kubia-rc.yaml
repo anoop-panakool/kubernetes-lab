@@ -9,10 +9,10 @@ spec:
   template:
     metadata:
       labels:
-        app: kubia
+        env: dev
     spec:
       containers:
-      - name: kubia
+      - name: fc
         image: luksa/kubia
         ports:
         - containerPort: 8080
