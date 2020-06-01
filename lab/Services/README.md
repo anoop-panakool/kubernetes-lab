@@ -70,7 +70,7 @@ go-demo-2-qj65n   2/2     Running   0          3m57s
 ### Exposing a Resource
 
 We can use the kubectl expose command to expose a resource as a new `Kubernetes Service`. That resource can be a Deployment,a ReplicaSet, a ReplicationController, or a Pod. We’ll expose the ReplicaSet since it is already running in the cluster.
-```
+```bash
 kubectl expose rs go-demo-2 \
     --name=go-demo-2-svc \
     --target-port=28017 \
