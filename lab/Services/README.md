@@ -54,6 +54,41 @@ kubectl create -f svc/go-demo-2-rs.yml
 ```
 kubectl get -f svc/go-demo-2-rs.yml
 ```
+We created the ReplicaSet and retrieved its state from Kubernetes. The output is as follows.
+```
+NAME        DESIRED   CURRENT  READY   AGE
+go-demo-2   2         2        2       1m
+```
+4. Verify the number of pods created by this ReplicaSet.
+```
+kubectl get pods | grep go-demo-2
+
+go-demo-2-88rsw   2/2     Running   0          3m57s
+go-demo-2-qj65n   2/2     Running   0          3m57s
+```
+
+### Exposing a Resource
+
+We can use the kubectl expose command to expose a resource as a new `Kubernetes Service`. That resource can be a Deployment,a ReplicaSet, a ReplicationController, or a Pod. We’ll expose the ReplicaSet since it is already running in the cluster.
+```
+kubectl expose rs go-demo-2 \
+    --name=go-demo-2-svc \
+    --target-port=28017 \
+    --type=NodePort
+```
+![svc-07.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc07.png)
+
+
+- Line 1: We specified that we want to expose a ReplicaSet (rs).
+
+- Line 2: The name of the new Service should be go-demo-2-svc.
+
+- Line 3: The port that should be exposed is 28017 (the port MongoDB interface is listening to).
+
+- Line 4: we specified that the type of the Service should be NodePort.
+
+As a result, the target port will be exposed on every node of the cluster to the outside world, and it will be routed to one of the Pods controlled by the ReplicaSet.
+
 ![svc-01.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc-01.png)
 
 ## The Kubernetes components view when requesting creation of a Service
