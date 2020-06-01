@@ -204,6 +204,9 @@ kubectl delete svc go-demo-2-svc
 ```
 
 ## Creating Services through Declarative Syntax
+
+
+
 ![svc-05.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc-05.png)
 
 
