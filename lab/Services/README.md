@@ -131,6 +131,22 @@ Example: http://ExternalIP:<30358>
 
 ## Other Types of Services 
 
+There are other Service types we could have used to establish communication
+
+### ClusterIP
+
+ClusterIP (the default type) exposes the port only inside the cluster. Such a port would not be accessible from anywhere outside. ClusterIP is useful when we want to enable communication between Pods and still prevent any external access.
+
+> NOTE: If NodePort is used, ClusterIP will be created automatically.
+
+### LoadBalancer
+
+The LoadBalancer type is only useful when combined with cloud provider’s load balancer.
+
+### ExternalName
+
+ExternalName maps a service to an external address (e.g., kubernetes.io).
+
 
 ![svc-01.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc-01.png)
 
