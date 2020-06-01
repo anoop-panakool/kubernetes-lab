@@ -79,7 +79,7 @@ The Ouptput is as follows.
 
   ![db-yaml-file](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/db-yaml.png)
 
- > click [here](/Labs/Pod/Lab06-pod/db.yml)
+ > click [here](/lab/pod/Lab06-pod/db.yml)
 Let’s analyze the various sections in the output definition of a Pod.
 ```
 Line 1-2: We’re using v1 of Kubernetes Pods API. Both apiVersion and kind are mandatory. That way, Kubernetes knows what we want to do (create a Pod) and which API version to use.
@@ -472,7 +472,7 @@ spec:
     - name: DB
       value: localhost
 ```
- > click [here](/Labs/Pod/Lab06-pod/go-demo-2.yml) to see the `go-demo-2.yml` file
+ > click [here](/lab/pod/Lab06-pod/go-demo-2.yml) to see the `go-demo-2.yml` file
  
 - The YAML file defines a Pod with two containers named 
    -  db
@@ -662,7 +662,7 @@ cat go-demo-2.yml
 
 ![Liveness-Probe](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/livenessProbe01.png)
 
-> click [here](/Labs/Pod/Lab06-pod/go-demo-2-health.yml) to see the `go-demo-2-health.yml` file
+> click [here](/labs/pod/go-demo-2-health.yml) to see the `go-demo-2-health.yml` file
 
 - Line 8-12: 
   - Two container are specified .
