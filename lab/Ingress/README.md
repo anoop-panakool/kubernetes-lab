@@ -50,6 +50,31 @@ Example: http://34.89.204.43:32013/demo/hello
 5. You will get page as below
 
 ![svc-11.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc11.png)
+
+The application responded with the status code 200 thus confirming that the Service indeed forwards the requests.
+
+While publishing a random, or even a hard-coded port of a single application might not be so bad, if we’d apply the same principle to more applications, the user experience would be horrible. To make the point a bit clearer, we’ll deploy another application.
+
+6. Let's deploy another application, Create [devops-toolkit-dep.yml](/lab/Ingress/devops-toolkit-dep.yml)
+
+```yaml
+kubectl create -f devops-toolkit-dep.yml --record --save-config
+
+kubectl get -f devops-toolkit-dep.yml
+```
+This application follows similar logic to the first. From the latter command, we can see that it contains a Deployment and a Service. 
+
+## Understanding the Process
+
+- Let’s check whether the new application is indeed reachable
+
+```yaml
+http://$IP:$PORT
+```
+
+We retrieved the port of the new Service and opened the application in a browser. If you get a page not found error, you might want to wait a bit longer until the containers are pulled, and try again
+
+![svc-20.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc20.png)
 ## What is an Ingress?
 
 - In Kubernetes, an Ingress is an object that allows access to your Kubernetes services from outside the Kubernetes cluster. You configure access by creating a collection of rules that define which inbound connections reach which services.
