@@ -244,13 +244,14 @@ hello, release 1.0
 ## Quick Quiz!
 
 Let's test our understanding of Namespaces.
-
+```
 1. We can have multiple running Kubernetes cluster without any resource and operational overhead.
 A)
 True
 B)
 False
-
+```
+```
 2. Which of the following command we can use for altering the Kubernetes definitions?
 A)
 alter
@@ -258,8 +259,8 @@ B)
 sed
 C)
 cha
-
-
+```
+```
 3. In Kubernetes virtual clusters inside the clusters are created using?
 A)
 Volumes
@@ -267,7 +268,8 @@ B)
 Sevices
 C)
 Namespaces
-
+```
+```
 4. If we do not specify otherwise, against the objects of which Namespace all the kubectl commands will operate?
 A)
 kube-public
@@ -277,8 +279,8 @@ C)
 default
 D)
 user
-
-
+```
+```
 5. The objects created inside the kube-public Namespace are visible?
 A)
 Throughout the cluster
@@ -286,14 +288,15 @@ B)
 To specified Namespaces only
 C)
 To other clusters as well
-
+```
+```
 6. The purpose of the existance of DNSes with Namespaces is to reach the services in other Namespaces.
 A)
 True
 B)
 False
-
-
+```
+```
 7. What happens when we delete a Namespace?
 A)
 Everything inside it gets deleted
@@ -301,3 +304,4 @@ B)
 Only partial objects inside it get deleted
 C)
 Nothing happens to the objects inside it
+```
