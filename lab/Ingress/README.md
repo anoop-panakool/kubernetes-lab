@@ -49,7 +49,7 @@ Example: http://34.89.204.43:32013/demo/hello
 ```
 5. You will get page as below
 
-![svc-05.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc-05.png)
+![svc-11.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc11.png)
 ## What is an Ingress?
 
 - In Kubernetes, an Ingress is an object that allows access to your Kubernetes services from outside the Kubernetes cluster. You configure access by creating a collection of rules that define which inbound connections reach which services.
