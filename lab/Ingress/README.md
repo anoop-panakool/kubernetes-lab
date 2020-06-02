@@ -113,6 +113,11 @@ What we need is a way to make all services accessible through standard HTTP (80)
 - The request received the default backend - 404 response. There is no process listening on port 80, so this outcome is not a surprise. We could have changed one of the Services to publish the fixed port 80 instead assigning a random one. Still, that would provide access only to one of the two applications.
 
 ## Why Ingress Controllers are Required?
+
+- We need a mechanism that will accept requests on pre-defined ports (e.g., 80 and 443) and forward them to Kubernetes Services.
+- It should be able to distinguish requests based on paths and domains.
+- Kubernetes itself does not have a ready-to-go solution for this. Unlike other types of   Controllers that are typically part of the kube-controller-manager binary, Ingress Controller needs to be installed separately. Instead of a Controller, kube-controller-manager offers Ingress resource that other third-party solutions can utilize to provide requests forwarding and SSL features. In other words, Kubernetes only provides an API, and we need to set up a Controller that will use it.
+
 ## What is an Ingress?
 
 - In Kubernetes, an Ingress is an object that allows access to your Kubernetes services from outside the Kubernetes cluster. You configure access by creating a collection of rules that define which inbound connections reach which services.
