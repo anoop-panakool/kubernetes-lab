@@ -16,7 +16,7 @@ Storage is critical to most real-world production applications. Fortunately, Kub
 
 A Kubernetes cluster is running on AWS and the AWS administrator has created a 25GB EBS volume called “ebs-vol”. The Kubernetes administrator creates a PV called “k8s-vol” that links back to the “ebs-vol” via the kubernetes.io/aws-ebs plugin. While that might sound complicated, it’s not. The PV is simply a way of representing the external storage on the Kubernetes cluster. Finally, the Pod uses a PVC to claim access to the PV and start using it.
 
-![storag2](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/storag2.jpg)
+![storage2](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/storage2.jpg)
 
 
 
@@ -31,7 +31,7 @@ Refer this [volumes](https://kubernetes.io/docs/concepts/storage/volumes/) page 
 From a day-to-day perspective, this is where you’ll spend most of your time configuring and interacting with Kubernetes storage.
 You uses the resources provided by the persistent volume subsystem to leverage and use the storage in your apps.
 
-![storag3](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/storag3.jpg)
+![storage3](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/storage3.jpg)
 
 - The three main resources in the persistent volume subsystem are:
   - Persistent Volumes (PV)
@@ -46,4 +46,4 @@ You uses the resources provided by the persistent volume subsystem to leverage a
 
 ## Pods in Kubernetes are ephemeral, which makes the local container filesytem unusable, as you can never ensure the pod will remain. To decouple your storage from your pods, you will be creating a persistent volume to mount for use by your pods. You will be deploying a redis image. You will first create the persistent volume, then create the pod YAML for deploying the pod to mount the volume. You will then delete the pod and create a new pod, which will access that same volume.
 
-![storag4](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/storag4.png)
+![storage4](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/storage4.png)
