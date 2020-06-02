@@ -1,3 +1,9 @@
+## Why Services Are Not the Best Fit for External Access?
+
+It is a bad practice to publish fixed ports through Services. That method is likely to result in conflicts or, at the very least, create the additional burden of carefully keeping track of which port belongs to which Service. 
+
+- let’s go back and create the Deployments and the Services from the previous chapter
+
 ## What is an Ingress?
 
 - In Kubernetes, an Ingress is an object that allows access to your Kubernetes services from outside the Kubernetes cluster. You configure access by creating a collection of rules that define which inbound connections reach which services.
@@ -9,8 +15,6 @@
 
 These options all do the same thing. They let you expose a service to external network requests. 
 They let you send a request from outside the Kubernetes cluster to a service inside the cluster.
-
-
 
 
 
