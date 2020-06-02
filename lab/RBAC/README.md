@@ -1,4 +1,4 @@
-# Lab K202 - Kubernetes Access Control:  Authentication and Authorization
+# RBAC - Kubernetes Access Control:  Authentication and Authorization
 
 In  this lab you are going to,
 
@@ -79,6 +79,7 @@ Generate the user's private key
 mkdir -p  ~/.kube/users
 cd ~/.kube/users
 
+
 openssl genrsa -out kim.key 2048
 
 ```
@@ -106,7 +107,10 @@ e.g.
 openssl req -new -key kim.key -out kim.csr -subj "/CN=kim/O=dev/O=example.org"
 
 ```
-
+If you get error `Can't load /root/.rnd into RNG` during Creating CSR , then run below command first the generate CSR
+```
+openssl rand -out /home/ubuntu/.rnd -hex 256
+```
 In order to be deemed authentic, these CSRs need to be signed by the **Certification Authority (CA)** which in this case is Kubernetes Master.   You need access to the folllwing files on  kubernetes master.
 
   * Certificate : ca.crt (kubeadm) or ca.key (kubespray)
