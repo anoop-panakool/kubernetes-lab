@@ -2,12 +2,54 @@
 
 It is a bad practice to publish fixed ports through Services. That method is likely to result in conflicts or, at the very least, create the additional burden of carefully keeping track of which port belongs to which Service. 
 
-- let’s create the Deployments and the Services using this YAML file [go-demo-2-deploy.yml](/lab/Ingress/go-demo-2-deploy.yml)
-```
+1. let’s create the Deployments and the Services using this YAML file [go-demo-2-deploy.yml](/lab/Ingress/go-demo-2-deploy.yml)
+
+```yaml
 kubectl create -f go-demo-2-deploy.yml
 
-kubectl get -f ingress/go-demo-2-deploy.yml
+kubectl get -f go-demo-2-deploy.yml
 ```
+
+2. The output of the get command is as follows.
+```yaml
+kubectl get -f go-demo-2-deploy.yml
+
+NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/go-demo-2-db   1/1     1            1           58s
+
+NAME                   TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)     AGE
+service/go-demo-2-db   ClusterIP   10.98.76.36   <none>        27017/TCP   58s
+
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/go-demo-2-api   3/3     3            3           58s
+
+NAME                    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/go-demo-2-api   NodePort   10.109.198.99   <none>        8080:32013/TCP   58s
+```
+
+3. List the PODS
+```yaml
+kubectl get pods | grep go-demo-2
+````
+
+4. The output is as follows.
+```yaml
+go-demo-2-api-7b67f95d58-7d78j   1/1     Running   0          3m39s
+go-demo-2-api-7b67f95d58-nmklg   1/1     Running   0          3m39s
+go-demo-2-api-7b67f95d58-pt7lq   1/1     Running   0          3m39s
+go-demo-2-db-7c77d7bc64-9j6cx    1/1     Running   0          3m39s
+```
+
+4. Access Through Services
+
+```yaml
+http://ExternalIP:<NodePort-Port Number>
+
+Example: http://34.89.204.43:32013/demo/hello
+```
+5. You will get page as below
+
+![svc-08](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/sv08.png)
 ## What is an Ingress?
 
 - In Kubernetes, an Ingress is an object that allows access to your Kubernetes services from outside the Kubernetes cluster. You configure access by creating a collection of rules that define which inbound connections reach which services.
