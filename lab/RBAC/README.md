@@ -29,7 +29,7 @@ Each of these topics will be discussed in detail in the later part of this chapt
 
 When a request tries to contact the API , it goes through various stages as illustrated in the image given below.
 
-  ![request-stages](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/rbac01.png)
+  ![request-stages](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/rback01.png)
   <sub>[source: official kubernetes site](https://kubernetes.io/docs/home/)</sub>
 
 
