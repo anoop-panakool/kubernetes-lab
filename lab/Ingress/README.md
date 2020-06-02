@@ -61,6 +61,24 @@ While publishing a random, or even a hard-coded port of a single application mig
 kubectl create -f devops-toolkit-dep.yml --record --save-config
 
 kubectl get -f devops-toolkit-dep.yml
+
+kubectl get pods | grep devops-toolkit
+```
+
+7. The Output is as follows
+
+```yaml
+
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/devops-toolkit   3/3     3            3           31s
+
+NAME                     TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+service/devops-toolkit   NodePort   10.108.222.194   <none>        80:32674/TCP   31s
+
+kubectl get pods | grep devops-toolkit
+devops-toolkit-597c5c9496-fjwd7   1/1     Running   0          5m5s
+devops-toolkit-597c5c9496-ncxdd   1/1     Running   0          5m5s
+devops-toolkit-597c5c9496-tcqgp   1/1     Running   0          5m5s
 ```
 This application follows similar logic to the first. From the latter command, we can see that it contains a Deployment and a Service. 
 
@@ -70,11 +88,31 @@ This application follows similar logic to the first. From the latter command, we
 
 ```yaml
 http://$IP:$PORT
-```
 
-We retrieved the port of the new Service and opened the application in a browser. If you get a page not found error, you might want to wait a bit longer until the containers are pulled, and try again
+Example : http://34.89.204.43:32674/
+```
+- We retrieved the port of the new Service and opened the application in a browser.
 
 ![svc-20.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc20.png)
+
+- A simplified flow of requests is depicted in the below-given illustration.
+
+  -  A user sends a request to one of the nodes of the cluster. That request is received by a Service and load balanced to one of the associated Pods.
+
+![svc-21.png](https://github.com/shivamjhalabfiles/kubernetes-lab/blob/master/images/svc21.png)
+
+
+- We cannot expect our users to know specific ports behind each of those applications. Even with only two, that would not be very user-friendly. If that number would rise to tens or even hundreds of applications, our business would be very short-lived.
+
+What we need is a way to make all services accessible through standard HTTP (80) or HTTPS (443) ports. Kubernetes Services alone cannot get us there. We need more.
+
+## The Solution 
+
+- What we need is to grant access to our services on predefined paths and domains. Our `go-demo-2 service` could be distinguished from others through the base path `/demo`. Similarly, the books application could be reachable through the devopstoolkitseries.com domain. If we could accomplish that, we could access them with the commands as follows.
+
+- The request received the default backend - 404 response. There is no process listening on port 80, so this outcome is not a surprise. We could have changed one of the Services to publish the fixed port 80 instead assigning a random one. Still, that would provide access only to one of the two applications.
+
+## Why Ingress Controllers are Required?
 ## What is an Ingress?
 
 - In Kubernetes, an Ingress is an object that allows access to your Kubernetes services from outside the Kubernetes cluster. You configure access by creating a collection of rules that define which inbound connections reach which services.
